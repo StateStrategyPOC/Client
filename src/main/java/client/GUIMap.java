@@ -269,25 +269,6 @@ public class GUIMap extends JLayeredPane {
 	}
 
 	/**
-	 * Delight (on the GUI) the sector specified by coords, resets the
-	 * appearance of the given sectors if the specified sector doesn't exist the
-	 * map appearance is unchanged
-	 *
-	 * @param coords
-	 *            The coordinates of the sector to delight
-	 */
-	public void delightSector(Coordinate coords) {
-		for (SectorLabel s : lightedSectors) {
-			if (s.getCoordinate().equals(coords)) {
-				remove(s);
-				lightedSectors.remove(lightedSectors.indexOf(s));
-				break;
-			}
-		}
-		this.repaint();
-	}
-
-	/**
 	 * Delight all sectors lighted in the map
 	 */
 	public void delightAllSectors() {
