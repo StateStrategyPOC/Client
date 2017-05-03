@@ -18,12 +18,14 @@ public class PubSubHandler extends Thread {
     private final ObjectInputStream inputStream;
     private final ClientServices clientServices;
     private boolean listeningFlag;
+    private final GuiManager guiManager;
 
     public PubSubHandler(Socket socket, ObjectInputStream inputStream) {
         this.socket = socket;
         this.inputStream = inputStream;
         this.listeningFlag = true;
         this.clientServices = ClientServices.getInstance();
+        this.guiManager = GuiManager.getInstance();
     }
 
     public void setListeningFlag(boolean listeningFlag) {
@@ -32,20 +34,19 @@ public class PubSubHandler extends Thread {
 
     @Override
     public void run() {
-        while (this.listeningFlag) {
+        while (this.listeningFlag) try {
+            RemoteMethodCall remoteMethodCall = (RemoteMethodCall) this.inputStream.readObject();
+            this.clientServices.processRemoteInvocation(remoteMethodCall);
+        } catch (IOException | ClassNotFoundException | NoSuchMethodException |
+                IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
             try {
-                RemoteMethodCall remoteMethodCall = (RemoteMethodCall) this.inputStream.readObject();
-                this.clientServices.processRemoteInvocation(remoteMethodCall);
-            } catch (IOException | ClassNotFoundException | NoSuchMethodException |
-                    IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-                try {
-                    this.inputStream.close();
-                    this.socket.close();
-                    this.listeningFlag = false;
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+                this.inputStream.close();
+                this.socket.close();
+                this.listeningFlag = false;
+                this.guiManager.setConnectionActiveReaction(false);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         }
         try {
