@@ -24,7 +24,7 @@ public class GUInitialWindow extends JPanel {
 		setBackground(Color.BLACK);
 
 		JLabel title = new JLabel();
-		title.setIcon(new ImageIcon("mainImg.jpg"));
+		title.setIcon(new ImageIcon("maps/mainImg.jpg"));
 		title.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		add(title);
 
