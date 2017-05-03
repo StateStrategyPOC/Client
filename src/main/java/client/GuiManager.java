@@ -173,6 +173,9 @@ public class GuiManager {
      */
     public void discardObjectCardReaction() {
         this.guiGamePane.refreshCardPanel(this.client.getPlayer().getPrivateDeck().getContent());
+        this.guiGamePane.showEndTurnButton(true);
+        this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
+        this.guiGamePane.changeCardMenu(MenuType.HUMAN_USE_MENU);
     }
 
     /**

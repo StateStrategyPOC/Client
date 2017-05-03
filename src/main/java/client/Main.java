@@ -7,7 +7,7 @@ import javax.swing.SwingUtilities;
  * Starts and display the GUI
  *
  */
-public class MainGUI {
+public class Main {
 	public static void main(String[] args) {
 		Runnable r = new Runnable() {
 			
