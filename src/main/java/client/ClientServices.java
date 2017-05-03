@@ -74,7 +74,6 @@ public class ClientServices {
      * @param playerName The name of the client in the game.
      */
     public void joinGame(int gameId, String playerName) {
-        this.client.setPlayer(playerName);
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(gameId);
         parameters.add(playerName);
@@ -363,18 +362,23 @@ public class ClientServices {
     }
 
     /**
-     * Sets the current {@link RRClientNotification}
-     * @param clientNotification The notification to be set
+     * Handles a synchronous notification that has been produced by the server
+     * in response to a client request.
+     * This method is invoked indirectly using reflection.
+     *
+     * @param clientNotification The produced notification
      */
     private void syncNotification(RRClientNotification clientNotification){
         this.currentRrNotification = clientNotification;
     }
 
     /**
-     * Sets the current {@link PSClientNotification} and does some checks on the status of the game
-     * @param psNotification The notification to be set
+     * Handles an asynchronous notification that has been produced by the server.
+     * This method is invoked indirectly using reflection.
+     *
+     * @param psNotification The produced notification,
      */
-    public void asyncNotification(PSClientNotification psNotification) {
+    private void asyncNotification(PSClientNotification psNotification) {
         this.currentPsNotification = psNotification;
         this.guiManager.publishChatMessage(psNotification.getMessage());
         if (psNotification.getHumanWins() || psNotification.getAlienWins()) {
@@ -384,17 +388,24 @@ public class ClientServices {
         }
         if (psNotification.getEscapedPlayer() != null) {
             if (psNotification.getEscapedPlayer().equals(this.client.getPlayer().getPlayerToken())){
+                this.client.getPlayer().setPlayerState(PlayerState.ESCAPED);
                 this.guiManager.setPlayerStateReaction();
                 this.client.setGameStarted(false);
             }
         }
         if (psNotification.getDeadPlayers().contains(this.client.getPlayer().getPlayerToken())) {
+            this.client.getPlayer().setPlayerState(PlayerState.DEAD);
             this.guiManager.setPlayerStateReaction();
             this.client.setGameStarted(false);
         } else if (psNotification.getAttackedPlayers().contains(this.client.getPlayer().getPlayerToken())) {
             this.guiManager.useObjectCardReaction(new DefenseObjectCard());
         }
     }
+    /**
+     * Makes the game associated to this client start. This method is invoked indirectly using reflection.
+     *
+     * @param mapName The name of the game map.
+     */
     public void setMapAndStartGame(String mapName) {
         this.client.setGameStarted(true);
         GameMap gameMap;
