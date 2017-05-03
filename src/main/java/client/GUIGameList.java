@@ -123,7 +123,7 @@ public class GUIGameList extends JPanel {
                 clientServices.onDemandGameStart();
             }
         });
-
+        this.clientServices.getGames();
     }
 
     public void setGameListContent(List<GamePublicData> gamePublicDataList) {

@@ -37,12 +37,12 @@ public class CommunicationHandler {
      * Opens a connection with the server and sends the given {@link RemoteMethodCall} object to
      * the server, it then waits for an answer and closes the connection. An exception to this behavior
      * is made for a particular {@link RemoteMethodCall} object that signals a subscription in the logic
-     * of a publisher-subscriber pattern, so that the connection with the server must be preserverd.
+     * of a publisher-subscriber pattern, so that the connection with the server is preserved.
      *
-     * @param remoteMethodCall The object to be sent to the server
-     * @return An object that represent a method to be invoked on the client
-     * @throws IOException            Connection problems
-     * @throws ClassNotFoundException Reflection problems
+     * @param remoteMethodCall The object to be sent to the server.
+     * @return An object that represent a method to be invoked on the client.
+     * @throws IOException            Connection problems.
+     * @throws ClassNotFoundException Reflection problems.
      */
     public RemoteMethodCall newComSession(RemoteMethodCall remoteMethodCall) throws IOException, ClassNotFoundException {
         RemoteMethodCall receivedRemoteMethodCall = null;
