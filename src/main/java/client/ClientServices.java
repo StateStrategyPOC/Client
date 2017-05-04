@@ -409,21 +409,11 @@ public class ClientServices {
     public void setMapAndStartGame(String mapName) {
         this.client.setGameStarted(true);
         GameMap gameMap;
-        GameMapFactory factory;
-        switch (mapName) {
-            case "GALILEI":
-                factory = new GalileiGameMapFactory();
-                break;
-            case "FERMI":
-                factory = new FermiGameMapFactory();
-                break;
-            case "GALVANI":
-                factory = new GalvaniGameMapFactory();
-                break;
-            default:
-                throw new IllegalArgumentException("The type of map is undefined");
+        try {
+            gameMap = GameMapFactory.provideCorrectFactory(mapName).makeMap();
+        } catch (NoSuchMethodException e) {
+            gameMap = new GalileiGameMapFactory().makeMap();
         }
-        gameMap = factory.makeMap();
         this.client.setGameMap(gameMap);
         if (this.client.getPlayer().getPlayerToken().getPlayerType().equals(PlayerType.ALIEN)) {
             this.client.getPlayer().setCurrentSector(gameMap.getAlienSector());

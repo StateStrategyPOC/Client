@@ -12,7 +12,6 @@ import java.util.Timer;
  */
 public class GuiManager {
     private final long DELAY_RETURN_TO_GAME_LIST = 10000;
-    private final Timer gameListRefreshTimer;
     private final ClientServices clientServices;
     private static GuiManager instance = new GuiManager();
     private final Client client;
@@ -27,7 +26,6 @@ public class GuiManager {
 
     private GuiManager() {
         this.client = Client.getInstance();
-        this.gameListRefreshTimer = new Timer();
         this.clientServices = ClientServices.getInstance();
         this.clientServices.initWithGuiManager(this);
     }
@@ -287,7 +285,6 @@ public class GuiManager {
     public void startGameReaction() {
         Player player = this.client.getPlayer();
         String characterInfoMsg;
-        this.gameListRefreshTimer.cancel();
         if (this.client.getPlayer().getPlayerToken().getPlayerType().equals(PlayerType.ALIEN)) {
             characterInfoMsg = player.getName() + " | ALIEN";
             this.guiGamePane.setSectorMenu(MenuType.ALIEN_INITIAL);

@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Represents a factory of generic game maps
@@ -158,4 +159,16 @@ public abstract class GameMapFactory {
 	 * @return a generic game map
 	 */
 	public abstract GameMap makeMap();
+
+	public static GameMapFactory provideCorrectFactory(String factoryIdentifier) throws NoSuchMethodException{
+		switch (factoryIdentifier){
+			case "GALILEI":
+				return new GalileiGameMapFactory();
+			case "FERMI":
+				return new FermiGameMapFactory();
+			case "GALVANI":
+				return new GalvaniGameMapFactory();
+		}
+		throw new NoSuchElementException("No factory matches the given identifier");
+	}
 }
