@@ -8,8 +8,7 @@ import java.util.*;
 import java.util.Timer;
 
 /**
- * Created by giorgiopea on 25/04/17.
- *
+ * A manager that orchestrates all the gui components of this application.
  */
 public class GuiManager {
     private final long DELAY_RETURN_TO_GAME_LIST = 10000;
@@ -58,10 +57,9 @@ public class GuiManager {
      */
     private void updatePosition() {
         Coordinate newCoordinates = this.client.getPlayer().getCurrentSector().getCoordinate();
-        String playerName = /*name*/"";
         this.guiGamePane.getMapPane().delightAllSectors();
         this.guiGamePane.getMapPane().lightSector(newCoordinates, "Y",
-                playerName);
+                this.client.getPlayer().getName());
     }
 
 
@@ -141,12 +139,12 @@ public class GuiManager {
      */
     public void startTurn() {
         String message;
-        PlayerType playerType = this.client.getPlayer().getPlayerToken().getPlayerType();
-        if (playerType.equals(PlayerType.ALIEN)) {
-            message = /*name*/" now is your turn: move or attack";
+        Player player = this.client.getPlayer();
+        if (player.getPlayerToken().getPlayerType().equals(PlayerType.ALIEN)) {
+            message = player.getName() + " now is your turn: move or attack";
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.ALIEN_INITIAL);
         } else {
-            message = /*name*/ "now is your turn: move or use an object card";
+            message = player.getName() + "now is your turn: move or use an object card";
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.HUMAN_INITIAL);
             this.guiGamePane.changeCardMenu(MenuType.HUMAN_USE_MENU);
         }
@@ -183,8 +181,9 @@ public class GuiManager {
      * This reaction includes moving the client to his original sector.
      */
     public void teleportToStartingSectorReaction() {
+        Player player = this.client.getPlayer();
         this.guiGamePane.getMapPane().delightAllSectors();
-        this.guiGamePane.getMapPane().lightSector(this.client.getPlayer().getCurrentSector().getCoordinate(), "Y", ""/*name*/);
+        this.guiGamePane.getMapPane().lightSector(player.getCurrentSector().getCoordinate(), "Y", player.getName());
     }
 
     /**
@@ -245,7 +244,6 @@ public class GuiManager {
         CardSplashScreen cardSplashScreen = new CardSplashScreen(this.mainFrame);
         cardSplashScreen.showCards(drawnSectorCard, drawnObjectCard);
         PrivateDeck clientPrivateDeck = this.client.getPlayer().getPrivateDeck();
-        //The action has not been validated by the server so only a message is shown
 
         if (drawnSectorCard instanceof GlobalNoiseSectorCard) {
             this.guiGamePane
@@ -287,13 +285,14 @@ public class GuiManager {
      * acts on this view in response to the starting of the game
      */
     public void startGameReaction() {
+        Player player = this.client.getPlayer();
         String characterInfoMsg;
         this.gameListRefreshTimer.cancel();
         if (this.client.getPlayer().getPlayerToken().getPlayerType().equals(PlayerType.ALIEN)) {
-            characterInfoMsg = /*name*/"" + " | ALIEN";
+            characterInfoMsg = player.getName() + " | ALIEN";
             this.guiGamePane.setSectorMenu(MenuType.ALIEN_INITIAL);
         } else {
-            characterInfoMsg = /*name*/"" + " | HUMAN";
+            characterInfoMsg = player.getName() + " | HUMAN";
             this.guiGamePane.setSectorMenu(MenuType.HUMAN_INITIAL);
         }
         this.guiGameList.reset();
@@ -323,7 +322,6 @@ public class GuiManager {
      */
     public void setAvailableGamesReaction() {
         if (!this.guiGameList.isVisible()) {
-            //this.gameListRefreshTimer.scheduleAtFixedRate(new GamePollingThread(),1000,this.GAME_LIST_REFRESH_RATE);
             this.mainFrame.remove(this.guiInitialWindow);
             this.guiGameList
                    .setLayout(new BoxLayout(this.guiGameList, BoxLayout.Y_AXIS));
