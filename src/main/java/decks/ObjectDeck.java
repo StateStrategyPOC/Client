@@ -8,6 +8,9 @@ import java.util.List;
 
 /**
  * Represents a deck containing object cards
+ * 
+ * @author Andrea Sessa
+ * @author Giorgio Pea
  */
 public class ObjectDeck extends Deck {
 
@@ -17,7 +20,9 @@ public class ObjectDeck extends Deck {
 	/**
 	 * Constructs a deck containing object cards from a set of cards and a
 	 * discard deck
-	 *
+	 * 
+	 * @author Andrea Sessa
+	 * @author Giorgio Pea
 	 * @param content
 	 *            the set of cards to insert in the object deck
 	 * @param discardDeck
@@ -30,7 +35,9 @@ public class ObjectDeck extends Deck {
 
 	/**
 	 * Gets the discard deck associated with the object deck
-	 *
+	 * 
+	 * @author Andrea Sessa
+	 * @author Giorgio Pea
 	 * @return The discard deck associated with the object deck
 	 */
 	public DiscardDeck getDiscardDeck() {
@@ -39,7 +46,9 @@ public class ObjectDeck extends Deck {
 
 	/**
 	 * Refills the object deck with all the cards of its associated discard deck
-	 *
+	 * 
+	 * @author Andrea Sessa
+	 * @author Giorgio Pea
 	 */
 	public void refill() {
 		/*
@@ -64,6 +73,9 @@ public class ObjectDeck extends Deck {
 		this.discardDeck.addCard(card);
 	}
 
+	/**
+	 * @see Deck#popCard()
+	 */
 	@Override
 	public Card popCard() {
 		this.refill();
@@ -72,7 +84,7 @@ public class ObjectDeck extends Deck {
 		}
 		Card card = this.content.get(0);
 		this.content.remove(0);
-		return (ObjectCard) card;
+		return card;
 	}
 
 }

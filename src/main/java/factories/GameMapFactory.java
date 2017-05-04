@@ -14,10 +14,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Represents a factory of generic game maps
- *
+ * 
+ * @see GameMap
+ * @author Andrea Sessa
+ * @author Giorgio Pea
  */
 public abstract class GameMapFactory {
 	/**
@@ -147,9 +151,20 @@ public abstract class GameMapFactory {
 				j++;
 			}
 		} catch (IOException e) {
-            e.printStackTrace();
+			e.printStackTrace();
 		}
 		return graph;
+	}
+	public static GameMapFactory provideCorrectFactory(String factoryIdentifier) throws NoSuchMethodException{
+		switch (factoryIdentifier){
+			case "GALILEI":
+				return new GalileiGameMapFactory();
+			case "FERMI":
+				return new FermiGameMapFactory();
+			case "GALVANI":
+				return new GalvaniGameMapFactory();
+		}
+		throw new NoSuchElementException("No factory matches the given identifier");
 	}
 
 	/**

@@ -2,15 +2,16 @@ package client;
 
 import common.Coordinate;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 
 /**
  * Represents a generic sector painted on the game's graphical map It consists
  * of a JLabel with an appropriate image associated
- *
+ * 
+ * @author Andrea Sessa
+ * @author Giorgio Pea
  */
 public class SectorLabel extends JLabel {
-	private static final long serialVersionUID = 1L;
 
 	private Coordinate coordinate;
 	private String image;

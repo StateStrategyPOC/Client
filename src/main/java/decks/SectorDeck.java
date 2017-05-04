@@ -64,6 +64,9 @@ public class SectorDeck extends Deck {
 		this.discardDeck.addCard(card);
 	}
 
+	/**
+	 * @see Deck#popCard
+	 */
 
 	@Override
 	public Card popCard() {

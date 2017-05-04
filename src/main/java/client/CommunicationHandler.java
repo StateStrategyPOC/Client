@@ -1,5 +1,7 @@
 package client;
 
+import client_store.ClientStore;
+import client_store_actions.ClientAddPubSubHandlerAction;
 import common.RemoteMethodCall;
 
 import java.io.IOException;
@@ -8,18 +10,17 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
- * Created by giorgiopea on 25/04/17.
+ * Created by giorgiopea on 25/03/17.
+ * <p>
+ * A class that handles the communication between the client and the server
  */
 public class CommunicationHandler {
-    private final ServerMethodsNameProvider serverMethodsNameProvider;
-    private final int TCP_PORT;
-    private final String HOST;
-    private final Client client;
     private static CommunicationHandler instance = new CommunicationHandler();
+    private final ClientStore clientStore;
+    private final ServerMethodsNameProvider serverMethodsNameProvider;
     private Socket socket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-    private PubSubHandler pubSubHandler;
 
 
     public static CommunicationHandler getInstance() {
@@ -27,35 +28,31 @@ public class CommunicationHandler {
     }
 
     private CommunicationHandler() {
+        this.clientStore = ClientStore.getInstance();
         this.serverMethodsNameProvider = ServerMethodsNameProvider.getInstance();
-        this.TCP_PORT = 29999;
-        this.HOST = "localhost";
-        this.client = Client.getInstance();
     }
 
     /**
      * Opens a connection with the server and sends the given {@link RemoteMethodCall} object to
      * the server, it then waits for an answer and closes the connection. An exception to this behavior
      * is made for a particular {@link RemoteMethodCall} object that signals a subscription in the logic
-     * of a publisher-subscriber pattern, so that the connection with the server must be preserverd.
+     * of a publisher-subscriber pattern, so that the connection with the server must be preserved.
      *
-     * @param remoteMethodCall The object to be sent to the server
-     * @return An object that represent a method to be invoked on the client
-     * @throws IOException            Connection problems
-     * @throws ClassNotFoundException Reflection problems
+     * @param remoteMethodCall The object to be sent to the server.
+     * @return An object that represent a method to be invoked on the client.
+     * @throws IOException            Connection problems.
+     * @throws ClassNotFoundException Reflection problems.
      */
     public RemoteMethodCall newComSession(RemoteMethodCall remoteMethodCall) throws IOException, ClassNotFoundException {
         RemoteMethodCall receivedRemoteMethodCall = null;
-        this.socket = new Socket(this.HOST, this.TCP_PORT);
+        this.socket = new Socket(clientStore.getState().getHost(), clientStore.getState().getTcpPort());
         this.outputStream = new ObjectOutputStream(this.socket.getOutputStream());
         this.outputStream.flush();
         this.inputStream = new ObjectInputStream(this.socket.getInputStream());
         this.sendData(remoteMethodCall);
         if (remoteMethodCall.getMethodName().equals(this.serverMethodsNameProvider.subscribe())) {
-            this.pubSubHandler = new PubSubHandler(socket,inputStream);
-            this.pubSubHandler.start();
-        }
-        else {
+            this.clientStore.dispatchAction(new ClientAddPubSubHandlerAction(socket, inputStream));
+        } else {
             receivedRemoteMethodCall = this.receiveData(inputStream);
             this.closeDataFlow();
         }
@@ -96,9 +93,5 @@ public class CommunicationHandler {
     private RemoteMethodCall receiveData(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
         return (RemoteMethodCall) inputStream
                 .readObject();
-    }
-
-    public PubSubHandler getPubSubHandler(){
-        return this.pubSubHandler;
     }
 }

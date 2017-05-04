@@ -1,14 +1,17 @@
 package client;
 
+import common.Card;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import common.Card;
-
 /**
  * Represents a mapper that maps a card in the game with its image(filename)
- *
+ * 
+ * @author Andrea Sessa
+ * @author Giorgio Pea
+ * @version 1.0
  */
 public class ResourceMapper {
 	private Map<String, String> cardMapper;
@@ -19,7 +22,7 @@ public class ResourceMapper {
 	 * in the game and its corresponding image(filename)
 	 */
 	public ResourceMapper() {
-		cardMapper = new HashMap<>();
+		cardMapper = new HashMap<String, String>();
 
 		cardMapper.put("AdrenalineObjectCard", "cards" + File.separator
 				+ "Adrenaline.png");

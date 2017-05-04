@@ -5,7 +5,10 @@ import java.io.Serializable;
 /**
  * Represents a generic coordinate in the game. In the game a generic coordinate
  * is a pair: character, integer
- *
+ * 
+ * @author Andrea Sessa
+ * @author Giorgio Pea
+ * @version 1.0
  */
 
 public class Coordinate implements Serializable {
@@ -63,9 +66,7 @@ public class Coordinate implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Coordinate other = (Coordinate) obj;
-		if (x != other.x)
-			return false;
-		return y == other.y;
+		return x == other.x && y == other.y;
 	}
 
 	@Override

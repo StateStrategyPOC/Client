@@ -1,5 +1,11 @@
 package client;
 
+import common.Coordinate;
+import common.GameMap;
+import common.Sector;
+import common.SectorType;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -7,18 +13,6 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-
-import common.Coordinate;
-import common.GameMap;
-import common.Sector;
-import common.SectorType;
 
 /**
  * Represents the panel in which is displayed the game map
@@ -47,8 +41,8 @@ public class GUIMap extends JLayeredPane {
 
 	public GUIMap() {
 
-		sectorsList = new ArrayList<>();
-		lightedSectors = new ArrayList<>();
+		sectorsList = new ArrayList<SectorLabel>();
+		lightedSectors = new ArrayList<SectorLabel>();
 
 		JMenuItem alienMoveItem = new JMenuItem("Move");
 		JMenuItem attackItem = new JMenuItem("Attack");
@@ -100,7 +94,7 @@ public class GUIMap extends JLayeredPane {
 		lightItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clientServices.lights(selectedSector.getCoordinate());
+                clientServices.lights(selectedSector.getCoordinate());
 			}
 		});
 
@@ -127,11 +121,10 @@ public class GUIMap extends JLayeredPane {
 	 * the GUI
 	 */
 	public void displayGameMap(GameMap gameMap) {
-		JLabel backgroundLabel = new JLabel(new ImageIcon("cards/back.png"));
+		JLabel backgroundLabel = new JLabel(new ImageIcon("back.png"));
 		backgroundLabel.setBounds(0, 0, 800, 600);
 		add(backgroundLabel);
 		this.setLayer(backgroundLabel, LAYER_BACKGROUND);
-
 
 		// Some offset to optimize the appearance of the sectors on the map
 		// panel
@@ -174,7 +167,7 @@ public class GUIMap extends JLayeredPane {
 							(char) i, j), label);
 				} else {
 					this.addSectorToGridLabel((i - 97) * factorX + 3, (j - 1)
-									* factorY + 26, image, new Coordinate((char) i, j),
+							* factorY + 26, image, new Coordinate((char) i, j),
 							label);
 				}
 			}
@@ -187,7 +180,7 @@ public class GUIMap extends JLayeredPane {
 	 * to the map panel, adding the proper mouse click event
 	 */
 	private void addSectorToGridLabel(int x, int y, final String image,
-									  Coordinate coords, boolean label) {
+			Coordinate coords, boolean label) {
 		SectorLabel lbl = new SectorLabel(coords, image);
 		sectorsList.add(lbl);
 
@@ -240,7 +233,7 @@ public class GUIMap extends JLayeredPane {
 	 * is colored in red) in the highlighted sector is displayed the specified
 	 * text, and when the mouse hover on it the toolTipText will be displayed If
 	 * the specified sector doesn't exist the map appearance is unchanged
-	 *
+	 * 
 	 * @param coords
 	 *            The coordinates of the sector to highlight
 	 * @param text
@@ -269,25 +262,6 @@ public class GUIMap extends JLayeredPane {
 	}
 
 	/**
-	 * Delight (on the GUI) the sector specified by coords, resets the
-	 * appearance of the given sectors if the specified sector doesn't exist the
-	 * map appearance is unchanged
-	 *
-	 * @param coords
-	 *            The coordinates of the sector to delight
-	 */
-	public void delightSector(Coordinate coords) {
-		for (SectorLabel s : lightedSectors) {
-			if (s.getCoordinate().equals(coords)) {
-				remove(s);
-				lightedSectors.remove(lightedSectors.indexOf(s));
-				break;
-			}
-		}
-		this.repaint();
-	}
-
-	/**
 	 * Delight all sectors lighted in the map
 	 */
 	public void delightAllSectors() {
@@ -303,23 +277,23 @@ public class GUIMap extends JLayeredPane {
 	 */
 	public void changeMapMenu(MenuType mode) {
 		switch (mode) {
-			case HUMAN_INITIAL:
-				this.currentMapMenu = humanNormalMenu;
-				break;
-			case ALIEN_INITIAL:
-				this.currentMapMenu = alienNormalMenu;
-				break;
-			case LIGHT_MENU:
-				this.currentMapMenu = lightMenu;
-				break;
-			case NOISE_MENU:
-				this.currentMapMenu = noiseMenu;
-				break;
-			case ATTACK_MENU:
-				this.currentMapMenu = humanAttackMenu;
-				break;
-			default:
-				this.currentMapMenu = emptyMenu;
+		case HUMAN_INITIAL:
+			this.currentMapMenu = humanNormalMenu;
+			break;
+		case ALIEN_INITIAL:
+			this.currentMapMenu = alienNormalMenu;
+			break;
+		case LIGHT_MENU:
+			this.currentMapMenu = lightMenu;
+			break;
+		case NOISE_MENU:
+			this.currentMapMenu = noiseMenu;
+			break;
+		case ATTACK_MENU:
+			this.currentMapMenu = humanAttackMenu;
+			break;
+		default:
+			this.currentMapMenu = emptyMenu;
 		}
 	}
 

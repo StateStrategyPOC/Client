@@ -1,13 +1,15 @@
 package client;
 
-import javax.swing.JLabel;
 import common.ObjectCard;
+
+import javax.swing.*;
 
 /**
  * Represents an object card label displayed in the gui
  *
  */
 public class ObjectCardLabel extends JLabel {
+	private static final long serialVersionUID = 1L;
 	private ObjectCard objectCard;
 
 	/**

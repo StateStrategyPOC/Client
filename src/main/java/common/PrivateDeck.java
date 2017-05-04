@@ -6,9 +6,12 @@ import java.util.List;
 
 /**
  * Represents a private deck of object cards owned by a player
- *
+ * 
+ * @author Andrea Sessa
+ * @author Giorgio Pea
+ * @version 1.0
  */
-public class PrivateDeck implements Serializable{
+public class PrivateDeck implements Serializable {
 	// The set of object cards contained in the private deck
 	private volatile List<ObjectCard> content;
 
@@ -73,7 +76,7 @@ public class PrivateDeck implements Serializable{
 	/**
 	 * Adds a card to the private deck's set of cards
 	 * 
-	 * @param card
+	 * @param objectCard
 	 *            the card to be added to the private deck's set of cards
 	 * @return true if the card will not increase the size of the private deck's
 	 *         set of cards to 5, false otherwise

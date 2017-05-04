@@ -6,6 +6,7 @@ import common.LocalNoiseSectorCard;
 import common.SilenceSectorCard;
 import decks.Deck;
 import decks.DiscardDeck;
+import decks.ObjectDeck;
 import decks.SectorDeck;
 
 import java.util.ArrayList;
@@ -15,7 +16,11 @@ import java.util.Random;
 
 /**
  * Represents a factory of sector card's decks
- *
+ * 
+ * @see DeckFactory
+ * @see ObjectDeck
+ * @author Andrea Sessa
+ * @author Giorgio Pea
  */
 public class SectorDeckFactory extends DeckFactory {
 	@Override
@@ -29,13 +34,13 @@ public class SectorDeckFactory extends DeckFactory {
 			deck.add(new GlobalNoiseSectorCard(true, null));
 		}
 		for (int i = 0; i < 6; i++) {
-			deck.add(new GlobalNoiseSectorCard(true, null));
+			deck.add(new GlobalNoiseSectorCard(true,null));//false, null));
 		}
 		for (int i = 0; i < 4; i++) {
 			deck.add(new LocalNoiseSectorCard(true));
 		}
 		for (int i = 0; i < 6; i++) {
-			deck.add(new LocalNoiseSectorCard(true));
+			deck.add(new LocalNoiseSectorCard(true));//false));
 		}
 		// Deck shuffling
 		long seed = System.nanoTime();

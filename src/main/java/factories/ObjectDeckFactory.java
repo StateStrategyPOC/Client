@@ -12,10 +12,16 @@ import java.util.Random;
 
 /**
  * Represents a factory of object card's decks
- *
+ * 
+ * @see DeckFactory
+ * @see ObjectDeck
+ * @author Andrea Sessa
+ * @author Giorgio Pea
  */
 public class ObjectDeckFactory extends DeckFactory {
-
+	/**
+	 * @see DeckFactory#makeDeck
+	 */
 	@Override
 	public Deck makeDeck() {
 		List<Card> deck = new ArrayList<Card>();
@@ -30,6 +36,8 @@ public class ObjectDeckFactory extends DeckFactory {
 		deck.add(new SuppressorObjectCard());
 		deck.add(new SuppressorObjectCard());
 		deck.add(new DefenseObjectCard());
+		deck.add(new LightsObjectCard(null));
+		deck.add(new LightsObjectCard(null));
 		deck.add(new LightsObjectCard(null));
 		deck.add(new LightsObjectCard(null));
 		// Deck shuffling

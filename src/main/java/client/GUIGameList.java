@@ -1,18 +1,15 @@
 package client;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
+import common.GamePublicData;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-
-import common.GamePublicData;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Represents the panel that shows the list of available games
@@ -123,6 +120,7 @@ public class GUIGameList extends JPanel {
                 clientServices.onDemandGameStart();
             }
         });
+        this.clientServices.getGames();
 
     }
 

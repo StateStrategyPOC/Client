@@ -1,13 +1,14 @@
 package client;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.*;
+import java.io.File;
 
 /**
  * Represents the initial window of the GUI in which the user can choose the type of connection
+ * @author Andrea Sessa
  *
  */
 public class GUInitialWindow extends JPanel {
@@ -24,7 +25,7 @@ public class GUInitialWindow extends JPanel {
 		setBackground(Color.BLACK);
 
 		JLabel title = new JLabel();
-		title.setIcon(new ImageIcon("maps/mainImg.jpg"));
+		title.setIcon(new ImageIcon("maps"+ File.separator+"mainImg.jpg"));
 		title.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		add(title);
 
@@ -39,18 +40,18 @@ public class GUInitialWindow extends JPanel {
 		this.connectionProblemLabel.setText("A connection problem happened, please try again.");
 		this.connectionProblemLabel.setForeground(Color.white);
 		this.connectionProblemLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-		this.connectionProblemLabel.setVisible(false);
-		// Some space
-		add(Box.createRigidArea(new Dimension(0, 20)));
-		add(this.connectionProblemLabel);
+        this.connectionProblemLabel.setVisible(false);
+        // Some space
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(this.connectionProblemLabel);
 		connectButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clientServices.getGames();
-			}
+               clientServices.getGames();
+            }
 		});
 	}
 	public void alertConnectionProblem(boolean visibility){
-		this.connectionProblemLabel.setVisible(!visibility);
+		this.connectionProblemLabel.setVisible(visibility);
 	}
 }

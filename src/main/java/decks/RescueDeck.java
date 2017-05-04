@@ -7,7 +7,9 @@ import java.util.List;
 
 /**
  * Represents a deck containing rescue cards
- *
+ * 
+ * @author Andrea Sessa
+ * @author Giorgio Pea
  */
 public class RescueDeck extends Deck {
 	/**
@@ -20,12 +22,17 @@ public class RescueDeck extends Deck {
 		super(content);
 	}
 
+	/**
+	 * @see Deck#popCard
+	 * @author Andrea Sessa
+	 * @author Giorgio Pea
+	 */
 	@Override
 	public Card popCard() {
 		if (!this.content.isEmpty()) {
 			Card card = this.content.get(0);
 			this.content.remove(0);
-			return (RescueCard) card;
+			return card;
 		}
 		return null;
 

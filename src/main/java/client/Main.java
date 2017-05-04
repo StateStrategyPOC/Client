@@ -1,26 +1,19 @@
 package client;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
- * Starts and display the GUI
- *
+ * Created by giorgiopea on 09/04/17.
  */
 public class Main {
-	public static void main(String[] args) {
-		Runnable r = new Runnable() {
-			
-			public void run() {
 
-
-				GuiManager guiManager = GuiManager.getInstance();
-				guiManager.initGuiComponents();
-
-			}
-		};
-		// Swing GUIs should be created and updated on the EDT
-		SwingUtilities.invokeLater(r);
-
-	}
+    public static void main(String[] args){
+        Runnable r = new Runnable() {
+            public void run() {
+                GuiManager.getInstance().initGuiComponents();
+            }
+        };
+        // Swing GUIs should be created and updated on the EDT
+        SwingUtilities.invokeLater(r);
+    }
 }
