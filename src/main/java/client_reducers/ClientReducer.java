@@ -63,9 +63,30 @@ public class ClientReducer implements Reducer {
                 return this.setWinners(action, castedState);
             case "@CLIENT_STARTABLE_GAME":
                 return this.startableGame(action,castedState);
+            //new
+            case "@CLIENT_SET_REQUEST":
+                return this.setRequest(action,castedState);
+            //new
+            case "@CLIENT_SET_PLAYER_TOKEN":
+                return this.setPlayerToken(action,castedState);
 
         }
         return state;
+    }
+
+    private State setRequest(StoreAction action, ClientState castedState) {
+        ClientSetRequestAction castedAction = (ClientSetRequestAction) action;
+        castedState.setRequest(castedAction.getRequest());
+        return castedState;
+    }
+    private State setPlayerToken(StoreAction action, ClientState castedState){
+        ClientSetPlayerToken castedAction = (ClientSetPlayerToken) action;
+        castedState.setPlayer(new Player());
+    }
+
+    private State joinNewGame(StoreAction action, ClientState castedState) {
+        ClientJoinNewGameAction castedAction = (ClientJoinNewGameAction) action;
+        return castedState;
     }
 
     private State startableGame(StoreAction action, ClientState castedState) {

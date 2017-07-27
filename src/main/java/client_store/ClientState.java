@@ -1,5 +1,6 @@
 package client_store;
 
+import client.ActionOnTheWire;
 import client.PubSubHandler;
 import common.*;
 import client_store.State;
@@ -31,6 +32,7 @@ public class ClientState extends State implements Serializable {
     private SectorCard drawnSectorCard;
     private boolean aliensHaveWon;
     private boolean humansHaveWon;
+    private ActionOnTheWire request;
 
     public ClientState() {
         this.tcpPort = 29999;
@@ -188,5 +190,9 @@ public class ClientState extends State implements Serializable {
 
     public void setHumansHaveWon(boolean humansHaveWon) {
         this.humansHaveWon = humansHaveWon;
+    }
+
+    public void setRequest(ActionOnTheWire request) {
+        this.request = request;
     }
 }

@@ -1,6 +1,8 @@
 package client_store;
 
+import client.ActionOnTheWire;
 import client_reducers.ClientReducer;
+import client_store_actions.ClientSetRequestAction;
 import client_store_effects.AddPubSubHandlerEffect;
 
 import java.sql.Timestamp;
@@ -91,4 +93,9 @@ public class ClientStore {
     }
 
 
+    public void propagateAction(ActionOnTheWire response) {
+    }
+
+    public void propagateAction(ClientSetRequestAction clientSetRequestAction) {
+    }
 }

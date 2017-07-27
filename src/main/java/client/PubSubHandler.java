@@ -19,33 +19,36 @@ public class PubSubHandler extends Thread {
 
     private final Socket socket;
     private final ObjectInputStream inputStream;
-    private final ClientStore clientStore;
-    private final ClientServices clientServices;
+    private final ClientStore CLIENT_STORE;
 
     public PubSubHandler(Socket socket, ObjectInputStream inputStream) {
         this.socket = socket;
         this.inputStream = inputStream;
-        this.clientStore = ClientStore.getInstance();
-        this.clientServices = ClientServices.getInstance();
+        this.CLIENT_STORE = ClientStore.getInstance();
     }
     @Override
     public void run() {
-        while (this.clientStore.getState().getCurrentPubSubHandler() != null) {
+        while (this.CLIENT_STORE.getState().isGameStarted()) {
             try {
-                RemoteMethodCall methodCall = (RemoteMethodCall) this.inputStream.readObject();
-                this.clientServices.processRemoteInvocation(methodCall);
+                ActionOnTheWire notification = (ActionOnTheWire) this.inputStream.readObject();
+                this.CLIENT_STORE.propagateAction(notification);
             }
-            catch (IOException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | ClassNotFoundException e){
+            catch (IOException | ClassNotFoundException e){
                 try {
                     this.inputStream.close();
                     this.socket.close();
-                    this.clientStore.dispatchAction(new ClientRemovePubSubHandlerAction());
-                    this.clientStore.dispatchAction(new ClientSetConnectionActiveAction(false));
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
 
             }
+        }
+
+        try {
+            this.inputStream.close();
+            this.socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

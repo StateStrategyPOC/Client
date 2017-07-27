@@ -1,5 +1,7 @@
 package client;
 
+import client_store.ClientStore;
+import client_store_actions.ClientJoinNewGameAction;
 import common.GamePublicData;
 
 import javax.swing.*;
@@ -182,6 +184,8 @@ public class GUIGameList extends JPanel {
                         "Galilei");
                 if(mapName != null){
                     stateMessage.setText("Waiting for others players...");
+                    ClientStore.getInstance().dispatchAction(new ClientJoinNewGameAction(mapName.toUpperCase(), playerName));
+
                     this.clientServices.joinNewGame(mapName.toUpperCase(),playerName);
                     this.clientServices.getGames();
                     buttonPanel.setVisible(false);

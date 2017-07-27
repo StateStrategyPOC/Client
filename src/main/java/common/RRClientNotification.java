@@ -14,6 +14,7 @@ public class RRClientNotification extends ClientNotification {
 	private boolean actionResult;
 	private final ArrayList<Card> drawedCards;
 	private final ArrayList<Sector> lightedSectors;
+	private final ArrayList<GamePublicData> availableGames;
 	private final PlayerToken playerToken;
 
 	/**
@@ -22,22 +23,22 @@ public class RRClientNotification extends ClientNotification {
 	 * result of the action it refers to and from the list of cards the client
 	 * has drawn by performing the action above mentioned, all along with an
 	 * empty text message
-	 *
-	 * @param actionResult
+	 *  @param actionResult
 	 *            the result of the action the notification refers to
 	 * @param drawedCards
 	 *            the list of cards the client has drawn by performing the
 	 *            action referred by the notification
 	 * @param sectors
-	 *            the list of sectors to "light" on the GUI after using a light
-	 *            sevtor card
+ *            the list of sectors to "light" on the GUI after using a light
+	 * @param availableGames
 	 */
 	public RRClientNotification(boolean actionResult,
-                                ArrayList<Card> drawedCards, ArrayList<Sector> sectors, PlayerToken playerToken) {
+								ArrayList<Card> drawedCards, ArrayList<Sector> sectors, ArrayList<GamePublicData> availableGames, PlayerToken playerToken) {
 		super("");
 		this.actionResult = actionResult;
 		this.drawedCards = drawedCards;
 		this.lightedSectors = sectors;
+		this.availableGames = availableGames;
 		this.playerToken = playerToken;
 	}
 
@@ -53,7 +54,8 @@ public class RRClientNotification extends ClientNotification {
 		this.drawedCards = new ArrayList<>();
 		this.lightedSectors = new ArrayList<>();
 		this.playerToken = null;
-	}
+        this.availableGames = null;
+    }
 
 	public PlayerToken getPlayerToken() {
 		return playerToken;
@@ -123,4 +125,8 @@ public class RRClientNotification extends ClientNotification {
 	public void addSector(Sector sector) {
 		this.lightedSectors.add(sector);
 	}
+
+    public ArrayList<GamePublicData> getGames() {
+	    return this.availableGames;
+    }
 }
