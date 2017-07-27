@@ -1,4 +1,12 @@
 package client_store_effects;
 
-public class SendChatMessageEffect {
+import client_store.Effect;
+import client_store.State;
+import client_store.StoreAction;
+
+public class SendChatMessageEffect implements Effect {
+    @Override
+    public void apply(StoreAction action, State state) {
+
+    }
 }

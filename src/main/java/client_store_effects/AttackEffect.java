@@ -6,11 +6,12 @@ import client_store.ClientStore;
 import client_store.Effect;
 import client_store.State;
 import client_store.StoreAction;
-import client_store_actions.*;
+import client_store_actions.ClientAttackAction;
+import client_store_actions.ClientMoveToSectorAction;
+import client_store_actions.ClientSetRequestAction;
+import client_store_actions.ClientUseObjectCard;
 import common.*;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class AttackEffect implements Effect {
