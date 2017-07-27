@@ -37,10 +37,14 @@ public class ReqRespHandler implements Observer {
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             this.sendRequest(actionOnTheWire,outputStream);
             this.getResponse(inputStream);
-            this.closeConnection(socket,outputStream,inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            if(actionOnTheWire.getActionIdentifier().equals(ServerMethodsNameProvider.getInstance().subscribe())){
+                PubSubHandler pubSubHandler = new PubSubHandler(socket,inputStream);
+                pubSubHandler.start();
+            }
+            else {
+                this.closeConnection(socket,outputStream,inputStream);
+            }
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
