@@ -4,14 +4,16 @@ import client_store.StoreAction;
 
 public class ClientJoinGameAction extends StoreAction{
 
-    private String gameId;
-    private String playerName;
+    private final int gameId;
+    private final String playerName;
 
-    public ClientJoinGameAction() {
+    public ClientJoinGameAction(int gameId, String playerName) {
         super("@CLIENT_JOIN_GAME");
+        this.gameId = gameId;
+        this.playerName = playerName;
     }
 
-    public String getGameId() {
+    public int getGameId() {
         return gameId;
     }
 

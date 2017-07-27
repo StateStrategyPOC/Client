@@ -1,6 +1,8 @@
 package client;
 
 import client_store.ClientStore;
+import client_store_actions.ClientGetGamesAction;
+import client_store_actions.ClientJoinGameAction;
 import client_store_actions.ClientJoinNewGameAction;
 import common.GamePublicData;
 
@@ -19,6 +21,8 @@ import java.util.List;
  */
 public class GUIGameList extends JPanel {
 
+
+    private final ClientStore CLIENT_STORE = ClientStore.getInstance();
     private final JLabel connectionAlert = new JLabel("The connection with the server is not active");
     private final ClientServices clientServices = ClientServices.getInstance();
     private final GuiManager guiManager = GuiManager.getInstance();
@@ -122,8 +126,7 @@ public class GUIGameList extends JPanel {
                 clientServices.onDemandGameStart();
             }
         });
-        this.clientServices.getGames();
-
+        CLIENT_STORE.dispatchAction(new ClientGetGamesAction());
     }
 
     public void setGameListContent(List<GamePublicData> gamePublicDataList) {
@@ -153,7 +156,7 @@ public class GUIGameList extends JPanel {
                 int gameId = (Integer) gameTables.getValueAt(
                         gameTables.getSelectedRow(), 0);
                 stateMessage.setText("Waiting for others players...");
-                clientServices.joinGame(gameId, playerName);
+                CLIENT_STORE.dispatchAction(new ClientJoinGameAction(gameId,playerName));
                 buttonPanel.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(guiManager.getFrame(),
@@ -184,10 +187,8 @@ public class GUIGameList extends JPanel {
                         "Galilei");
                 if(mapName != null){
                     stateMessage.setText("Waiting for others players...");
-                    ClientStore.getInstance().dispatchAction(new ClientJoinNewGameAction(mapName.toUpperCase(), playerName));
-
-                    this.clientServices.joinNewGame(mapName.toUpperCase(),playerName);
-                    this.clientServices.getGames();
+                    CLIENT_STORE.dispatchAction(new ClientJoinNewGameAction(mapName.toUpperCase(), playerName));
+                    CLIENT_STORE.dispatchAction(new ClientGetGamesAction());
                     buttonPanel.setVisible(false);
                 }
 
