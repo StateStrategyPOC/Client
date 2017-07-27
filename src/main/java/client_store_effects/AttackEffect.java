@@ -6,7 +6,7 @@ import client_store.ClientStore;
 import client_store.Effect;
 import client_store.State;
 import client_store.StoreAction;
-import client_store_actions.ClientAttackAction;
+import client_store_actions.ClientRequestAttackAction;
 import client_store_actions.ClientMoveToSectorAction;
 import client_store_actions.ClientSetRequestAction;
 import client_store_actions.ClientUseObjectCard;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class AttackEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
-        ClientAttackAction castedAction = (ClientAttackAction) action;
+        ClientRequestAttackAction castedAction = (ClientRequestAttackAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ServerMethodsNameProvider SERVER_ACTION_WIRE_PROVIDER = ServerMethodsNameProvider.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();

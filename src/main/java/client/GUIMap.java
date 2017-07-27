@@ -1,5 +1,10 @@
 package client;
 
+import client_store.ClientStore;
+import client_store_actions.ClientRequestAttackAction;
+import client_store_actions.ClientRequestGlobalNoise;
+import client_store_actions.ClientRequestLightsAction;
+import client_store_actions.ClientRequestMoveToSectorAction;
 import common.Coordinate;
 import common.GameMap;
 import common.Sector;
@@ -20,7 +25,7 @@ import java.util.List;
  */
 public class GUIMap extends JLayeredPane {
 	static final long serialVersionUID = 1L;
-	private final ClientServices clientServices = ClientServices.getInstance();
+	private final ClientStore CLIENT_STORE = ClientStore.getInstance();
 	private transient List<SectorLabel> sectorsList;
 	private transient List<SectorLabel> lightedSectors;
 
@@ -65,7 +70,7 @@ public class GUIMap extends JLayeredPane {
 		alienMoveItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clientServices.moveToSector(selectedSector.getCoordinate());
+				CLIENT_STORE.dispatchAction(new ClientRequestMoveToSectorAction(selectedSector.getCoordinate()));
 			}
 		});
 
@@ -74,27 +79,27 @@ public class GUIMap extends JLayeredPane {
 		attackItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clientServices.attack(selectedSector.getCoordinate());
+				CLIENT_STORE.dispatchAction(new ClientRequestAttackAction(selectedSector.getCoordinate()));
 			}
 		});
 		humanAttack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clientServices.attack(selectedSector.getCoordinate());
+                CLIENT_STORE.dispatchAction(new ClientRequestAttackAction(selectedSector.getCoordinate()));
 			}
 		});
 
 		noiseItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clientServices.globalNoise(selectedSector.getCoordinate(), true);
+			    CLIENT_STORE.dispatchAction(new ClientRequestGlobalNoise(selectedSector.getCoordinate(),true));
 			}
 		});
 
 		lightItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                clientServices.lights(selectedSector.getCoordinate());
+                CLIENT_STORE.dispatchAction(new ClientRequestLightsAction(selectedSector.getCoordinate()));
 			}
 		});
 

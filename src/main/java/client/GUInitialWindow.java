@@ -1,5 +1,8 @@
 package client;
 
+import client_store.ClientStore;
+import client_store_actions.ClientGetGamesAction;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,8 +17,7 @@ import java.io.File;
 public class GUInitialWindow extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	private final ClientServices clientServices = ClientServices.getInstance();
-
+	private final ClientStore CLIENT_STORE = ClientStore.getInstance();
 	private JLabel connectionProblemLabel;
 	/**
 	 * Load and display the panel
@@ -47,7 +49,7 @@ public class GUInitialWindow extends JPanel {
 		connectButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-               clientServices.getGames();
+               CLIENT_STORE.dispatchAction(new ClientGetGamesAction());
             }
 		});
 	}

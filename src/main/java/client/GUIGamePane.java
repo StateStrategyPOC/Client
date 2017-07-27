@@ -1,5 +1,10 @@
 package client;
 
+import client_store.ClientStore;
+import client_store_actions.ClientRequestDiscardObjectCard;
+import client_store_actions.ClientPublishChatMessage;
+import client_store_actions.ClientRequestEndTurnAction;
+import client_store_actions.ClientRequestUseObjectCard;
 import common.GameMap;
 import common.ObjectCard;
 
@@ -18,10 +23,9 @@ import java.util.List;
  */
 public class GUIGamePane extends JPanel {
 
-
+    private final ClientStore CLIENT_STORE = ClientStore.getInstance();
     private final JLabel connectionAlert = new JLabel("The connection with the server is not active");
     private final JLabel infoMsg = new JLabel();
-    private final ClientServices clientServices = ClientServices.getInstance();
 
 
     private DefaultListModel<String> logModel;
@@ -83,14 +87,14 @@ public class GUIGamePane extends JPanel {
         endTurnButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                clientServices.endTurn();
+                CLIENT_STORE.dispatchAction(new ClientRequestEndTurnAction());
             }
         });
 
         msgButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                clientServices.sendMessage(chatTextField.getText());
+                CLIENT_STORE.dispatchAction(new ClientPublishChatMessage(chatTextField.getText()));
                 chatTextField.setText("");
             }
         });
@@ -99,7 +103,7 @@ public class GUIGamePane extends JPanel {
         useCardItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clientServices.useObjCard(selectedObjectCard);
+                CLIENT_STORE.dispatchAction(new ClientRequestUseObjectCard(selectedObjectCard));
             }
         });
         humanUseOnlyItem.addActionListener(useCardItem.getActionListeners()[0]);
@@ -107,7 +111,7 @@ public class GUIGamePane extends JPanel {
         alienDiscardItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clientServices.discardCard(selectedObjectCard);
+                CLIENT_STORE.dispatchAction(new ClientRequestDiscardObjectCard(selectedObjectCard));
             }
         });
         humanDiscardItem.addActionListener(alienDiscardItem

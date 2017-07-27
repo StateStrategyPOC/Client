@@ -4,10 +4,10 @@ import client_store.StoreAction;
 import common.Coordinate;
 import common.Sector;
 
-public class ClientAttackAction extends StoreAction {
+public class ClientRequestAttackAction extends StoreAction {
 
     private final Coordinate coordinate;
-    public ClientAttackAction(Coordinate coordinate) {
+    public ClientRequestAttackAction(Coordinate coordinate) {
         super("@CLIENT_ATTACK_ACTION");
         this.coordinate = coordinate;
     }

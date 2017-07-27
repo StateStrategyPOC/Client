@@ -5,9 +5,9 @@ import common.ObjectCard;
 
 import java.io.ObjectOutputStream;
 
-public class ClientDiscardObjectCardRequestAction extends StoreAction {
+public class ClientRequestDiscardObjectCard extends StoreAction {
     private final ObjectCard objectCard;
-    public ClientDiscardObjectCardRequestAction(ObjectCard objectCard) {
+    public ClientRequestDiscardObjectCard(ObjectCard objectCard) {
         super("@CLIENT_REQUEST_DISCARD_OBJ_CARD");
         this.objectCard = objectCard;
     }

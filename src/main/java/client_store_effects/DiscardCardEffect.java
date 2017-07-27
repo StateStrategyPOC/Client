@@ -9,14 +9,12 @@ import client_store.StoreAction;
 import client_store_actions.*;
 import common.*;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class DiscardCardEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
-        ClientDiscardObjectCardRequestAction castedAction = (ClientDiscardObjectCardRequestAction) action;
+        ClientRequestDiscardObjectCard castedAction = (ClientRequestDiscardObjectCard) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ServerMethodsNameProvider SERVER_ACTION_WIRE_PROVIDER = ServerMethodsNameProvider.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
