@@ -1,23 +1,21 @@
-package client_store_effects;
+package client_side_policies;
 
 
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
-import client_store.ClientStore;
+import client_store.*;
 import client_store.Effect;
-import client_store.State;
-import client_store.StoreAction;
 import client_store_actions.*;
 import common.*;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestMoveToSectorEffect implements Effect {
+public class RequestMoveToSectorEffect implements SidePolicy {
+
+
     @Override
-    public void apply(StoreAction action, State state) {
+    public void apply(ClientState state, StoreAction action) {
         ClientRequestMoveToSectorAction castedAction = (ClientRequestMoveToSectorAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ServerMethodsNameProvider SERVER_NAMES_PROVIDER = ServerMethodsNameProvider.getInstance();

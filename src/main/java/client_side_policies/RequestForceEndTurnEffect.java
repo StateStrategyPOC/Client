@@ -1,4 +1,4 @@
-package client_store_effects;
+package client_side_policies;
 
 public class RequestForceEndTurnEffect {
 }

@@ -3,7 +3,6 @@ package client_store;
 import client.ActionOnTheWire;
 import client_reducers.ClientReducer;
 import client_store_actions.ClientSetRequestAction;
-import client_store_effects.AddPubSubHandlerEffect;
 
 import java.sql.Timestamp;
 import java.util.HashMap;

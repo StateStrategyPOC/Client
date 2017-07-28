@@ -1,19 +1,18 @@
-package client_store_effects;
+package client_side_policies;
 
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
-import client_store.ClientStore;
+import client_store.*;
 import client_store.Effect;
-import client_store.State;
-import client_store.StoreAction;
 import client_store_actions.ClientStartGameAction;
 import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public class RequestOnDemandGameStartEffect implements Effect {
+public class RequestOnDemandGameStartEffect implements SidePolicy {
+
     @Override
-    public void apply(StoreAction action, State state) {
+    public void apply(ClientState state, StoreAction action) {
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ServerMethodsNameProvider SERVER_NAMES_PROVIDER = ServerMethodsNameProvider.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();

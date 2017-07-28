@@ -1,4 +1,5 @@
 package client_store;
 
-public class SidePolicy {
+public interface SidePolicy {
+    void apply(ClientState state, StoreAction action);
 }

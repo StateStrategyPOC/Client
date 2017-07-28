@@ -1,4 +1,5 @@
 package client_store;
 
-public class StatePolicy {
+public interface StatePolicy {
+    ClientState apply(ClientState state, StoreAction action);
 }

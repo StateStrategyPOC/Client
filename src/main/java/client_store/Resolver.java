@@ -17,7 +17,7 @@ public class Resolver {
 
     }
     private void fillStatePoliciesMap(){
-        actionsToStatePolicies.put
+        actionsToStatePolicies.put()
     }
     private void fillSidePoliciesMap(){
         actionsToSidePolicies.put(Cli)
