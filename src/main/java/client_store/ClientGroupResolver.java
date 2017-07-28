@@ -1,9 +1,7 @@
 package client_store;
 
+import client_side_policies.*;
 import client_state_policies.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ClientGroupResolver extends Resolver {
 
@@ -14,38 +12,71 @@ public class ClientGroupResolver extends Resolver {
     }
 
     @Override
-    protected void fillStatePolicyMap() {
-        this.actionsToStatePolicies.put("@CLIENT_START_GAME", new StartGameStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_START_TURN", new StartTurnStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_MOVE_TO_SECTOR", new MoveToSectorStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_TELEPORT_TO_STARTING_SECTOR", new TeleportStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_USE_OBJECT_CARD", new UseObjectCardStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_PLAYER", new SetPlayerStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_ADRENALINE", new AdrenalineStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_DISCARD_OBJECT_CARD", new AdrenalineStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_END_TURN", new EndTurnStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_AVAILABLE_GAMES", new SetAvailableGamesStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_PUBLISH_MSG", new PublishMsgStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_RR", new SetRRStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_PS", new SetPSStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_ASK_SECTOR_TO_LIGHT", new AskSectorToLightStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SUPPRESS", new SuppressStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_CONNECTION_ALIVE", new SetConnectionActiveStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD", new SetDrawnSectorObjectCardStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_PLAYER_STATE", new SetPlayerStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_WINNERS", new SetWinnersStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_STARTABLE_GAME", new StartableGameStatePolicy());
-        this.actionsToStatePolicies.put("@CLIENT_SET_REQUEST", new SetRequestStatePolicy());
+    protected void fillPoliciesMap() {
+        this.policiesMap.put("@CLIENT_START_GAME",
+                new PolicyCouple(new StartGameStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_START_TURN",
+                new PolicyCouple(new StartTurnStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_MOVE_TO_SECTOR",
+                new PolicyCouple(new MoveToSectorStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_TELEPORT_TO_STARTING_SECTOR",
+                new PolicyCouple(new TeleportStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_USE_OBJECT_CARD",
+                new PolicyCouple(new UseObjectCardStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_PLAYER",
+                new PolicyCouple(new SetPlayerStatePolicy(), new SetPlayerTokenAndSubscribeSidePolicy()));
+        this.policiesMap.put("@CLIENT_ADRENALINE",
+                new PolicyCouple(new AdrenalineStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_DISCARD_OBJECT_CARD",
+                new PolicyCouple(new AdrenalineStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_END_TURN",
+                new PolicyCouple(new EndTurnStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_AVAILABLE_GAMES",
+                new PolicyCouple(new SetAvailableGamesStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_PUBLISH_MSG",
+                new PolicyCouple(new PublishMsgStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_RR",
+                new PolicyCouple(new SetRRStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_PS",
+                new PolicyCouple(new SetPSStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_ASK_SECTOR_TO_LIGHT",
+                new PolicyCouple(new AskSectorToLightStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SUPPRESS",
+                new PolicyCouple(new SuppressStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_CONNECTION_ALIVE",
+                new PolicyCouple(new SetConnectionActiveStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD",
+                new PolicyCouple(new SetDrawnSectorObjectCardStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_PLAYER_STATE",
+                new PolicyCouple(new SetPlayerStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_WINNERS",
+                new PolicyCouple(new SetWinnersStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_STARTABLE_GAME",
+                new PolicyCouple(new StartableGameStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_SET_REQUEST",
+                new PolicyCouple(new SetRequestStatePolicy(), null));
+        this.policiesMap.put("@CLIENT_PUBLISH_CHAT_MSG",
+                new PolicyCouple(null, new SendChatMessageSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_USE_OBJ_CARD",
+                new PolicyCouple(null  , new RequestUseObjCardSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_MOVE_TO_SECTOR",
+                new PolicyCouple(null, new RequestMoveToSectorSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_LIGHTS",
+                new PolicyCouple(null, new RequestLightsSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_JOIN_NEW_GAME",
+                new PolicyCouple(null, new RequestJoinNewGameSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_JOIN_GAME",
+                new PolicyCouple(null, new RequestJoinGameSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_GLOBAL_NOISE",
+                new PolicyCouple(null, new RequestGlobalNoiseSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_END_TURN",
+                new PolicyCouple(null, new RequestEndTurnSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_ATTACK",
+                new PolicyCouple(null, new RequestAttackSidePolicy()));
+        this.policiesMap.put("@CLIENT_GET_GAMES",
+                new PolicyCouple(null, new GetGamesSidePolicy()));
 
     }
 
-    @Override
-    protected void fillSidePolicyMap() {
-        this.actionsToSidePolicies.put();
-        this.actionsToSidePolicies.put("@CLIENT_START_GAME", new StartGameStatePolicy());
-        this.actionsToSidePolicies.put("@CLIENT_START_GAME", new StartGameStatePolicy());
-        this.actionsToSidePolicies.put("@CLIENT_START_GAME", new StartGameStatePolicy());
-        this.actionsToSidePolicies.put("@CLIENT_START_GAME", new StartGameStatePolicy());
-    }
 
 }

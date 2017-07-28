@@ -16,7 +16,7 @@ public class ClientSetAvailableGamesAction extends StoreAction {
     private final ArrayList<GamePublicData> availableGames;
 
     public ClientSetAvailableGamesAction(ArrayList<GamePublicData> availableGames) {
-        super("@CLIENT_SET_AVAILABLE_GAMES");
+        super("@CLIENT_SET_AVAILABLE_GAMES","@CLIENT_GROUP");
         this.availableGames = availableGames;
     }
 

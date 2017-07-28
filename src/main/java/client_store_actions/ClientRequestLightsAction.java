@@ -13,7 +13,7 @@ public class ClientRequestLightsAction extends StoreAction {
 
 
     public ClientRequestLightsAction(Coordinate coordinate) {
-        super("@CLIENT_REQUEST_LIGHTS_ACTION");
+        super("@CLIENT_REQUEST_LIGHTS_ACTION","@CLIENT_GROUP");
         this.coordinate = coordinate;
     }
 

@@ -13,7 +13,7 @@ public class ClientSetConnectionActiveAction extends StoreAction {
     private final boolean isConnectionActive;
 
     public ClientSetConnectionActiveAction(boolean isConnectionActive) {
-        super("@CLIENT_SET_CONNECTION_ACTIVE");
+        super("@CLIENT_SET_CONNECTION_ACTIVE","@CLIENT_GROUP");
         this.isConnectionActive = isConnectionActive;
     }
 

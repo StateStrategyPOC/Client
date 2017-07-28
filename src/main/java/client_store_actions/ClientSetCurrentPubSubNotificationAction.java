@@ -14,7 +14,7 @@ public class ClientSetCurrentPubSubNotificationAction extends StoreAction {
     private final PSClientNotification psNotification;
 
     public ClientSetCurrentPubSubNotificationAction(PSClientNotification psNotification) {
-        super("@CLIENT_SET_CURRENT_PUBSUB_NOTIFICATION");
+        super("@CLIENT_SET_CURRENT_PUBSUB_NOTIFICATION","@CLIENT_GROUP");
         this.psNotification = psNotification;
     }
 

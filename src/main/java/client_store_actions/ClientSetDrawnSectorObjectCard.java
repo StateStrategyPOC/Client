@@ -16,7 +16,7 @@ public class ClientSetDrawnSectorObjectCard extends StoreAction {
     private final ObjectCard drawnObjectCard;
 
     public ClientSetDrawnSectorObjectCard(SectorCard drawnSectorCard, ObjectCard drawnObjectCard) {
-        super("@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD");
+        super("@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD","@CLIENT_GROUP");
         this.drawnSectorCard = drawnSectorCard;
         this.drawnObjectCard = drawnObjectCard;
     }

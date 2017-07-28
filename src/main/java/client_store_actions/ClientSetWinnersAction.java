@@ -15,7 +15,7 @@ public class ClientSetWinnersAction extends StoreAction {
     private final boolean humansHaveWon;
 
     public ClientSetWinnersAction(boolean aliensHaveWon, boolean humansHaveWon) {
-        super("@CLIENT_SET_WINNNERS");
+        super("@CLIENT_SET_WINNNERS","@CLIENT_GROUP");
         this.aliensHaveWon = aliensHaveWon;
         this.humansHaveWon = humansHaveWon;
     }

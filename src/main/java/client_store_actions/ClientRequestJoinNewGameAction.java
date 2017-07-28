@@ -12,7 +12,7 @@ public class ClientRequestJoinNewGameAction extends StoreAction {
     private String playerName;
     private String mapName;
     public ClientRequestJoinNewGameAction(String mapName, String playerName) {
-        super("@CLIENT_JOIN_NEW_GAME");
+        super("@CLIENT_JOIN_NEW_GAME","@CLIENT_GROUP");
         this.mapName = mapName;
         this.playerName = playerName;
     }

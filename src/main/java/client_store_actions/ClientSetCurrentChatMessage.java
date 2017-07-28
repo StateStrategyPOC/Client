@@ -12,7 +12,7 @@ public class ClientSetCurrentChatMessage extends StoreAction {
     }
     private final String message;
     public ClientSetCurrentChatMessage(String msg) {
-        super("@CLIENT_PUBLISH_CHAT_MSG");
+        super("@CLIENT_PUBLISH_CHAT_MSG","@CLIENT_GROUP");
         this.message = msg;
     }
 

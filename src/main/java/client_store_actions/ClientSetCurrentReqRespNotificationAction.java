@@ -14,7 +14,7 @@ public class ClientSetCurrentReqRespNotificationAction extends StoreAction {
     private final RRClientNotification rrClientNotification;
 
     public ClientSetCurrentReqRespNotificationAction(RRClientNotification rrClientNotification) {
-        super("@CLIENT_SET_CURRENT_REQRESP_NOTIFICATION");
+        super("@CLIENT_SET_CURRENT_REQRESP_NOTIFICATION","@CLIENT_GROUP");
         this.rrClientNotification = rrClientNotification;
     }
 

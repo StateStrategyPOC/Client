@@ -11,7 +11,7 @@ public class ClientRequestJoinGameAction extends StoreAction{
     private final String playerName;
 
     public ClientRequestJoinGameAction(int gameId, String playerName) {
-        super("@CLIENT_JOIN_GAME");
+        super("@CLIENT_JOIN_GAME","@CLIENT_GROUP");
         this.gameId = gameId;
         this.playerName = playerName;
     }

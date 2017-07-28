@@ -16,7 +16,7 @@ public class ClientSetPlayerAction extends StoreAction {
     private final PlayerToken playerToken;
 
     public ClientSetPlayerAction(String playerName, PlayerToken playerToken) {
-        super("@CLIENT_SET_PLAYER");
+        super("@CLIENT_SET_PLAYER","@CLIENT_GROUP");
         this.playerName = playerName;
         this.playerToken = playerToken;
     }

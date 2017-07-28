@@ -14,7 +14,7 @@ public class ClientUseObjectCard extends StoreAction {
     private final ObjectCard objectCard;
 
     public ClientUseObjectCard(ObjectCard objectCard) {
-        super("@CLIENT_USE_OBJECT_CARD");
+        super("@CLIENT_USE_OBJECT_CARD","@CLIENT_GROUP");
         this.objectCard = objectCard;
     }
 

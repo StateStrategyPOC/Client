@@ -12,7 +12,7 @@ public class ClientRequestUseObjectCard extends StoreAction {
 
     private final ObjectCard objectCard;
     public ClientRequestUseObjectCard(ObjectCard objectCard) {
-        super("@CLIENT_REQUEST_USE_OBJECT_CARD");
+        super("@CLIENT_REQUEST_USE_OBJECT_CARD","@CLIENT_GROUP");
         this.objectCard = objectCard;
     }
 

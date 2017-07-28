@@ -13,7 +13,7 @@ public class ClientSuppressAction extends StoreAction {
     private final boolean isSedated;
 
     public ClientSuppressAction(boolean isSedated) {
-        super("@CLIENT_SUPPRESS");
+        super("@CLIENT_SUPPRESS","@CLIENT_GROUP");
         this.isSedated = isSedated;
     }
 

@@ -8,6 +8,6 @@ public class ClientRequestEndTurnAction extends StoreAction {
         return type;
     }
     public ClientRequestEndTurnAction() {
-        super("@CLIENT_REQUEST_END_TURN");
+        super("@CLIENT_REQUEST_END_TURN","@CLIENT_GROUP");
     }
 }

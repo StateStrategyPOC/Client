@@ -12,6 +12,6 @@ public class ClientEndTurnAction extends StoreAction {
         return type;
     }
     public ClientEndTurnAction() {
-        super("@CLIENT_END_TURN");
+        super("@CLIENT_END_TURN","@CLIENT_GROUP");
     }
 }

@@ -14,7 +14,7 @@ public class ClientRequestDiscardObjectCardAction extends StoreAction {
     private final ObjectCard discardedObjectCard;
 
     public ClientRequestDiscardObjectCardAction(ObjectCard objectCard) {
-        super("@CLIENT_DISCARD_OBJECT_CARD");
+        super("@CLIENT_DISCARD_OBJECT_CARD","@CLIENT_GROUP");
         this.discardedObjectCard = objectCard;
     }
 

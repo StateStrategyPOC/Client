@@ -11,7 +11,7 @@ public class ClientRequestAttackAction extends StoreAction {
     }
     private final Coordinate coordinate;
     public ClientRequestAttackAction(Coordinate coordinate) {
-        super("@CLIENT_ATTACK_ACTION");
+        super("@CLIENT_ATTACK_ACTION","@CLIENT_GROUP");
         this.coordinate = coordinate;
     }
 

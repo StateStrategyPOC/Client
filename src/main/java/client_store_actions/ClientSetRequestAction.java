@@ -10,7 +10,7 @@ public class ClientSetRequestAction extends StoreAction {
     }
     private final ActionOnTheWire request;
     public ClientSetRequestAction(ActionOnTheWire request) {
-        super("@CLIENT_SET_REQUEST");
+        super("@CLIENT_SET_REQUEST","@CLIENT_GROUP");
         this.request = request;
 
     }

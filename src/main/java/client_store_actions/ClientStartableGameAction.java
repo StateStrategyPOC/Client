@@ -11,6 +11,6 @@ public class ClientStartableGameAction extends StoreAction {
         return type;
     }
     public ClientStartableGameAction() {
-        super("@CLIENT_STARTABLE_GAME");
+        super("@CLIENT_STARTABLE_GAME","@CLIENT_GROUP");
     }
 }

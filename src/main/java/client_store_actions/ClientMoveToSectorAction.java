@@ -15,7 +15,7 @@ public class ClientMoveToSectorAction extends StoreAction {
     private final Sector targetSector;
 
     public ClientMoveToSectorAction(Sector targetSector) {
-        super("@CLIENT_MOVE_TO_SECTOR");
+        super("@CLIENT_MOVE_TO_SECTOR","@CLIENT_GROUP");
         this.targetSector = targetSector;
     }
 

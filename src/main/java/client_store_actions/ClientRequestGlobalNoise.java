@@ -14,7 +14,7 @@ public class ClientRequestGlobalNoise extends StoreAction {
     private final boolean hasObject;
 
     public ClientRequestGlobalNoise(Coordinate coordinate, boolean hasObject) {
-        super("@CLIENT_REQUEST_GLOBAL_NOISE");
+        super("@CLIENT_REQUEST_GLOBAL_NOISE","@CLIENT_GROUP");
         this.coordinate = coordinate;
         this.hasObject = hasObject;
     }

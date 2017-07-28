@@ -12,7 +12,7 @@ public class ClientRequestMoveToSectorAction extends StoreAction {
     private final Coordinate coordinate;
 
     public ClientRequestMoveToSectorAction(Coordinate coordinate) {
-        super("@CLIENT_REQUEST_MOVE_TO_SECTOR");
+        super("@CLIENT_REQUEST_MOVE_TO_SECTOR","@CLIENT_GROUP");
         this.coordinate = coordinate;
     }
 

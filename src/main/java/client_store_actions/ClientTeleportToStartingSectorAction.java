@@ -11,6 +11,6 @@ public class ClientTeleportToStartingSectorAction extends StoreAction {
         return type;
     }
     public ClientTeleportToStartingSectorAction() {
-        super("@CLIENT_TELEPORT_TO_STARTING_SECTOR");
+        super("@CLIENT_TELEPORT_TO_STARTING_SECTOR","@CLIENT_GROUP");
     }
 }

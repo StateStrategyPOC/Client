@@ -11,6 +11,6 @@ public class ClientStartTurnAction extends StoreAction {
         return type;
     }
     public ClientStartTurnAction() {
-        super("@CLIENT_START_TURN");
+        super("@CLIENT_START_TURN","@CLIENT_GROUP");
     }
 }

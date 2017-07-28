@@ -14,7 +14,7 @@ public class ClientAskAttackAction extends StoreAction {
     private final boolean toBeAsked;
 
     public ClientAskAttackAction(boolean toBeAsked) {
-        super("@CLIENT_ASK_FOR_SECTOR_TO_ATTACK");
+        super("@CLIENT_ASK_FOR_SECTOR_TO_ATTACK","@CLIENT_GROUP");
         this.toBeAsked = toBeAsked;
     }
 

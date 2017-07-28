@@ -10,7 +10,7 @@ import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public  class RequestGetGamesSidePolicy implements SidePolicy {
+public  class GetGamesSidePolicy implements SidePolicy {
 
     @Override
     public void apply(ClientState state,StoreAction action) {
