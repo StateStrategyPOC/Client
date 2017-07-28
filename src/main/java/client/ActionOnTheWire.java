@@ -11,7 +11,7 @@ public class ActionOnTheWire implements Serializable {
 
     public ActionOnTheWire(String actionIdentifier, String actionGroupIdentifier, ArrayList<Object> parameters) {
         this.actionIdentifier = actionIdentifier;
-        this.actionGroupIdentifier = actionGroupIdentifier
+        this.actionGroupIdentifier = actionGroupIdentifier;
         this.parameters = parameters;
     }
 

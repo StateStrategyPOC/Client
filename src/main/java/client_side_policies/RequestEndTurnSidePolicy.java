@@ -9,7 +9,7 @@ import client_store_actions.ClientRequestEndTurnAction;
 
 import java.util.ArrayList;
 
-public class RequestEndTurnEffect implements SidePolicy {
+public class RequestEndTurnSidePolicy implements SidePolicy {
     @Override
     public void apply(ClientState state,StoreAction action) {
         ClientRequestEndTurnAction castedAction = (ClientRequestEndTurnAction) action;

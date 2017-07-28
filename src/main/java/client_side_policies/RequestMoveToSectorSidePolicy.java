@@ -11,7 +11,7 @@ import common.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestMoveToSectorEffect implements SidePolicy {
+public class RequestMoveToSectorSidePolicy implements SidePolicy {
 
 
     @Override

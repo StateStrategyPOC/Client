@@ -9,7 +9,7 @@ import common.*;
 
 import java.util.ArrayList;
 
-public class RequestUseObjCardEffect implements SidePolicy {
+public class RequestUseObjCardSidePolicy implements SidePolicy {
 
 
     @Override

@@ -9,7 +9,7 @@ import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public class RequestOnDemandGameStartEffect implements SidePolicy {
+public class RequestOnDemandGameStartSidePolicy implements SidePolicy {
 
     @Override
     public void apply(ClientState state, StoreAction action) {

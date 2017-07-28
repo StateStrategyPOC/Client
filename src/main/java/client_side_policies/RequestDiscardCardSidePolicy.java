@@ -9,7 +9,7 @@ import common.*;
 
 import java.util.ArrayList;
 
-public class RequestDiscardCardEffect implements SidePolicy {
+public class RequestDiscardCardSidePolicy implements SidePolicy {
     @Override
     public void apply(ClientState state,StoreAction action) {
         ClientRequestDiscardObjectCard castedAction = (ClientRequestDiscardObjectCard) action;

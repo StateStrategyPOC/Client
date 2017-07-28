@@ -11,7 +11,7 @@ import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public class RequestJoinNewGameEffect implements SidePolicy{
+public class RequestJoinNewGameSidePolicy implements SidePolicy{
     @Override
     public void apply(ClientState state, StoreAction action) {
         ClientStore CLIENT_STORE = ClientStore.getInstance();

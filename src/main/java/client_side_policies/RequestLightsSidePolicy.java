@@ -11,7 +11,7 @@ import common.*;
 
 import java.util.ArrayList;
 
-public class RequestLightsEffect implements SidePolicy {
+public class RequestLightsSidePolicy implements SidePolicy {
 
     @Override
     public void apply(ClientState state, StoreAction action) {

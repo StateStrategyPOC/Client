@@ -67,7 +67,7 @@ public class ReqRespHandler implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         StoreAction dispatchedAction = (StoreAction) arg;
-        switch(dispatchedAction.type){
+        switch(dispatchedAction.getActionIdentifier()){
             case "@CLIENT_SET_REQUEST":
                 this.setRequest(dispatchedAction);
                 break;

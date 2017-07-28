@@ -17,6 +17,11 @@ public class ObservableClientState extends Observable {
         return clientState;
     }
 
+    public void setState(ClientState clientState, StoreAction lastAction){
+        this.clientState = clientState;
+        this.setChanged();
+        this.notifyObservers(lastAction);
+    }
     public void setClientState(State clientState, StoreAction lastAction) {
         this.clientState = (ClientState) clientState;
         this.setChanged();

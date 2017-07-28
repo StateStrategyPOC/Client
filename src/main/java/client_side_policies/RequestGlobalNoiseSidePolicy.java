@@ -10,7 +10,7 @@ import common.*;
 
 import java.util.ArrayList;
 
-public class RequestGlobalNoiseEffect implements SidePolicy {
+public class RequestGlobalNoiseSidePolicy implements SidePolicy {
     @Override
     public void apply(ClientState state,StoreAction action) {
         ClientRequestGlobalNoise castedAction = (ClientRequestGlobalNoise) action;

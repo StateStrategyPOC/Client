@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class ClientStore {
 
-
+    private final Map<String, Resolver> actionGroupToResolver;
     private final static ClientStore instance = new ClientStore();
     private final static Logger storeLogger = Logger.getLogger("Store Logger");
 
@@ -31,9 +31,13 @@ public class ClientStore {
     }
 
     private ClientStore(){
+        this.actionGroupToResolver = new HashMap<>();
         this.produceInitialState();
         this.registerReducers();
         this.registerEffects();
+    }
+    private void fillResolverMap(){
+        this.actionGroupToResolver.put("@CLIENT_GROUP", new ClientGroupResolver());
     }
 
 
@@ -95,6 +99,21 @@ public class ClientStore {
     public void propagateAction(ActionOnTheWire response) {
     }
 
-    public void propagateAction(ClientSetRequestAction clientSetRequestAction) {
+    public void propagateAction(StoreAction action) {
+        Resolver resolver = this.actionGroupToResolver.get(action.getGroupIdentifier());
+        try {
+            PolicyCouple policyCouple = resolver.resolve(action);
+            //PRE_LOG
+            if (policyCouple.getStatePolicy() != null){
+                this.observableState.setState(policyCouple.getStatePolicy().apply(this.getState(), action),action);
+            }
+            //POST_LOG
+            if (policyCouple.getSidePolicy() != null){
+                policyCouple.getSidePolicy().apply(this.getState(),action);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

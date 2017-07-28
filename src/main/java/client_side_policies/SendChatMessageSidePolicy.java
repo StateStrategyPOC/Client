@@ -8,7 +8,7 @@ import client_store_actions.ClientPublishChatMessage;
 
 import java.util.ArrayList;
 
-public class SendChatMessageEffect implements SidePolicy {
+public class SendChatMessageSidePolicy implements SidePolicy {
 
     @Override
     public void apply(ClientState state, StoreAction action) {
