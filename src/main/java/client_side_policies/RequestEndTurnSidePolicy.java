@@ -3,9 +3,9 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.ClientEndTurnAction;
 import client_store_actions.ClientRequestEndTurnAction;
+import client_store_actions.ClientSetRequestAction;
 
 import java.util.ArrayList;
 
@@ -18,10 +18,10 @@ public class RequestEndTurnSidePolicy implements SidePolicy {
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
-        CLIENT_STORE.propagateAction(request);
+        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated){
-            CLIENT_STORE.dispatchAction(new ClientEndTurnAction());
+            CLIENT_STORE.propagateAction(new ClientEndTurnAction());
         }
     }
 }

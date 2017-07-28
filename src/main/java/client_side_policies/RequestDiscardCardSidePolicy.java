@@ -3,7 +3,6 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.*;
 import common.*;
 
@@ -25,7 +24,7 @@ public class RequestDiscardCardSidePolicy implements SidePolicy {
         CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated) {
-            CLIENT_STORE.dispatchAction(new ClientRequestDiscardObjectCardAction(objectCard));
+            CLIENT_STORE.propagateAction(new ClientRequestDiscardObjectCardAction(objectCard));
         }
 
     }

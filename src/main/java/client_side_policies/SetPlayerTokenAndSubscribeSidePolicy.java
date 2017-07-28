@@ -4,6 +4,7 @@ import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
 import client_store_actions.ClientSetPlayerToken;
+import client_store_actions.ClientSetRequestAction;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,6 @@ public class SetPlayerTokenAndSubscribeSidePolicy implements SidePolicy {
             ArrayList<Object> parameters = new ArrayList<>();
             parameters.add(castedAction.getPlayerToken());
             ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.subscribe(),parameters);
-            CLIENT_STORE.propagateAction(request);
+            CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
     }
 }

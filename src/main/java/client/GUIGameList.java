@@ -24,7 +24,6 @@ public class GUIGameList extends JPanel {
 
     private final ClientStore CLIENT_STORE = ClientStore.getInstance();
     private final JLabel connectionAlert = new JLabel("The connection with the server is not active");
-    private final ClientServices clientServices = ClientServices.getInstance();
     private final GuiManager guiManager = GuiManager.getInstance();
     private JLabel stateMessage = new JLabel("");
     private JButton startButton = new JButton("Start Game");
@@ -106,7 +105,7 @@ public class GUIGameList extends JPanel {
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clientServices.getGames();
+                CLIENT_STORE.propagateAction(new ClientGetGamesAction());
             }
         });
 
@@ -123,7 +122,7 @@ public class GUIGameList extends JPanel {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clientServices.onDemandGameStart();
+                CLIENT_STORE.propagateAction(new Game);
             }
         });
         CLIENT_STORE.dispatchAction(new ClientGetGamesAction());

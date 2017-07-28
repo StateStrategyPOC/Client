@@ -4,7 +4,6 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.*;
 import common.*;
 
@@ -22,23 +21,22 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
         ArrayList<Object> parameters = new ArrayList<>();
 
         Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
-        CLIENT_STORE.dispatchAction(new ClientAskAttackAction(false));
+        CLIENT_STORE.propagateAction(new ClientAskAttackAction(false));
         StoreAction action_ = new MoveAction(targetSector);
         parameters.add(action_);
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.makeAction(), parameters);
-        CLIENT_STORE.propagateAction(request);
-        RRClientNotification rrClientNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
+        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated) {
             List<Card> drawnCards = CLIENT_STORE.getState().getCurrentReqRespNotification().getDrawnCards();
-            CLIENT_STORE.dispatchAction(new ClientMoveToSectorAction(targetSector));
+            CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));
             if (drawnCards.size() == 1) {
-                CLIENT_STORE.dispatchAction(
+                CLIENT_STORE.propagateAction(
                         new ClientSetDrawnSectorObjectCard(
                                 (SectorCard) drawnCards.get(0), null));
             } else if (drawnCards.size() == 2) {
-                CLIENT_STORE.dispatchAction(
+                CLIENT_STORE.propagateAction(
                         new ClientSetDrawnSectorObjectCard(
                                 (SectorCard) drawnCards.get(0),
                                 (ObjectCard) drawnCards.get(1)));

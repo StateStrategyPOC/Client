@@ -3,7 +3,6 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.ClientRequestJoinGameAction;
 import client_store_actions.ClientSetPlayerAction;
 import client_store_actions.ClientSetRequestAction;
@@ -25,7 +24,7 @@ public class RequestJoinGameSidePolicy implements SidePolicy {
         RRClientNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
         boolean isActionServerValidated = currentNotification.getActionResult();
         if (isActionServerValidated){
-            CLIENT_STORE.dispatchAction(new ClientSetPlayerAction(castedAction.getPlayerName(), currentNotification.getPlayerToken()));
+            CLIENT_STORE.propagateAction(new ClientSetPlayerAction(castedAction.getPlayerName(), currentNotification.getPlayerToken()));
         }
     }
 }

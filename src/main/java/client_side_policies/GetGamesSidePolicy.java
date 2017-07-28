@@ -4,7 +4,6 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.*;
 import common.RRClientNotification;
 
@@ -22,7 +21,7 @@ public  class GetGamesSidePolicy implements SidePolicy {
         RRClientNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
         boolean isActionServerValidated = currentNotification.getActionResult();
         if (isActionServerValidated){
-            CLIENT_STORE.dispatchAction(new ClientSetAvailableGamesAction(currentNotification.getGames()));
+            CLIENT_STORE.propagateAction(new ClientSetAvailableGamesAction(currentNotification.getGames()));
         }
     }
 }

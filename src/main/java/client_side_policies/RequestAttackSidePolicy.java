@@ -36,9 +36,9 @@ public class RequestAttackSidePolicy implements SidePolicy {
         CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated){
-            CLIENT_STORE.dispatchAction(new ClientMoveToSectorAction(targetSector));
+            CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));
             if (humanAttack){
-                CLIENT_STORE.dispatchAction(new ClientUseObjectCard(card));
+                CLIENT_STORE.propagateAction(new ClientUseObjectCard(card));
             }
         }
     }

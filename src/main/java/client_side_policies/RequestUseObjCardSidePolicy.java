@@ -3,7 +3,6 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.*;
 import common.*;
 
@@ -22,9 +21,9 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
         Player player = CLIENT_STORE.getState().getPlayer();
         if (player.getPrivateDeck().getContent().contains(objectCard)) {
             if (objectCard instanceof LightsObjectCard) {
-                CLIENT_STORE.dispatchAction(new ClientAskSectorToLightAction(true));
+                CLIENT_STORE.propagateAction(new ClientAskSectorToLightAction(true));
             } else if (objectCard instanceof AttackObjectCard) {
-                CLIENT_STORE.dispatchAction(new ClientAskAttackAction(true));
+                CLIENT_STORE.propagateAction(new ClientAskAttackAction(true));
             } else {
                 StoreAction action_ = new UseObjAction(objectCard);
                 parameters.add(action);
@@ -32,13 +31,13 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
                 ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
                 boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
                 if (isActionServerValidated) {
-                    CLIENT_STORE.dispatchAction(new ClientUseObjectCard(objectCard));
+                    CLIENT_STORE.propagateAction(new ClientUseObjectCard(objectCard));
                     if (objectCard instanceof TeleportObjectCard) {
-                        CLIENT_STORE.dispatchAction(new ClientTeleportToStartingSectorAction());
+                        CLIENT_STORE.propagateAction(new ClientTeleportToStartingSectorAction());
                     } else if (objectCard instanceof SuppressorObjectCard) {
-                        CLIENT_STORE.dispatchAction(new ClientSuppressAction(true));
+                        CLIENT_STORE.propagateAction(new ClientSuppressAction(true));
                     } else if (objectCard instanceof AdrenalineObjectCard) {
-                        CLIENT_STORE.dispatchAction(new ClientAdrenlineAction());
+                        CLIENT_STORE.propagateAction(new ClientAdrenlineAction());
                     }
                 }
 

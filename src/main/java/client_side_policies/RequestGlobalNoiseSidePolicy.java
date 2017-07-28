@@ -3,9 +3,9 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.ClientRequestGlobalNoise;
 import client_store_actions.ClientSetDrawnSectorObjectCard;
+import client_store_actions.ClientSetRequestAction;
 import common.*;
 
 import java.util.ArrayList;
@@ -25,10 +25,10 @@ public class RequestGlobalNoiseSidePolicy implements SidePolicy {
             parameters.add(action);
             parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
             ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.makeAction(), parameters);
-            CLIENT_STORE.propagateAction(request);
+            CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
             boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
             if (isActionServerValidated){
-                CLIENT_STORE.dispatchAction(new ClientSetDrawnSectorObjectCard(null, null));
+                CLIENT_STORE.propagateAction(new ClientSetDrawnSectorObjectCard(null, null));
             }
 
         } else {

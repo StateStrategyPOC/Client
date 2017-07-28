@@ -3,8 +3,8 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.ClientPublishChatMessage;
+import client_store_actions.ClientSetRequestAction;
 
 import java.util.ArrayList;
 
@@ -19,6 +19,6 @@ public class SendChatMessageSidePolicy implements SidePolicy {
         parameters.add(castedAction.getChatMessage());
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.publishChatMsg(),parameters);
-        CLIENT_STORE.propagateAction(request);
+        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
     }
 }

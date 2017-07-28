@@ -16,29 +16,29 @@ public class ServerMethodsNameProvider {
     }
 
     public String subscribe(){
-        return "subscribe";
+        return "$subscribe";
     }
 
     public String onDemandGameStart() {
-        return "onDemandGameStart";
+        return "$onDemandGameStart";
     }
 
     public String makeAction() {
-        return "makeAction";
+        return "$makeAction";
     }
 
     public String joinNewGame() {
-        return "joinNewGame";
+        return "$joinNewGame";
     }
     public String joinGame(){
-        return "joinGame";
+        return "$joinGame";
     }
 
     public String publishChatMsg() {
-        return "publishChatMsg";
+        return "$pushChatMessage";
     }
 
     public String getGames() {
-        return "getGames";
+        return "$getGames";
     }
 }

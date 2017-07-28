@@ -3,9 +3,9 @@ package client_side_policies;
 import client.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store.Effect;
 import client_store_actions.ClientAskSectorToLightAction;
 import client_store_actions.ClientRequestLightsAction;
+import client_store_actions.ClientSetRequestAction;
 import client_store_actions.ClientUseObjectCard;
 import common.*;
 
@@ -26,11 +26,11 @@ public class RequestLightsSidePolicy implements SidePolicy {
             StoreAction action_ = new UseObjAction(lightsCard);
             parameters.add(action_);
             parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
-            CLIENT_STORE.propagateAction(request);
+            CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
             boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
             if (isActionServerValidated) {
-                CLIENT_STORE.dispatchAction(new ClientUseObjectCard(lightsCard));
-                CLIENT_STORE.dispatchAction(new ClientAskSectorToLightAction(false));
+                CLIENT_STORE.propagateAction(new ClientUseObjectCard(lightsCard));
+                CLIENT_STORE.propagateAction(new ClientAskSectorToLightAction(false));
             }
         } else {
             throw new IllegalArgumentException(
