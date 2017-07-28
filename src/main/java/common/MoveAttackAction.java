@@ -15,7 +15,7 @@ public class MoveAttackAction extends StoreAction {
     private final Sector targetSector;
 
 	public MoveAttackAction(Sector target) {
-        super("@GAMEACTION_MOVE_ATTACK");
+        super("@GAMEACTION_MOVE_ATTACK","@GAMEACTION_GROUP");
         this.targetSector= target;
 	}
 

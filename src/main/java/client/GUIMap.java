@@ -70,7 +70,7 @@ public class GUIMap extends JLayeredPane {
 		alienMoveItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CLIENT_STORE.dispatchAction(new ClientRequestMoveToSectorAction(selectedSector.getCoordinate()));
+				CLIENT_STORE.propagateAction(new ClientRequestMoveToSectorAction(selectedSector.getCoordinate()));
 			}
 		});
 
@@ -79,27 +79,27 @@ public class GUIMap extends JLayeredPane {
 		attackItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CLIENT_STORE.dispatchAction(new ClientRequestAttackAction(selectedSector.getCoordinate()));
+				CLIENT_STORE.propagateAction(new ClientRequestAttackAction(selectedSector.getCoordinate()));
 			}
 		});
 		humanAttack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                CLIENT_STORE.dispatchAction(new ClientRequestAttackAction(selectedSector.getCoordinate()));
+                CLIENT_STORE.propagateAction(new ClientRequestAttackAction(selectedSector.getCoordinate()));
 			}
 		});
 
 		noiseItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			    CLIENT_STORE.dispatchAction(new ClientRequestGlobalNoise(selectedSector.getCoordinate(),true));
+			    CLIENT_STORE.propagateAction(new ClientRequestGlobalNoise(selectedSector.getCoordinate(),true));
 			}
 		});
 
 		lightItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                CLIENT_STORE.dispatchAction(new ClientRequestLightsAction(selectedSector.getCoordinate()));
+                CLIENT_STORE.propagateAction(new ClientRequestLightsAction(selectedSector.getCoordinate()));
 			}
 		});
 

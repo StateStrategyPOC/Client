@@ -12,6 +12,6 @@ import client_store.StoreAction;
 public class DrawRescueCardAction extends StoreAction {
 
 	public DrawRescueCardAction() {
-        super("@GAMEACTION_DRAW_RESCUE_CARD");
+        super("@GAMEACTION_DRAW_RESCUE_CARD","@GAMEACTION_GROUP");
 	}
 }

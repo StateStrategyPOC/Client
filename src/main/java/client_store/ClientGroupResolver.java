@@ -43,7 +43,7 @@ public class ClientGroupResolver extends Resolver {
                 new PolicyCouple(new AskSectorToLightStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SUPPRESS",
                 new PolicyCouple(new SuppressStatePolicy(), null));
-        this.policiesMap.put("@CLIENT_SET_CONNECTION_ALIVE",
+        this.policiesMap.put("@CLIENT_SET_CONNECTION_ACTIVE",
                 new PolicyCouple(new SetConnectionActiveStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD",
                 new PolicyCouple(new SetDrawnSectorObjectCardStatePolicy(), null));
@@ -75,6 +75,8 @@ public class ClientGroupResolver extends Resolver {
                 new PolicyCouple(null, new RequestAttackSidePolicy()));
         this.policiesMap.put("@CLIENT_GET_GAMES",
                 new PolicyCouple(null, new GetGamesSidePolicy()));
+        this.policiesMap.put("@CLIENT_ON_DEMAND_GAME_START",
+                new PolicyCouple(null, new RequestOnDemandGameStartSidePolicy()));
 
     }
 

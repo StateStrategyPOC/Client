@@ -49,7 +49,7 @@ public class GUInitialWindow extends JPanel {
 		connectButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-               CLIENT_STORE.dispatchAction(new ClientGetGamesAction());
+               CLIENT_STORE.propagateAction(new ClientGetGamesAction());
             }
 		});
 	}

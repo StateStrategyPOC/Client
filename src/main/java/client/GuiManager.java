@@ -93,7 +93,7 @@ public class GuiManager implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         StoreAction action = (StoreAction) arg;
-        switch (action.type) {
+        switch (action.getActionIdentifier()) {
             case "@CLIENT_SET_AVAILABLE_GAMES":
                 this.setAvailableGamesReaction(action);
                 break;

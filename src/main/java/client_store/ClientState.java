@@ -38,6 +38,8 @@ public class ClientState extends State implements Serializable {
         this.tcpPort = 29999;
         this.host = "localhost";
         this.delayReturnToGameList = 10000;
+        this.currentReqRespNotification = new RRClientNotification();
+        this.currentPubSubNotification = new PSClientNotification();
     }
 
     public int getTcpPort() {

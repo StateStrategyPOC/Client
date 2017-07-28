@@ -2,6 +2,7 @@ package client;
 
 import client_store.ClientStore;
 import client_store_actions.ClientGetGamesAction;
+import client_store_actions.ClientOnDemandGameStartAction;
 import client_store_actions.ClientRequestJoinGameAction;
 import client_store_actions.ClientRequestJoinNewGameAction;
 import common.GamePublicData;
@@ -122,10 +123,10 @@ public class GUIGameList extends JPanel {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CLIENT_STORE.propagateAction(new Game);
+                CLIENT_STORE.propagateAction(new ClientOnDemandGameStartAction());
             }
         });
-        CLIENT_STORE.dispatchAction(new ClientGetGamesAction());
+        CLIENT_STORE.propagateAction(new ClientGetGamesAction());
     }
 
     public void setGameListContent(List<GamePublicData> gamePublicDataList) {
@@ -155,7 +156,7 @@ public class GUIGameList extends JPanel {
                 int gameId = (Integer) gameTables.getValueAt(
                         gameTables.getSelectedRow(), 0);
                 stateMessage.setText("Waiting for others players...");
-                CLIENT_STORE.dispatchAction(new ClientRequestJoinGameAction(gameId,playerName));
+                CLIENT_STORE.propagateAction(new ClientRequestJoinGameAction(gameId,playerName));
                 buttonPanel.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(guiManager.getFrame(),
@@ -186,8 +187,8 @@ public class GUIGameList extends JPanel {
                         "Galilei");
                 if(mapName != null){
                     stateMessage.setText("Waiting for others players...");
-                    CLIENT_STORE.dispatchAction(new ClientRequestJoinNewGameAction(mapName.toUpperCase(), playerName));
-                    CLIENT_STORE.dispatchAction(new ClientGetGamesAction());
+                    CLIENT_STORE.propagateAction(new ClientRequestJoinNewGameAction(mapName.toUpperCase(), playerName));
+                    CLIENT_STORE.propagateAction(new ClientGetGamesAction());
                     buttonPanel.setVisible(false);
                 }
 

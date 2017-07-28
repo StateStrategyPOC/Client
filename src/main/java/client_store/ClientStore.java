@@ -1,5 +1,7 @@
 package client_store;
 
+import client.ReqRespHandler;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observer;

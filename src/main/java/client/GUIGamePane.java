@@ -87,14 +87,14 @@ public class GUIGamePane extends JPanel {
         endTurnButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                CLIENT_STORE.dispatchAction(new ClientRequestEndTurnAction());
+                CLIENT_STORE.propagateAction(new ClientRequestEndTurnAction());
             }
         });
 
         msgButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                CLIENT_STORE.dispatchAction(new ClientPublishChatMessage(chatTextField.getText()));
+                CLIENT_STORE.propagateAction(new ClientPublishChatMessage(chatTextField.getText()));
                 chatTextField.setText("");
             }
         });
@@ -103,7 +103,7 @@ public class GUIGamePane extends JPanel {
         useCardItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CLIENT_STORE.dispatchAction(new ClientRequestUseObjectCard(selectedObjectCard));
+                CLIENT_STORE.propagateAction(new ClientRequestUseObjectCard(selectedObjectCard));
             }
         });
         humanUseOnlyItem.addActionListener(useCardItem.getActionListeners()[0]);
@@ -111,7 +111,7 @@ public class GUIGamePane extends JPanel {
         alienDiscardItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CLIENT_STORE.dispatchAction(new ClientRequestDiscardObjectCard(selectedObjectCard));
+                CLIENT_STORE.propagateAction(new ClientRequestDiscardObjectCard(selectedObjectCard));
             }
         });
         humanDiscardItem.addActionListener(alienDiscardItem

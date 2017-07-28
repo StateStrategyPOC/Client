@@ -2,7 +2,10 @@ package client;
 
 import client_store.ClientStore;
 import client_store.StoreAction;
+import client_store_actions.ClientSetConnectionActiveAction;
+import client_store_actions.ClientSetCurrentReqRespNotificationAction;
 import client_store_actions.ClientSetRequestAction;
+import common.RRClientNotification;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -37,7 +40,7 @@ public class ReqRespHandler implements Observer {
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             this.sendRequest(actionOnTheWire,outputStream);
             this.getResponse(inputStream);
-            if(actionOnTheWire.getActionIdentifier().equals(ServerMethodsNameProvider.getInstance().subscribe())){
+            if(actionOnTheWire.getIdentifierMapper().equals(ServerMethodsNameProvider.getInstance().subscribe())){
                 PubSubHandler pubSubHandler = new PubSubHandler(socket,inputStream);
                 pubSubHandler.start();
             }
@@ -45,13 +48,13 @@ public class ReqRespHandler implements Observer {
                 this.closeConnection(socket,outputStream,inputStream);
             }
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            this.CLIENT_STORE.propagateAction(new ClientSetConnectionActiveAction(false));
         }
     }
 
     private void getResponse(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
-        ActionOnTheWire response = (ActionOnTheWire) inputStream.readObject();
-        this.CLIENT_STORE.propagateAction(response);
+        RRClientNotification response = (RRClientNotification) inputStream.readObject();
+        this.CLIENT_STORE.propagateAction(new ClientSetCurrentReqRespNotificationAction(response));
     }
 
     private void sendRequest(ActionOnTheWire actionOnTheWire, ObjectOutputStream outputStream) throws IOException {
