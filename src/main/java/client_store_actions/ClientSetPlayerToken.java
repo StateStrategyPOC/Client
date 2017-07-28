@@ -5,6 +5,13 @@ import common.Player;
 import common.PlayerToken;
 
 public class ClientSetPlayerToken extends StoreAction {
+
+    private static String type = "@CLIENT_SET_PLAYER_TOKEN";
+
+    public static String getType(){
+        return type;
+    }
+
     private PlayerToken playerToken;
 
     public ClientSetPlayerToken(PlayerToken playerToken) {

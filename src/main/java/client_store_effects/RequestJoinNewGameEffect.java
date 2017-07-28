@@ -6,18 +6,18 @@ import client_store.ClientStore;
 import client_store.Effect;
 import client_store.State;
 import client_store.StoreAction;
-import client_store_actions.ClientJoinNewGameAction;
+import client_store_actions.ClientRequestJoinNewGameAction;
 import client_store_actions.ClientSetPlayerAction;
 import client_store_actions.ClientSetRequestAction;
 import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public class JoinNewGameEffect implements Effect{
+public class RequestJoinNewGameEffect implements Effect{
     @Override
     public void apply(StoreAction action, State state) {
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        ClientJoinNewGameAction castedAction = (ClientJoinNewGameAction) action;
+        ClientRequestJoinNewGameAction castedAction = (ClientRequestJoinNewGameAction) action;
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(castedAction.getPlayerName());
         parameters.add(castedAction.getMapName());

@@ -421,7 +421,7 @@ public class ClientServices {
             }
             boolean isActionServerValidated = this.clientStore.getState().getCurrentReqRespNotification().getActionResult();
             if (isActionServerValidated){
-                this.clientStore.dispatchAction(new ClientDiscardObjectCardAction(objectCard));
+                this.clientStore.dispatchAction(new ClientRequestDiscardObjectCardAction(objectCard));
             }
         }
     }

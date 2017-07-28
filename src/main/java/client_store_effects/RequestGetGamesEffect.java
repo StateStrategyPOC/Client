@@ -12,7 +12,7 @@ import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public  class GetGamesEffect implements Effect {
+public  class RequestGetGamesEffect implements Effect {
 
     @Override
     public void apply(StoreAction action, State state) {

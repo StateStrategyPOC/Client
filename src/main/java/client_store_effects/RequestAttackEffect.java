@@ -14,7 +14,7 @@ import common.*;
 
 import java.util.ArrayList;
 
-public class AttackEffect implements Effect {
+public class RequestAttackEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
         ClientRequestAttackAction castedAction = (ClientRequestAttackAction) action;

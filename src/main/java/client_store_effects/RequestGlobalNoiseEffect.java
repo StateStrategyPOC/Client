@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-public class GlobalNoiseEffect implements Effect {
+public class RequestGlobalNoiseEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
         ClientRequestGlobalNoise castedAction = (ClientRequestGlobalNoise) action;

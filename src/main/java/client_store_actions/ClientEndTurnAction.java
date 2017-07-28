@@ -7,7 +7,10 @@ import client_store.StoreAction;
  *
  */
 public class ClientEndTurnAction extends StoreAction {
-
+    private static String type = "@CLIENT_END_TURN";
+    public static String getType(){
+        return type;
+    }
     public ClientEndTurnAction() {
         super("@CLIENT_END_TURN");
     }

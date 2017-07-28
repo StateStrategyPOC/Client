@@ -5,6 +5,10 @@ import common.Coordinate;
 
 public class ClientRequestLightsAction extends StoreAction {
 
+    private static String type = "@CLIENT_REQUEST_LIGHTS_ACTION";
+    public static String getType(){
+        return type;
+    }
     private final Coordinate coordinate;
 
 

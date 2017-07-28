@@ -6,18 +6,17 @@ import client_store.ClientStore;
 import client_store.Effect;
 import client_store.State;
 import client_store.StoreAction;
-import client_store_actions.ClientJoinGameAction;
-import client_store_actions.ClientJoinNewGameAction;
+import client_store_actions.ClientRequestJoinGameAction;
 import client_store_actions.ClientSetPlayerAction;
 import client_store_actions.ClientSetRequestAction;
 import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public class JoinGameEffect implements Effect {
+public class RequestJoinGameEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
-        ClientJoinGameAction castedAction = (ClientJoinGameAction) action;
+        ClientRequestJoinGameAction castedAction = (ClientRequestJoinGameAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ServerMethodsNameProvider SERVER_ACTION_WIRE_PROVIDER = ServerMethodsNameProvider.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();

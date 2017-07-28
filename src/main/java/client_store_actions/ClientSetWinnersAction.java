@@ -6,7 +6,10 @@ import client_store.StoreAction;
  * Created by giorgiopea on 07/04/17.
  */
 public class ClientSetWinnersAction extends StoreAction {
-
+    private static String type = "@CLIENT_SET_WINNNERS";
+    public static String getType(){
+        return type;
+    }
 
     private final boolean aliensHaveWon;
     private final boolean humansHaveWon;

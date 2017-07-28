@@ -85,7 +85,7 @@ public class ClientReducer implements Reducer {
     }
 
     private State joinNewGame(StoreAction action, ClientState castedState) {
-        ClientJoinNewGameAction castedAction = (ClientJoinNewGameAction) action;
+        ClientRequestJoinNewGameAction castedAction = (ClientRequestJoinNewGameAction) action;
         return castedState;
     }
 
@@ -111,7 +111,7 @@ public class ClientReducer implements Reducer {
     }
 
     private State discardObjectCard(StoreAction action, ClientState state) {
-        ClientDiscardObjectCardAction castedAction = (ClientDiscardObjectCardAction) action;
+        ClientRequestDiscardObjectCardAction castedAction = (ClientRequestDiscardObjectCardAction) action;
         state.getPlayer().getPrivateDeck().removeCard(castedAction.getDiscardedObjectCard());
         return state;
     }

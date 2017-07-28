@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-public class LightsEffect implements Effect {
+public class RequestLightsEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
         ClientRequestLightsAction castedAction = (ClientRequestLightsAction) action;

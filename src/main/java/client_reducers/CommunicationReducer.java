@@ -5,7 +5,6 @@ import client_store.ClientState;
 import client_store.Reducer;
 import client_store.State;
 import client_store.StoreAction;
-import client_store_actions.ClientAddPubSubHandlerAction;
 
 /**
  * Created by giorgiopea on 25/03/17.

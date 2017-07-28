@@ -7,6 +7,10 @@ import client_store.StoreAction;
  */
 public class ClientAskSectorToLightAction extends StoreAction {
 
+    private static String type = "@CLIENT_ASK_SECTOR_TO_LIGHT";
+    public static String getType(){
+        return type;
+    }
     private final boolean toBeAsked;
 
     public ClientAskSectorToLightAction(boolean toBeAsked) {

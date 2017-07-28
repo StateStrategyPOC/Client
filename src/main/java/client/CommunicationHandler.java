@@ -1,7 +1,6 @@
 package client;
 
 import client_store.ClientStore;
-import client_store_actions.ClientAddPubSubHandlerAction;
 import common.RemoteMethodCall;
 
 import java.io.IOException;

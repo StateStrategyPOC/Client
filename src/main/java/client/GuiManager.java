@@ -22,7 +22,7 @@ import java.util.Timer;
 public class GuiManager implements Observer {
 
     private static GuiManager instance = new GuiManager();
-    private final ClientStore clientStore = ClientStore.getInstance();
+    private final ClientStore CLIENT_STORE = ClientStore.getInstance();
     private GUInitialWindow guiInitialWindow;
     private GUIGameList guiGameList;
     private GUIGamePane guiGamePane;
@@ -60,8 +60,8 @@ public class GuiManager implements Observer {
      * Shows on the {@link GUIMap} the new position of the client.
      */
     private void updatePosition() {
-        Coordinate newCoordinates = this.clientStore.getState().getPlayer().getCurrentSector().getCoordinate();
-        String playerName = this.clientStore.getState().getPlayer().getName();
+        Coordinate newCoordinates = this.CLIENT_STORE.getState().getPlayer().getCurrentSector().getCoordinate();
+        String playerName = this.CLIENT_STORE.getState().getPlayer().getName();
         this.guiGamePane.getMapPane().delightAllSectors();
         this.guiGamePane.getMapPane().lightSector(newCoordinates, "Y",
                 playerName);
@@ -78,7 +78,7 @@ public class GuiManager implements Observer {
      * card in the client's private deck, so that the client is forced to discard or use one of those.
      */
     private void manyCardHandler() {
-        PlayerType playerType = this.clientStore.getState().getPlayer().getPlayerToken().getPlayerType();
+        PlayerType playerType = this.CLIENT_STORE.getState().getPlayer().getPlayerToken().getPlayerType();
         if (playerType.equals(PlayerType.HUMAN)) {
             this.guiGamePane.changeCardMenu(MenuType.HUMAN_USE_DISC_MENU);
         } else {
@@ -175,7 +175,7 @@ public class GuiManager implements Observer {
         this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
         this.guiGamePane.refreshCardPanel(new ArrayList<ObjectCard>());
         this.guiGamePane.showEndTurnButton(false);
-        (new Timer()).schedule(new EndGameTimeout(),this.clientStore.getState().getDelayReturnToGameList());
+        (new Timer()).schedule(new EndGameTimeout(),this.CLIENT_STORE.getState().getDelayReturnToGameList());
     }
 
     /**
@@ -186,7 +186,7 @@ public class GuiManager implements Observer {
      */
     private void setPlayerStateReaction(StoreAction action) {
         ClientSetPlayerState castedAction = (ClientSetPlayerState) action;
-        PSClientNotification psClientNotification = this.clientStore.getState().getCurrentPubSubNotification();
+        PSClientNotification psClientNotification = this.CLIENT_STORE.getState().getCurrentPubSubNotification();
         if (castedAction.getPlayerState().equals(PlayerState.ESCAPED)) {
             this.guiGamePane.setStateMessage("You've ESCAPED!");
             this.guiGamePane.changeCardMenu(MenuType.EMPTY);
@@ -218,7 +218,7 @@ public class GuiManager implements Observer {
      * This reaction includes setting/resetting of cards/map menus.
      */
     private void startTurnReaction() {
-        Player player = this.clientStore.getState().getPlayer();
+        Player player = this.CLIENT_STORE.getState().getPlayer();
         String message;
         if (player.getPlayerToken().getPlayerType().equals(PlayerType.ALIEN)){
             message = player.getName() + " now is your turn: move or attack";
@@ -251,8 +251,8 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void discardObjectCardReaction(StoreAction action) {
-        ClientDiscardObjectCardAction castedAction = (ClientDiscardObjectCardAction) action;
-        this.guiGamePane.refreshCardPanel(this.clientStore.getState().getPlayer().getPrivateDeck().getContent());
+        ClientRequestDiscardObjectCardAction castedAction = (ClientRequestDiscardObjectCardAction) action;
+        this.guiGamePane.refreshCardPanel(this.CLIENT_STORE.getState().getPlayer().getPrivateDeck().getContent());
         this.guiGamePane.showEndTurnButton(true);
         this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
         this.guiGamePane.changeCardMenu(MenuType.HUMAN_USE_MENU);
@@ -263,7 +263,7 @@ public class GuiManager implements Observer {
      * This reaction includes moving the client to his original sector.
      */
     private void teleportToStartingSectorReaction() {
-        Player player = this.clientStore.getState().getPlayer();
+        Player player = this.CLIENT_STORE.getState().getPlayer();
         this.guiGamePane.getMapPane().delightAllSectors();
         this.guiGamePane.getMapPane().lightSector(player.getCurrentSector().getCoordinate(), "Y", player.getName());
     }
@@ -310,11 +310,11 @@ public class GuiManager implements Observer {
             this.guiGamePane.setStateMessage("You have succesfully defended from an attack");
         }
         if (castedAction.getObjectCard() instanceof LightsObjectCard) {
-            for (Sector sector : this.clientStore.getState().getCurrentReqRespNotification().getLightedSectors()) {
+            for (Sector sector : this.CLIENT_STORE.getState().getCurrentReqRespNotification().getLightedSectors()) {
                 this.guiGamePane.getMapPane().lightSector(sector.getCoordinate(), "A", "Here there's an alien");
             }
         }
-        this.guiGamePane.refreshCardPanel(this.clientStore.getState().getPlayer().getPrivateDeck().getContent());
+        this.guiGamePane.refreshCardPanel(this.CLIENT_STORE.getState().getPlayer().getPrivateDeck().getContent());
 
     }
 
@@ -343,7 +343,7 @@ public class GuiManager implements Observer {
         ClientSetDrawnSectorObjectCard castedAction = (ClientSetDrawnSectorObjectCard) action;
         CardSplashScreen cardSplashScreen = new CardSplashScreen(this.mainFrame);
         cardSplashScreen.showCards(castedAction.getDrawnSectorCard(), castedAction.getDrawnObjectCard());
-        PrivateDeck clientPrivateDeck = this.clientStore.getState().getPlayer().getPrivateDeck();
+        PrivateDeck clientPrivateDeck = this.CLIENT_STORE.getState().getPlayer().getPrivateDeck();
 
 
         if (castedAction.getDrawnSectorCard() instanceof GlobalNoiseSectorCard) {
@@ -385,7 +385,7 @@ public class GuiManager implements Observer {
      * acts on this view in response to the starting of the game
      */
     private void startGameReaction(StoreAction action) {
-        Player player = this.clientStore.getState().getPlayer();
+        Player player = this.CLIENT_STORE.getState().getPlayer();
         String characterInfoMsg;
         if (player.getPlayerToken().getPlayerType().equals(PlayerType.ALIEN)) {
             characterInfoMsg = player.getName() + " | ALIEN";
@@ -396,7 +396,7 @@ public class GuiManager implements Observer {
         }
         this.guiGameList.reset();
         this.mainFrame.remove(this.guiGameList);
-        this.guiGamePane.load(this.clientStore.getState().getGameMap());
+        this.guiGamePane.load(this.CLIENT_STORE.getState().getGameMap());
         this.mainFrame.add(this.guiGamePane);
         this.guiGamePane.setVisible(true);
         this.guiGamePane.setInfoMsg(characterInfoMsg);

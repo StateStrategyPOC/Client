@@ -11,7 +11,7 @@ import client_store_actions.ClientRequestEndTurnAction;
 
 import java.util.ArrayList;
 
-public class EndTurnEffect implements Effect {
+public class RequestEndTurnEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
         ClientRequestEndTurnAction castedAction = (ClientRequestEndTurnAction) action;

@@ -2,8 +2,8 @@ package client;
 
 import client_store.ClientStore;
 import client_store_actions.ClientGetGamesAction;
-import client_store_actions.ClientJoinGameAction;
-import client_store_actions.ClientJoinNewGameAction;
+import client_store_actions.ClientRequestJoinGameAction;
+import client_store_actions.ClientRequestJoinNewGameAction;
 import common.GamePublicData;
 
 import javax.swing.*;
@@ -156,7 +156,7 @@ public class GUIGameList extends JPanel {
                 int gameId = (Integer) gameTables.getValueAt(
                         gameTables.getSelectedRow(), 0);
                 stateMessage.setText("Waiting for others players...");
-                CLIENT_STORE.dispatchAction(new ClientJoinGameAction(gameId,playerName));
+                CLIENT_STORE.dispatchAction(new ClientRequestJoinGameAction(gameId,playerName));
                 buttonPanel.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(guiManager.getFrame(),
@@ -187,7 +187,7 @@ public class GUIGameList extends JPanel {
                         "Galilei");
                 if(mapName != null){
                     stateMessage.setText("Waiting for others players...");
-                    CLIENT_STORE.dispatchAction(new ClientJoinNewGameAction(mapName.toUpperCase(), playerName));
+                    CLIENT_STORE.dispatchAction(new ClientRequestJoinNewGameAction(mapName.toUpperCase(), playerName));
                     CLIENT_STORE.dispatchAction(new ClientGetGamesAction());
                     buttonPanel.setVisible(false);
                 }

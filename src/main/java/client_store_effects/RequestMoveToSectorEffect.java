@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoveToSectorEffect implements Effect {
+public class RequestMoveToSectorEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
         ClientRequestMoveToSectorAction castedAction = (ClientRequestMoveToSectorAction) action;

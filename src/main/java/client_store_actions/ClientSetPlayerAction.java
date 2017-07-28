@@ -8,6 +8,10 @@ import client_store.StoreAction;
  */
 public class ClientSetPlayerAction extends StoreAction {
 
+    private static String type = "@CLIENT_SET_PLAYER";
+    public static String getType(){
+        return type;
+    }
     private final String playerName;
     private final PlayerToken playerToken;
 

@@ -6,11 +6,14 @@ import client_store.StoreAction;
 /**
  * Created by giorgiopea on 07/04/17.
  */
-public class ClientDiscardObjectCardAction extends StoreAction {
-
+public class ClientRequestDiscardObjectCardAction extends StoreAction {
+    private static String type = "@CLIENT_REQUEST_DISCARD_OBJECT_CARD";
+    public static String getType(){
+        return type;
+    }
     private final ObjectCard discardedObjectCard;
 
-    public ClientDiscardObjectCardAction(ObjectCard objectCard) {
+    public ClientRequestDiscardObjectCardAction(ObjectCard objectCard) {
         super("@CLIENT_DISCARD_OBJECT_CARD");
         this.discardedObjectCard = objectCard;
     }

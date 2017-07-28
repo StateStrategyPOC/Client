@@ -7,7 +7,10 @@ import client_store.StoreAction;
  * Created by giorgiopea on 29/03/17.
  */
 public class ClientSetCurrentReqRespNotificationAction extends StoreAction {
-
+    private static String type = "@CLIENT_SET_CURRENT_REQRESP_NOTIFICATION";
+    public static String getType(){
+        return type;
+    }
     private final RRClientNotification rrClientNotification;
 
     public ClientSetCurrentReqRespNotificationAction(RRClientNotification rrClientNotification) {

@@ -11,7 +11,7 @@ import common.RRClientNotification;
 
 import java.util.ArrayList;
 
-public class OnDemandGameStartEffect implements Effect {
+public class RequestOnDemandGameStartEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
         ClientStore CLIENT_STORE = ClientStore.getInstance();

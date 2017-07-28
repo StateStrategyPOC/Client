@@ -11,7 +11,7 @@ import common.*;
 
 import java.util.ArrayList;
 
-public class DiscardCardEffect implements Effect {
+public class RequestDiscardCardEffect implements Effect {
     @Override
     public void apply(StoreAction action, State state) {
         ClientRequestDiscardObjectCard castedAction = (ClientRequestDiscardObjectCard) action;
@@ -27,7 +27,7 @@ public class DiscardCardEffect implements Effect {
         CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated) {
-            CLIENT_STORE.dispatchAction(new ClientDiscardObjectCardAction(objectCard));
+            CLIENT_STORE.dispatchAction(new ClientRequestDiscardObjectCardAction(objectCard));
         }
 
     }
