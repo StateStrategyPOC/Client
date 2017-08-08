@@ -63,7 +63,7 @@ public class ClientStore {
             if (policyCouple.getStatePolicy() != null){
                 this.observableState.setState(policyCouple.getStatePolicy().apply(this.getState(), action),action);
             }
-            this.STORE_LOGGER.logPreStatePropagation(action,this.getState());
+            this.STORE_LOGGER.logPostStatePropagation(this.getState());
             if (policyCouple.getSidePolicy() != null){
                 policyCouple.getSidePolicy().apply(this.getState(),action);
             }
