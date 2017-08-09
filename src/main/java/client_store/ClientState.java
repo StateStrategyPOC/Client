@@ -32,6 +32,7 @@ public class ClientState extends State implements Serializable {
     private boolean aliensHaveWon;
     private boolean humansHaveWon;
     private ActionOnTheWire request;
+    private boolean inRoom;
 
     public ClientState() {
         this.tcpPort = 29999;
@@ -40,6 +41,7 @@ public class ClientState extends State implements Serializable {
         this.currentReqRespNotification = new RRClientNotification();
         this.currentPubSubNotification = new PSClientNotification();
         this.connectionActive = true;
+        this.inRoom = false;
     }
 
     public int getTcpPort() {
@@ -196,5 +198,13 @@ public class ClientState extends State implements Serializable {
 
     public void setRequest(ActionOnTheWire request) {
         this.request = request;
+    }
+
+    public boolean isInRoom() {
+        return inRoom;
+    }
+
+    public void setInRoom(boolean inRoom) {
+        this.inRoom = inRoom;
     }
 }

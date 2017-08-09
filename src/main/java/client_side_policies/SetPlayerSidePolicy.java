@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client_store_actions.ClientSetInRoomAction;
 import client_store_actions.ClientSetPlayerAction;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
@@ -9,7 +10,7 @@ import client_store_actions.ClientSetRequestAction;
 
 import java.util.ArrayList;
 
-public class SetPlayerTokenAndSubscribeSidePolicy implements SidePolicy {
+public class SetPlayerSidePolicy implements SidePolicy {
 
 
     @Override
@@ -20,6 +21,7 @@ public class SetPlayerTokenAndSubscribeSidePolicy implements SidePolicy {
             ArrayList<Object> parameters = new ArrayList<>();
             parameters.add(castedAction.getPlayerToken());
             ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.subscribe(),parameters);
+            CLIENT_STORE.propagateAction(new ClientSetInRoomAction(true));
             CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
     }
 }

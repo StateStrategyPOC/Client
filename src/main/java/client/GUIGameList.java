@@ -1,10 +1,7 @@
 package client;
 
 import client_store.ClientStore;
-import client_store_actions.ClientGetGamesAction;
-import client_store_actions.ClientOnDemandGameStartAction;
-import client_store_actions.ClientRequestJoinGameAction;
-import client_store_actions.ClientRequestJoinNewGameAction;
+import client_store_actions.*;
 import common.GamePublicData;
 
 import javax.swing.*;
@@ -106,6 +103,7 @@ public class GUIGameList extends JPanel {
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //CLIENT_STORE.propagateAction(new ClientSetPlayerAction("dasdasd",null));
                 CLIENT_STORE.propagateAction(new ClientGetGamesAction());
             }
         });
@@ -188,7 +186,7 @@ public class GUIGameList extends JPanel {
                 if(mapName != null){
                     stateMessage.setText("Waiting for others players...");
                     CLIENT_STORE.propagateAction(new ClientRequestJoinNewGameAction(mapName.toUpperCase(), playerName));
-                    CLIENT_STORE.propagateAction(new ClientGetGamesAction());
+                    //CLIENT_STORE.propagateAction(new ClientGetGamesAction());
                     buttonPanel.setVisible(false);
                 }
 

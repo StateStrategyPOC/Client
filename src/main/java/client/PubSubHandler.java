@@ -26,7 +26,7 @@ public class PubSubHandler extends Thread {
     }
     @Override
     public void run() {
-        while (this.CLIENT_STORE.getState().isGameStarted()) {
+        while (this.CLIENT_STORE.getState().isInRoom()) {
             try {
                 PSClientNotification notification = (PSClientNotification) this.inputStream.readObject();
                 this.CLIENT_STORE.propagateAction(new ClientSetCurrentPubSubNotificationAction(notification));
@@ -41,7 +41,6 @@ public class PubSubHandler extends Thread {
 
             }
         }
-
         try {
             this.inputStream.close();
             this.socket.close();

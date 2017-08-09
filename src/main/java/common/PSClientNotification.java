@@ -16,11 +16,18 @@ import java.util.List;
 public class PSClientNotification extends ClientNotification {
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<PlayerToken> deadPlayers;
-	private ArrayList<PlayerToken> attackedPlayers;
+	private final ArrayList<PlayerToken> deadPlayers;
+	private final ArrayList<PlayerToken> attackedPlayers;
 	private boolean humanWins;
 	private boolean alienWins;
 	private PlayerToken escapedPlayer;
+	private boolean gameNeedToStart;
+	private String incomingMsg;
+	private Integer gameId;
+	private boolean turnNeedToStart;
+	private boolean gameCanBeStarted;
+	private boolean turnNeedToEnd;
+	private String gameMapName;
 
 
     /**
@@ -30,8 +37,8 @@ public class PSClientNotification extends ClientNotification {
 	 */
 	public PSClientNotification() {
 		super("");
-		deadPlayers = new ArrayList<PlayerToken>();
-		attackedPlayers = new ArrayList<PlayerToken>();
+		deadPlayers = new ArrayList<>();
+		attackedPlayers = new ArrayList<>();
 	}
 
 	/**
@@ -109,9 +116,7 @@ public class PSClientNotification extends ClientNotification {
 	/**
 	 * Adds a new player to the list of the attacked player
 	 * 
-	 * @param attackedPlayers
-	 * @throws IllegalArgumentExceptio
-	 *             if attackedPlayer is null
+	 * @param attackedPlayer
 	 */
 	public void addAttackedPlayers(PlayerToken attackedPlayer) {
 		if (attackedPlayer == null)
@@ -126,4 +131,60 @@ public class PSClientNotification extends ClientNotification {
 	public void setEscapedPlayer(PlayerToken escapedPlayer) {
 		this.escapedPlayer = escapedPlayer;
 	}
+
+    public boolean isGameNeedToStart() {
+        return gameNeedToStart;
+    }
+
+    public void setGameNeedToStart(boolean gameNeedToStart) {
+        this.gameNeedToStart = gameNeedToStart;
+    }
+
+    public String getIncomingMsg() {
+        return incomingMsg;
+    }
+
+    public void setIncomingMsg(String incomingMsg) {
+        this.incomingMsg = incomingMsg;
+    }
+
+    public Integer getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Integer gameId) {
+        this.gameId = gameId;
+    }
+
+    public boolean isTurnNeedToStart() {
+        return turnNeedToStart;
+    }
+
+    public void setTurnNeedToStart(boolean turnNeedToStart) {
+        this.turnNeedToStart = turnNeedToStart;
+    }
+
+    public boolean isGameCanBeStarted() {
+        return gameCanBeStarted;
+    }
+
+    public void setGameCanBeStarted(boolean gameCanBeStarted) {
+        this.gameCanBeStarted = gameCanBeStarted;
+    }
+
+    public boolean isTurnNeedToEnd() {
+        return turnNeedToEnd;
+    }
+
+    public void setTurnNeedToEnd(boolean turnNeedToEnd) {
+        this.turnNeedToEnd = turnNeedToEnd;
+    }
+
+    public String getGameMapName() {
+        return gameMapName;
+    }
+
+    public void setGameMapName(String gameMapName) {
+        this.gameMapName = gameMapName;
+    }
 }

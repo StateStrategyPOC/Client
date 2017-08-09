@@ -24,7 +24,7 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_USE_OBJECT_CARD",
                 new PolicyCouple(new UseObjectCardStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_PLAYER",
-                new PolicyCouple(new SetPlayerStatePolicy(), new SetPlayerTokenAndSubscribeSidePolicy()));
+                new PolicyCouple(new SetPlayerStatePolicy(), new SetPlayerSidePolicy()));
         this.policiesMap.put("@CLIENT_ADRENALINE",
                 new PolicyCouple(new AdrenalineStatePolicy(), null));
         this.policiesMap.put("@CLIENT_DISCARD_OBJECT_CARD",
@@ -38,7 +38,7 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_SET_RR",
                 new PolicyCouple(new SetRRStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_PS",
-                new PolicyCouple(new SetPSStatePolicy(), null));
+                new PolicyCouple(new SetPSStatePolicy(), new ClientSetPSNotificationSidePolicy()));
         this.policiesMap.put("@CLIENT_ASK_SECTOR_TO_LIGHT",
                 new PolicyCouple(new AskSectorToLightStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SUPPRESS",
@@ -78,6 +78,7 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_ON_DEMAND_GAME_START",
                 new PolicyCouple(null, new RequestOnDemandGameStartSidePolicy()));
         this.policiesMap.put("@CLIENT_SET_REQUEST", new PolicyCouple(new BlankPolicy(),null));
+        this.policiesMap.put("@CLIENT_SET_IN_ROOM",new PolicyCouple(new InRoomStatePolicy(),null));
     }
 
 

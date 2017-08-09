@@ -145,7 +145,7 @@ public class GuiManager implements Observer {
             case "@CLIENT_STARTABLE_GAME":
                 this.guiGameList.startableGame();
                 break;
-            case "@CLIENT_SET_CURRENT_REQRESP_NOTIFICATION":
+            case "@CLIENT_SET_RR":
                 this.setCurrentReqRespNotificationReaction(action);
                 break;
         }
