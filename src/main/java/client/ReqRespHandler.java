@@ -5,12 +5,12 @@ import client_store.StoreAction;
 import client_store_actions.ClientSetConnectionActiveAction;
 import client_store_actions.ClientSetCurrentReqRespNotificationAction;
 import client_store_actions.ClientSetRequestAction;
+import common.ActionOnTheWire;
 import common.RRClientNotification;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Observable;
 import java.util.Observer;
@@ -39,12 +39,12 @@ public class ReqRespHandler implements Observer {
             outputStream.flush();
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             this.sendRequest(actionOnTheWire,outputStream);
-            this.getResponse(inputStream);
             if(actionOnTheWire.getIdentifierMapper().equals(ServerMethodsNameProvider.getInstance().subscribe())){
                 PubSubHandler pubSubHandler = new PubSubHandler(socket,inputStream);
                 pubSubHandler.start();
             }
             else {
+                this.getResponse(inputStream);
                 this.closeConnection(socket,outputStream,inputStream);
             }
         } catch (IOException | ClassNotFoundException e) {

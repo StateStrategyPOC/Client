@@ -22,11 +22,6 @@ public class ObservableClientState extends Observable {
         this.setChanged();
         this.notifyObservers(lastAction);
     }
-    public void setClientState(State clientState, StoreAction lastAction) {
-        this.clientState = (ClientState) clientState;
-        this.setChanged();
-        this.notifyObservers(lastAction);
-    }
 
     @Override
     public String toString() {

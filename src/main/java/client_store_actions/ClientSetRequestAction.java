@@ -1,6 +1,6 @@
 package client_store_actions;
 
-import client.ActionOnTheWire;
+import common.ActionOnTheWire;
 import client_store.StoreAction;
 
 public class ClientSetRequestAction extends StoreAction {

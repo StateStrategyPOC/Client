@@ -1,6 +1,6 @@
 package client_side_policies;
 
-import client.ActionOnTheWire;
+import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
 import client_store_actions.ClientRequestAttackAction;

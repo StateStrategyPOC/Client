@@ -126,7 +126,7 @@ public class GUIGameList extends JPanel {
                 CLIENT_STORE.propagateAction(new ClientOnDemandGameStartAction());
             }
         });
-        CLIENT_STORE.propagateAction(new ClientGetGamesAction());
+        //CLIENT_STORE.propagateAction(new ClientGetGamesAction());
     }
 
     public void setGameListContent(List<GamePublicData> gamePublicDataList) {

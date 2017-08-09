@@ -77,7 +77,7 @@ public class ClientGroupResolver extends Resolver {
                 new PolicyCouple(null, new GetGamesSidePolicy()));
         this.policiesMap.put("@CLIENT_ON_DEMAND_GAME_START",
                 new PolicyCouple(null, new RequestOnDemandGameStartSidePolicy()));
-
+        this.policiesMap.put("@CLIENT_SET_REQUEST", new PolicyCouple(new BlankPolicy(),null));
     }
 
 

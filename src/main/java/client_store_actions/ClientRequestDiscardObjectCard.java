@@ -6,10 +6,6 @@ import common.ObjectCard;
 import java.io.ObjectOutputStream;
 
 public class ClientRequestDiscardObjectCard extends StoreAction {
-    private static String type = "@CLIENT_REQUEST_DISCARD_OBJ_CARD";
-    public static String getType(){
-        return type;
-    }
     private final ObjectCard objectCard;
 
     public ClientRequestDiscardObjectCard(ObjectCard objectCard) {

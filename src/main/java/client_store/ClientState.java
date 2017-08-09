@@ -1,9 +1,8 @@
 package client_store;
 
-import client.ActionOnTheWire;
+import common.ActionOnTheWire;
 import client.PubSubHandler;
 import common.*;
-import client_store.State;
 
 import java.io.Serializable;
 import java.util.List;
@@ -40,6 +39,7 @@ public class ClientState extends State implements Serializable {
         this.delayReturnToGameList = 10000;
         this.currentReqRespNotification = new RRClientNotification();
         this.currentPubSubNotification = new PSClientNotification();
+        this.connectionActive = true;
     }
 
     public int getTcpPort() {
