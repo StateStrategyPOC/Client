@@ -12,6 +12,6 @@ import client_store.StoreAction;
 public class DrawSectorCardAction extends StoreAction {
 
 	public DrawSectorCardAction() {
-        super("@GAMEACTION_DRAW_SECTOR_CARD","@GAMEACTION_GROUP");
+        super("@GAMEACTION_DRAW_SECTOR_CARD","@COMMON_GROUP");
 	}
 }

@@ -156,8 +156,8 @@ public class GuiManager implements Observer {
     private void setCurrentPSNotificationReaction(StoreAction action) {
         ClientSetCurrentPubSubNotificationAction castedAction = (ClientSetCurrentPubSubNotificationAction) action;
         PSClientNotification notification = castedAction.getPsNotification();
-        if (!notification.getIncomingMsg().equals("")){
-            this.guiGamePane.appendMsg(notification.getIncomingMsg());
+        if (!notification.getMessage().equals("")){
+            this.guiGamePane.appendMsg(notification.getMessage());
         }
     }
 

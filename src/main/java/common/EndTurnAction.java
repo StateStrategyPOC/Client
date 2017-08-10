@@ -12,6 +12,6 @@ import client_store.StoreAction;
 public class EndTurnAction extends StoreAction {
 
     public EndTurnAction() {
-        super("@GAMEACTION_END_TURN","@GAMEACTION_GROUP");
+        super("@GAMEACTION_END_TURN","@COMMON_GROUP");
     }
 }
