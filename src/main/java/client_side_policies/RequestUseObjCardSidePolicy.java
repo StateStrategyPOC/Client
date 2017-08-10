@@ -27,7 +27,7 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
                 CLIENT_STORE.propagateAction(new ClientAskAttackAction(true));
             } else {
                 StoreAction action_ = new UseObjAction(objectCard);
-                parameters.add(action);
+                parameters.add(action_);
                 parameters.add(player.getPlayerToken());
                 ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
                 ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();

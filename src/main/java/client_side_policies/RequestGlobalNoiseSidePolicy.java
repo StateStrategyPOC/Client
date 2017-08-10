@@ -23,7 +23,7 @@ public class RequestGlobalNoiseSidePolicy implements SidePolicy {
             SectorCard globalNoiseCard = new GlobalNoiseSectorCard(castedAction.isHasObject(),
                     targetSector);
             StoreAction action_ = new UseSectorCardAction(globalNoiseCard);
-            parameters.add(action);
+            parameters.add(action_);
             parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
             ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.makeAction(), parameters);
             ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
