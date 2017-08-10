@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -18,7 +19,8 @@ public class RequestOnDemandGameStartSidePolicy implements SidePolicy {
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.onDemandGameStart(),parameters);
-        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
+        ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
+        reqRespHandler.initRequestResponse(request);
         RRClientNotification currentClientNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
         boolean isActionServerValidated = currentClientNotification.getActionResult();
         if (isActionServerValidated){

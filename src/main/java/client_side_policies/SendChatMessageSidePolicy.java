@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -19,6 +20,6 @@ public class SendChatMessageSidePolicy implements SidePolicy {
         parameters.add(castedAction.getChatMessage());
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.publishChatMsg(),parameters);
-        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
-    }
+        ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
+        reqRespHandler.initRequestResponse(request);    }
 }

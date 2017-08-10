@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client.ReqRespHandler;
 import client_store_actions.ClientSetInRoomAction;
 import client_store_actions.ClientSetPlayerAction;
 import common.ActionOnTheWire;
@@ -22,6 +23,7 @@ public class SetPlayerSidePolicy implements SidePolicy {
             parameters.add(castedAction.getPlayerToken());
             ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.subscribe(),parameters);
             CLIENT_STORE.propagateAction(new ClientSetInRoomAction(true));
-            CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
+            ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
+            reqRespHandler.initRequestResponse(request);
     }
 }

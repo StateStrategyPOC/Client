@@ -15,7 +15,7 @@ import java.net.Socket;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ReqRespHandler implements Observer {
+public class ReqRespHandler {
 
     private final ClientStore CLIENT_STORE;
     private static ReqRespHandler INSTANCE;
@@ -29,10 +29,9 @@ public class ReqRespHandler implements Observer {
 
     private ReqRespHandler() {
         this.CLIENT_STORE = ClientStore.getInstance();
-        this.CLIENT_STORE.observeState(this);
     }
 
-    private void initRequestResponse(ActionOnTheWire actionOnTheWire){
+    public void initRequestResponse(ActionOnTheWire actionOnTheWire){
         try {
             Socket socket = new Socket(CLIENT_STORE.getState().getHost(), CLIENT_STORE.getState().getTcpPort());
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -65,16 +64,6 @@ public class ReqRespHandler implements Observer {
         outputStream.close();
         inputStream.close();
         socket.close();
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        StoreAction dispatchedAction = (StoreAction) arg;
-        switch(dispatchedAction.getActionIdentifier()){
-            case "@CLIENT_SET_REQUEST":
-                this.setRequest(dispatchedAction);
-                break;
-        }
     }
 
     private void setRequest(StoreAction action){

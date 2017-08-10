@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -19,7 +20,8 @@ public class RequestJoinNewGameSidePolicy implements SidePolicy{
         parameters.add(castedAction.getMapName());
         parameters.add(castedAction.getPlayerName());
         ActionOnTheWire request = new ActionOnTheWire(ServerMethodsNameProvider.getInstance().joinNewGame(),parameters);
-        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
+        ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
+        reqRespHandler.initRequestResponse(request);
         RRClientNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
         boolean isActionServerValidated = currentNotification.getActionResult();
         if (isActionServerValidated){

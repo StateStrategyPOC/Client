@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -26,7 +27,8 @@ public class RequestLightsSidePolicy implements SidePolicy {
             StoreAction action_ = new UseObjAction(lightsCard);
             parameters.add(action_);
             parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
-            CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
+            ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
+            reqRespHandler.initRequestResponse(request);
             boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
             if (isActionServerValidated) {
                 CLIENT_STORE.propagateAction(new ClientUseObjectCard(lightsCard));

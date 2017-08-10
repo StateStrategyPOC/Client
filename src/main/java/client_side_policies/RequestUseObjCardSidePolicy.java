@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -29,6 +30,8 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
                 parameters.add(action);
                 parameters.add(player.getPlayerToken());
                 ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
+                ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
+                reqRespHandler.initRequestResponse(request);
                 boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
                 if (isActionServerValidated) {
                     CLIENT_STORE.propagateAction(new ClientUseObjectCard(objectCard));

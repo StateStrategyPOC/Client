@@ -1,5 +1,6 @@
 package client_side_policies;
 
+import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -33,7 +34,8 @@ public class RequestAttackSidePolicy implements SidePolicy {
             parameters.add(player.getPlayerToken());
         }
         ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
-        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
+        ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
+        reqRespHandler.initRequestResponse(request);
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated){
             CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));

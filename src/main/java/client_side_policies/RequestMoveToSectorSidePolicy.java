@@ -1,6 +1,7 @@
 package client_side_policies;
 
 
+import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -17,16 +18,17 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
     public void apply(ClientState state, StoreAction action) {
         ClientRequestMoveToSectorAction castedAction = (ClientRequestMoveToSectorAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
+        ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         ServerMethodsNameProvider SERVER_NAMES_PROVIDER = ServerMethodsNameProvider.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
 
         Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
         CLIENT_STORE.propagateAction(new ClientAskAttackAction(false));
-        StoreAction action_ = new MoveAction(targetSector);
+        MoveAction action_ = new MoveAction(targetSector);
         parameters.add(action_);
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.makeAction(), parameters);
-        CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
+        reqRespHandler.initRequestResponse(request);
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated) {
             List<Card> drawnCards = CLIENT_STORE.getState().getCurrentReqRespNotification().getDrawnCards();
