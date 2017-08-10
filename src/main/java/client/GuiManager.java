@@ -148,6 +148,16 @@ public class GuiManager implements Observer {
             case "@CLIENT_SET_RR":
                 this.setCurrentReqRespNotificationReaction(action);
                 break;
+            case "@CLIENT_SET_PS":
+                this.setCurrentPSNotificationReaction(action);
+        }
+    }
+
+    private void setCurrentPSNotificationReaction(StoreAction action) {
+        ClientSetCurrentPubSubNotificationAction castedAction = (ClientSetCurrentPubSubNotificationAction) action;
+        PSClientNotification notification = castedAction.getPsNotification();
+        if (!notification.getIncomingMsg().equals("")){
+            this.guiGamePane.appendMsg(notification.getIncomingMsg());
         }
     }
 
