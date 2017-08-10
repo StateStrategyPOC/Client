@@ -126,7 +126,7 @@ public class GUIMap extends JLayeredPane {
 	 * the GUI
 	 */
 	public void displayGameMap(GameMap gameMap) {
-		JLabel backgroundLabel = new JLabel(new ImageIcon("back.png"));
+		JLabel backgroundLabel = new JLabel(new ImageIcon("maps/back.png"));
 		backgroundLabel.setBounds(0, 0, 800, 600);
 		add(backgroundLabel);
 		this.setLayer(backgroundLabel, LAYER_BACKGROUND);

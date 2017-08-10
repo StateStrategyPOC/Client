@@ -16,8 +16,8 @@ public class RequestJoinNewGameSidePolicy implements SidePolicy{
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ClientRequestJoinNewGameAction castedAction = (ClientRequestJoinNewGameAction) action;
         ArrayList<Object> parameters = new ArrayList<>();
-        parameters.add(castedAction.getPlayerName());
         parameters.add(castedAction.getMapName());
+        parameters.add(castedAction.getPlayerName());
         ActionOnTheWire request = new ActionOnTheWire(ServerMethodsNameProvider.getInstance().joinNewGame(),parameters);
         CLIENT_STORE.propagateAction(new ClientSetRequestAction(request));
         RRClientNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();

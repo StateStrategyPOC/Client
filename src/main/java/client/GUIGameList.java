@@ -186,7 +186,7 @@ public class GUIGameList extends JPanel {
                 if(mapName != null){
                     stateMessage.setText("Waiting for others players...");
                     CLIENT_STORE.propagateAction(new ClientRequestJoinNewGameAction(mapName.toUpperCase(), playerName));
-                    //CLIENT_STORE.propagateAction(new ClientGetGamesAction());
+                    CLIENT_STORE.propagateAction(new ClientGetGamesAction());
                     buttonPanel.setVisible(false);
                 }
 

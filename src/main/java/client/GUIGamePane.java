@@ -135,6 +135,8 @@ public class GUIGamePane extends JPanel {
     public void load(GameMap map) {
         add(this.connectionAlert);
         this.connectionAlert.setVisible(false);
+        add(this.infoMsg);
+        this.infoMsg.setVisible(true);
         mapPanel.displayGameMap(map);
 
         GridBagConstraints c = new GridBagConstraints();

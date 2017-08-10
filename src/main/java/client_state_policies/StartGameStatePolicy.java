@@ -17,7 +17,7 @@ public class StartGameStatePolicy implements StatePolicy {
         Player player = state.getPlayer();
         GameMap gameMap;
         try {
-            gameMap = GameMapFactory.provideCorrectFactory(castedAction.getGameMapName()).makeMap();
+            gameMap = GameMapFactory.provideCorrectFactory(castedAction.getGameMapName().toUpperCase()).makeMap();
         } catch (NoSuchMethodException e) {
             gameMap = new GalileiGameMapFactory().makeMap();
         }
