@@ -3,7 +3,7 @@ package client_side_policies;
 import client_store.ClientState;
 import client_store.ClientStore;
 import client_store.SidePolicy;
-import client_store.StoreAction;
+import common.StoreAction;
 import client_store_actions.ClientEndTurnAction;
 import client_store_actions.ClientSetCurrentReqRespNotificationAction;
 import common.RRClientNotification;

@@ -3,7 +3,7 @@ package client_side_policies;
 import client_store.ClientState;
 import client_store.ClientStore;
 import client_store.SidePolicy;
-import client_store.StoreAction;
+import common.StoreAction;
 import client_store_actions.ClientRequestEndTurnAction;
 import client_store_actions.ClientSetCurrentPubSubNotificationAction;
 import client_store_actions.ClientStartGameAction;

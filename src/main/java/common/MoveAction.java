@@ -1,8 +1,6 @@
 package common;
 
 
-import client_store.StoreAction;
-
 /**
  * Represents a moveToSector action in the game
  * 

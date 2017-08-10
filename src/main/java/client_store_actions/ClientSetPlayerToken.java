@@ -1,7 +1,6 @@
 package client_store_actions;
 
-import client_store.StoreAction;
-import common.Player;
+import common.StoreAction;
 import common.PlayerToken;
 
 public class ClientSetPlayerToken extends StoreAction {

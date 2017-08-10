@@ -1,6 +1,6 @@
 package client_store_actions;
 
-import client_store.StoreAction;
+import common.StoreAction;
 import common.Coordinate;
 
 public class ClientRequestMoveToSectorAction extends StoreAction {

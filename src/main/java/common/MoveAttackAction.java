@@ -1,7 +1,5 @@
 package common;
 
-import client_store.StoreAction;
-
 /**
  * Represents a moveToSector action combined with an attack
  * 

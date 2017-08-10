@@ -1,4 +1,4 @@
-package client_store;
+package common;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ public abstract class StoreAction implements Serializable {
         this.actionGroupIdentifier = actionGroupIdentifier;
     }
 
-    public String getGroupIdentifier() {
+    public String getActionGroupIdentifier() {
         return this.actionGroupIdentifier;
     }
     public String getActionIdentifier(){

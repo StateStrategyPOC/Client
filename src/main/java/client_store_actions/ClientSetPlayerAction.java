@@ -1,7 +1,7 @@
 package client_store_actions;
 
 import common.PlayerToken;
-import client_store.StoreAction;
+import common.StoreAction;
 
 /**
  * Created by giorgiopea on 25/03/17.

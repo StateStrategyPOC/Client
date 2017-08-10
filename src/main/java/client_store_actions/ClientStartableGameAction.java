@@ -1,6 +1,6 @@
 package client_store_actions;
 
-import client_store.StoreAction;
+import common.StoreAction;
 
 /**
  * Created by giorgiopea on 02/04/17.

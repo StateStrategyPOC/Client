@@ -1,7 +1,7 @@
 package client_store_actions;
 
 import common.ActionOnTheWire;
-import client_store.StoreAction;
+import common.StoreAction;
 
 public class ClientSetRequestAction extends StoreAction {
     private static String type = "@CLIENT_SET_REQUEST";

@@ -4,9 +4,9 @@ import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store_actions.ClientSetRequestAction;
 import client_store_actions.ClientStartGameAction;
 import common.RRClientNotification;
+import common.StoreAction;
 
 import java.util.ArrayList;
 

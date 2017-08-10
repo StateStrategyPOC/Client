@@ -2,7 +2,7 @@ package client_state_policies;
 
 import client_store.ClientState;
 import client_store.StatePolicy;
-import client_store.StoreAction;
+import common.StoreAction;
 import client_store_actions.ClientSetAvailableGamesAction;
 
 public class SetAvailableGamesStatePolicy implements StatePolicy {

@@ -1,6 +1,6 @@
 package client_store_actions;
 
-import client_store.StoreAction;
+import common.StoreAction;
 
 public class ClientRequestEndTurnAction extends StoreAction {
     private static String type = "@CLIENT_REQUEST_END_TURN";

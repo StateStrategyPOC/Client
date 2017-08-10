@@ -1,7 +1,5 @@
 package common;
 
-import client_store.StoreAction;
-
 /**
  * Represents the action of ending a turn in the game
  * 

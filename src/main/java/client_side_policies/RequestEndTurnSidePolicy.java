@@ -6,13 +6,13 @@ import client.ServerMethodsNameProvider;
 import client_store.*;
 import client_store_actions.ClientEndTurnAction;
 import client_store_actions.ClientRequestEndTurnAction;
-import client_store_actions.ClientSetRequestAction;
+import common.StoreAction;
 
 import java.util.ArrayList;
 
 public class RequestEndTurnSidePolicy implements SidePolicy {
     @Override
-    public void apply(ClientState state,StoreAction action) {
+    public void apply(ClientState state, StoreAction action) {
         ClientRequestEndTurnAction castedAction = (ClientRequestEndTurnAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ServerMethodsNameProvider SERVER_ACTION_WIRE_PROVIDER = ServerMethodsNameProvider.getInstance();

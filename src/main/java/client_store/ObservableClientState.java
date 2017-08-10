@@ -1,6 +1,8 @@
 package client_store;
 
 
+import common.StoreAction;
+
 import java.util.Observable;
 
 /**

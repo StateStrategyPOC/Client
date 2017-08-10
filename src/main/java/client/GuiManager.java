@@ -6,7 +6,7 @@ import common.*;
 import common.Player;
 import common.PlayerState;
 import common.PlayerType;
-import client_store.StoreAction;
+import common.StoreAction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -420,7 +420,7 @@ public class GuiManager implements Observer {
      * Makes the different gui components of the app signal the absence of a connection
      * with the server.
      *
-     * @param action The {@link client_store.StoreAction} that has caused this behavior.
+     * @param action The {@link StoreAction} that has caused this behavior.
      */
     private void setConnectionActiveReaction(StoreAction action) {
         ClientSetConnectionActiveAction castedAction = (ClientSetConnectionActiveAction) action;
@@ -432,7 +432,7 @@ public class GuiManager implements Observer {
     /**
      * Switches to the {@link client.GUIGameList} view from the {@link client.GUInitialWindow}.
      *
-     * @param action The {@link client_store.StoreAction} that has caused this behavior.
+     * @param action The {@link StoreAction} that has caused this behavior.
      */
     private void setAvailableGamesReaction(StoreAction action) {
         if (!this.guiGameList.isVisible()){

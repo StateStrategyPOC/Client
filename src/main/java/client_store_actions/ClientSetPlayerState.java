@@ -1,7 +1,7 @@
 package client_store_actions;
 
 import common.PlayerState;
-import client_store.StoreAction;
+import common.StoreAction;
 
 /**
  * Created by giorgiopea on 07/04/17.

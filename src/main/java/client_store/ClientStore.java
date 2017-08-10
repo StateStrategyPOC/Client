@@ -1,6 +1,6 @@
 package client_store;
 
-import client.ReqRespHandler;
+import common.StoreAction;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +56,7 @@ public class ClientStore {
      * @param action
      */
     public synchronized void propagateAction(StoreAction action) {
-        Resolver resolver = this.actionGroupToResolver.get(action.getGroupIdentifier());
+        Resolver resolver = this.actionGroupToResolver.get(action.getActionGroupIdentifier());
         try {
             PolicyCouple policyCouple = resolver.resolve(action);
             this.STORE_LOGGER.logPreStatePropagation(action,this.getState());

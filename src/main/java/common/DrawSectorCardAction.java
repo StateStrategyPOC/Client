@@ -1,7 +1,5 @@
 package common;
 
-import client_store.StoreAction;
-
 /**
  * Represents the action of drawing a sector card from the sector card deck
  * 

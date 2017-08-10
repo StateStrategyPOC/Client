@@ -6,8 +6,8 @@ import client.ServerMethodsNameProvider;
 import client_store.*;
 import client_store_actions.ClientRequestJoinNewGameAction;
 import client_store_actions.ClientSetPlayerAction;
-import client_store_actions.ClientSetRequestAction;
 import common.RRClientNotification;
+import common.StoreAction;
 
 import java.util.ArrayList;
 

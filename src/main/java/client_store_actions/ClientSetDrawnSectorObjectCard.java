@@ -2,7 +2,7 @@ package client_store_actions;
 
 import common.ObjectCard;
 import common.SectorCard;
-import client_store.StoreAction;
+import common.StoreAction;
 
 /**
  * Created by giorgiopea on 06/04/17.

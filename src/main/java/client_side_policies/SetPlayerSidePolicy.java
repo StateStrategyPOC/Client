@@ -6,8 +6,7 @@ import client_store_actions.ClientSetPlayerAction;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
-import client_store_actions.ClientSetPlayerToken;
-import client_store_actions.ClientSetRequestAction;
+import common.StoreAction;
 
 import java.util.ArrayList;
 

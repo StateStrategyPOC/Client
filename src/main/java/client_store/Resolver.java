@@ -1,5 +1,7 @@
 package client_store;
 
+import common.StoreAction;
+
 import java.util.HashMap;
 import java.util.Map;
 

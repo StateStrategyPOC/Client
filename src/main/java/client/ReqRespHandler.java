@@ -1,7 +1,7 @@
 package client;
 
 import client_store.ClientStore;
-import client_store.StoreAction;
+import common.StoreAction;
 import client_store_actions.ClientSetConnectionActiveAction;
 import client_store_actions.ClientSetCurrentReqRespNotificationAction;
 import client_store_actions.ClientSetRequestAction;
@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.Observable;
-import java.util.Observer;
 
 public class ReqRespHandler {
 

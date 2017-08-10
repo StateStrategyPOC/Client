@@ -6,7 +6,6 @@ import client.ServerMethodsNameProvider;
 import client_store.*;
 import client_store_actions.ClientRequestAttackAction;
 import client_store_actions.ClientMoveToSectorAction;
-import client_store_actions.ClientSetRequestAction;
 import client_store_actions.ClientUseObjectCard;
 import common.*;
 

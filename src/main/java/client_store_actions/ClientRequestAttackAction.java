@@ -1,8 +1,7 @@
 package client_store_actions;
 
-import client_store.StoreAction;
+import common.StoreAction;
 import common.Coordinate;
-import common.Sector;
 
 public class ClientRequestAttackAction extends StoreAction {
     private static String type = "@CLIENT_ATTACK_ACTION";

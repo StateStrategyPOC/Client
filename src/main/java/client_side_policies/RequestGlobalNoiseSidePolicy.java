@@ -6,7 +6,6 @@ import client.ServerMethodsNameProvider;
 import client_store.*;
 import client_store_actions.ClientRequestGlobalNoise;
 import client_store_actions.ClientSetDrawnSectorObjectCard;
-import client_store_actions.ClientSetRequestAction;
 import common.*;
 
 import java.util.ArrayList;

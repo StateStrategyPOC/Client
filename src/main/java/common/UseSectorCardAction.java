@@ -1,6 +1,5 @@
 package common;
 
-import client_store.StoreAction;
 
 /**
  * Represents the action of using a sector card in the game
@@ -11,7 +10,7 @@ import client_store.StoreAction;
  */
 public class UseSectorCardAction extends StoreAction {
 
-    private SectorCard sectorCard;
+    private final SectorCard sectorCard;
 
     public UseSectorCardAction(SectorCard sectorCard) {
         super("@GAMEACTION_USE_SECTOR_CARD","@COMMON_GROUP");
