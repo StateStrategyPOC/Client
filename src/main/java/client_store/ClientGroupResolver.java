@@ -39,6 +39,7 @@ public class ClientGroupResolver extends Resolver {
                 new PolicyCouple(new SetRRStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_PS",
                 new PolicyCouple(new SetPSStatePolicy(), new ClientSetPSNotificationSidePolicy()));
+        this.policiesMap.put("@CLIENT_ASK_FOR_SECTOR_TO_ATTACK",new PolicyCouple(new AskAttackStatePolicy(),null));
         this.policiesMap.put("@CLIENT_ASK_SECTOR_TO_LIGHT",
                 new PolicyCouple(new AskSectorToLightStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SUPPRESS",

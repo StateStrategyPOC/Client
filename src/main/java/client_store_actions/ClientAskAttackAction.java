@@ -7,10 +7,6 @@ import client_store.StoreAction;
  */
 public class ClientAskAttackAction extends StoreAction {
 
-    private static String type = "@CLIENT_ASK_FOR_SECTOR_TO_ATTACK";
-    public static String getType(){
-        return type;
-    }
     private final boolean toBeAsked;
 
     public ClientAskAttackAction(boolean toBeAsked) {
