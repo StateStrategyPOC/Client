@@ -1,6 +1,7 @@
 package client_side_policies;
 
 import client.ReqRespHandler;
+import client_store_actions.ClientStartTurnAction;
 import common.ActionOnTheWire;
 import client.ServerMethodsNameProvider;
 import client_store.*;
@@ -25,6 +26,7 @@ public class RequestOnDemandGameStartSidePolicy implements SidePolicy {
         boolean isActionServerValidated = currentClientNotification.getActionResult();
         if (isActionServerValidated){
             CLIENT_STORE.propagateAction(new ClientStartGameAction(currentClientNotification.getGameMapName()));
+            CLIENT_STORE.propagateAction(new ClientStartTurnAction());
         }
     }
 }

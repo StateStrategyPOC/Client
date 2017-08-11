@@ -133,10 +133,7 @@ public class GUIGamePane extends JPanel {
      * Inits the gui for the user displaying the mapName game map
      */
     public void load(GameMap map) {
-        add(this.connectionAlert);
-        this.connectionAlert.setVisible(false);
-        add(this.infoMsg);
-        this.infoMsg.setVisible(true);
+
         mapPanel.displayGameMap(map);
 
         GridBagConstraints c = new GridBagConstraints();
@@ -167,7 +164,15 @@ public class GUIGamePane extends JPanel {
         logScrollPane
                 .setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         logModel.addElement("Welcome to Escape from aliens in outer space");
+        this.connectionAlert.setFont(new Font("Arial", Font.BOLD, 14));
+        this.connectionAlert.setForeground(Color.LIGHT_GRAY);
+        rightPanel.add(connectionAlert);
+        this.connectionAlert.setVisible(false);
+        rightPanel.add(infoMsg);
+        this.infoMsg.setFont(new Font("Arial", Font.BOLD, 14));
+        this.infoMsg.setForeground(Color.LIGHT_GRAY);
         rightPanel.add(holdingPanel);
+        this.infoMsg.setVisible(true);
 
         chatTextField = new JTextField(20);
         chatTextField.setMaximumSize(chatTextField.getPreferredSize());

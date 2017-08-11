@@ -68,12 +68,14 @@ public class ClientGroupResolver extends Resolver {
                 new PolicyCouple(null, new RequestJoinNewGameSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_JOIN_GAME",
                 new PolicyCouple(null, new RequestJoinGameSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_ATTACK",new PolicyCouple(null,new RequestAttackSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_GLOBAL_NOISE",
                 new PolicyCouple(null, new RequestGlobalNoiseSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_END_TURN",
                 new PolicyCouple(null, new RequestEndTurnSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_ATTACK",
                 new PolicyCouple(null, new RequestAttackSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_USE_OBJECT_CARD",new PolicyCouple(null,new RequestUseObjCardSidePolicy()));
         this.policiesMap.put("@CLIENT_GET_GAMES",
                 new PolicyCouple(null, new GetGamesSidePolicy()));
         this.policiesMap.put("@CLIENT_ON_DEMAND_GAME_START",
