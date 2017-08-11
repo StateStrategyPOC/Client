@@ -291,6 +291,9 @@ public class GuiManager implements Observer {
             this.guiGamePane.setStateMessage("Indicate the sector to attack");
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.ATTACK_MENU);
         }
+        else {
+            this.guiGamePane.getMapPane().changeMapMenu(MenuType.HUMAN_USE_MENU);
+        }
     }
 
     /**
