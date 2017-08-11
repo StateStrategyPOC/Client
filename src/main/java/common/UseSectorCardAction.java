@@ -1,6 +1,5 @@
 package common;
 
-
 /**
  * Represents the action of using a sector card in the game
  * 

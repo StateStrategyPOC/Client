@@ -14,11 +14,11 @@ public abstract class StoreAction implements Serializable {
         this.actionGroupIdentifier = actionGroupIdentifier;
     }
 
-    public String getActionGroupIdentifier() {
-        return this.actionGroupIdentifier;
-    }
-    public String getActionIdentifier(){
-        return this.actionIdentifier;
+    public String getActionIdentifier() {
+        return actionIdentifier;
     }
 
+    public String getActionGroupIdentifier() {
+        return actionGroupIdentifier;
+    }
 }

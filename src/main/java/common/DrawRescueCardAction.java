@@ -7,7 +7,7 @@ package common;
  * @author Giorgio Pea
  *
  */
-public class DrawRescueCardAction extends StoreAction {
+class DrawRescueCardAction extends StoreAction {
 
 	public DrawRescueCardAction() {
         super("@GAMEACTION_DRAW_RESCUE_CARD","@COMMON_GROUP");

@@ -10,7 +10,7 @@ package common;
  */
 public class DiscardAction extends StoreAction {
 
-    private final ObjectCard cardToDiscard;
+    public final ObjectCard cardToDiscard;
 
     public DiscardAction(ObjectCard objectCard) {
         super("@GAMEACTION_DISCARD_OBJ_CARD","@COMMON_GROUP");

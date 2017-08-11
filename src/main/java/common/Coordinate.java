@@ -66,7 +66,9 @@ public class Coordinate implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Coordinate other = (Coordinate) obj;
-		return x == other.x && y == other.y;
+		if (x != other.x)
+			return false;
+		return y == other.y;
 	}
 
 	@Override

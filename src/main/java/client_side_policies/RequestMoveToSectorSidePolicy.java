@@ -23,7 +23,7 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
         ArrayList<Object> parameters = new ArrayList<>();
 
         Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
-        CLIENT_STORE.propagateAction(new ClientAskAttackAction(false));
+        //CLIENT_STORE.propagateAction(new ClientAskAttackAction(false));
         MoveAction action_ = new MoveAction(targetSector);
         parameters.add(action_);
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());

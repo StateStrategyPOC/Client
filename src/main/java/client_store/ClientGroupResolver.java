@@ -28,7 +28,7 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_ADRENALINE",
                 new PolicyCouple(new AdrenalineStatePolicy(), null));
         this.policiesMap.put("@CLIENT_DISCARD_OBJECT_CARD",
-                new PolicyCouple(new AdrenalineStatePolicy(), null));
+                new PolicyCouple(new DiscardObjectCardStatePolicy(), null));
         this.policiesMap.put("@CLIENT_END_TURN",
                 new PolicyCouple(new EndTurnStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_AVAILABLE_GAMES",

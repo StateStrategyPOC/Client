@@ -1,6 +1,5 @@
 package common;
 
-
 /**
  * Represents a moveToSector action in the game
  * 

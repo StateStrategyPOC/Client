@@ -188,7 +188,8 @@ public class GUIGamePane extends JPanel {
         endTurnButton.setPreferredSize(new Dimension(150, 20));
         endTurnButton.setMaximumSize(new Dimension(300, 20));
         endTurnButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        endTurnButton.setEnabled(false);
+        endTurnButton.setVisible(false);
+        //endTurnButton.setEnabled(false);
         endTurnButton.setIcon(new ImageIcon("endBtn.png"));
         rightPanel.add(endTurnButton);
 
@@ -304,7 +305,9 @@ public class GUIGamePane extends JPanel {
      *             not
      */
     public void showEndTurnButton(boolean show) {
-        this.endTurnButton.setEnabled(show);
+        //this.endTurnButton.setEnabled(show);
+        this.endTurnButton.setVisible(show);
+        this.repaint();
     }
 
     public void alertConnectionProblem(boolean isConnectionActive) {
