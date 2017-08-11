@@ -150,6 +150,7 @@ public class GuiManager implements Observer {
                 break;
             case "@CLIENT_SET_PS":
                 this.setCurrentPSNotificationReaction(action);
+                break;
         }
     }
 

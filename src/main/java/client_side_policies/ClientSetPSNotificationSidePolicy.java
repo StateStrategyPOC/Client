@@ -4,8 +4,7 @@ import client_store.ClientState;
 import client_store.ClientStore;
 import client_store.SidePolicy;
 import client_store_actions.*;
-import common.StoreAction;
-import common.PSClientNotification;
+import common.*;
 
 public class ClientSetPSNotificationSidePolicy implements SidePolicy {
     @Override
@@ -28,6 +27,15 @@ public class ClientSetPSNotificationSidePolicy implements SidePolicy {
         }
         if (notification.getAlienWins() || notification.getHumanWins()){
             CLIENT_STORE.propagateAction(new ClientSetWinnersAction(notification.getAlienWins(),notification.getHumanWins()));
+        }
+        if (notification.getAttackedPlayers() != null){
+            for (PlayerToken playerToken : notification.getAttackedPlayers()){
+                if (playerToken.equals(CLIENT_STORE.getState().getPlayer().getPlayerToken())){
+                    if (CLIENT_STORE.getState().getPlayer().getPrivateDeck().getContent().contains(new DefenseObjectCard())){
+                        CLIENT_STORE.propagateAction(new UseObjAction(new DefenseObjectCard()));
+                    }
+                }
+            }
         }
     }
 }
