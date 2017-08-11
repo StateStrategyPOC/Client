@@ -306,6 +306,9 @@ public class GuiManager implements Observer {
             this.guiGamePane.setStateMessage("Indicate the sector to light");
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.LIGHT_MENU);
         }
+        else {
+            this.guiGamePane.getMapPane().changeMapMenu(MenuType.HUMAN_INITIAL);
+        }
     }
 
     /**
