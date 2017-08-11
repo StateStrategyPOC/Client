@@ -64,6 +64,7 @@ public class ClientGroupResolver extends Resolver {
                 new PolicyCouple(null, new RequestMoveToSectorSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_LIGHTS",
                 new PolicyCouple(null, new RequestLightsSidePolicy()));
+        this.policiesMap.put("@CLIENT_REQUEST_DISCARD_OBJ_CARD",new PolicyCouple(null,new RequestDiscardCardSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_JOIN_NEW_GAME",
                 new PolicyCouple(null, new RequestJoinNewGameSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_JOIN_GAME",

@@ -21,5 +21,6 @@ public class SendChatMessageSidePolicy implements SidePolicy {
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.publishChatMsg(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
-        reqRespHandler.initRequestResponse(request);    }
+        reqRespHandler.initRequestResponse(request);
+    }
 }
