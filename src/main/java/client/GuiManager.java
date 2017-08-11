@@ -412,6 +412,7 @@ public class GuiManager implements Observer {
         this.guiGamePane.setInfoMsg(characterInfoMsg);
         this.guiGamePane.getMapPane().lightSector(
                 player.getCurrentSector().getCoordinate(), "Y", player.getName());
+        this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
         this.mainFrame.validate();
         this.mainFrame.repaint();
     }
