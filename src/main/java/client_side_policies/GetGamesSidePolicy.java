@@ -6,7 +6,7 @@ import common.ActionOnTheWire;
 import client.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.*;
-import common.RRClientNotification;
+import common.RRNotification;
 import common.StoreAction;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public  class GetGamesSidePolicy implements SidePolicy {
         ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.getGames(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
-        RRClientNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
+        RRNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
         boolean isActionServerValidated = currentNotification.getActionResult();
         if (isActionServerValidated && CLIENT_STORE.getState().isConnectionActive()){
             CLIENT_STORE.propagateAction(new ClientSetAvailableGamesAction(currentNotification.getGames()));

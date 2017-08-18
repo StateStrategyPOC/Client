@@ -1,15 +1,17 @@
 package client_side_policies;
 
 
-import client.ReqRespHandler;
-import common.ActionOnTheWire;
 import client.EncodedBehaviourIdentifiers;
-import client_store.*;
-import client_store_actions.*;
+import client.ReqRespHandler;
+import client_store.ClientState;
+import client_store.ClientStore;
+import client_store.SidePolicy;
+import client_store_actions.ClientMoveToSectorAction;
+import client_store_actions.ClientRequestMoveToSectorAction;
+import client_store_actions.ClientSetDrawnSectorObjectCard;
 import common.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RequestMoveToSectorSidePolicy implements SidePolicy {
 
@@ -30,17 +32,12 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
         reqRespHandler.initRequestResponse(request);
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated) {
-            List<Card> drawnCards = CLIENT_STORE.getState().getCurrentReqRespNotification().getDrawnCards();
+            RRNotification notification = CLIENT_STORE.getState().getCurrentReqRespNotification();
             CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));
-            if (drawnCards.size() == 1) {
+            if (notification.getDrawnSectorCard() != null){
                 CLIENT_STORE.propagateAction(
                         new ClientSetDrawnSectorObjectCard(
-                                (SectorCard) drawnCards.get(0), null));
-            } else if (drawnCards.size() == 2) {
-                CLIENT_STORE.propagateAction(
-                        new ClientSetDrawnSectorObjectCard(
-                                (SectorCard) drawnCards.get(0),
-                                (ObjectCard) drawnCards.get(1)));
+                                notification.getDrawnSectorCard(), notification.getDrawnObjectCard()));
             }
         }
     }

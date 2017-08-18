@@ -21,11 +21,11 @@ public class ClientState extends State implements Serializable {
     private boolean isGameStarted;
     private boolean isMyTurn;
     private boolean startableGame;
-    private RRClientNotification currentReqRespNotification;
+    private RRNotification currentReqRespNotification;
     private boolean askLights;
     private boolean askAttack;
     private String lastChatMessage;
-    private PSClientNotification currentPubSubNotification;
+    private PSNotification currentPubSubNotification;
     private long delayReturnToGameList;
     private boolean connectionActive;
     private SectorCard drawnSectorCard;
@@ -38,8 +38,6 @@ public class ClientState extends State implements Serializable {
         this.tcpPort = 29999;
         this.host = "localhost";
         this.delayReturnToGameList = 10000;
-        this.currentReqRespNotification = new RRClientNotification();
-        this.currentPubSubNotification = new PSClientNotification();
         this.connectionActive = true;
         this.inRoom = false;
     }
@@ -116,11 +114,11 @@ public class ClientState extends State implements Serializable {
         this.startableGame = startableGame;
     }
 
-    public RRClientNotification getCurrentReqRespNotification() {
+    public RRNotification getCurrentReqRespNotification() {
         return currentReqRespNotification;
     }
 
-    public void setCurrentReqRespNotification(RRClientNotification currentReqRespNotification) {
+    public void setCurrentReqRespNotification(RRNotification currentReqRespNotification) {
         this.currentReqRespNotification = currentReqRespNotification;
     }
 
@@ -148,11 +146,11 @@ public class ClientState extends State implements Serializable {
         this.lastChatMessage = lastChatMessage;
     }
 
-    public PSClientNotification getCurrentPubSubNotification() {
+    public PSNotification getCurrentPubSubNotification() {
         return currentPubSubNotification;
     }
 
-    public void setCurrentPubSubNotification(PSClientNotification currentPubSubNotification) {
+    public void setCurrentPubSubNotification(PSNotification currentPubSubNotification) {
         this.currentPubSubNotification = currentPubSubNotification;
     }
 

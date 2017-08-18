@@ -1,20 +1,20 @@
 package client_store_actions;
 
-import common.RRClientNotification;
+import common.RRNotification;
 import common.StoreAction;
 
 /**
  * Created by giorgiopea on 29/03/17.
  */
 public class ClientSetCurrentReqRespNotificationAction extends StoreAction {
-    private final RRClientNotification rrClientNotification;
+    private final RRNotification rrNotification;
 
-    public ClientSetCurrentReqRespNotificationAction(RRClientNotification rrClientNotification) {
+    public ClientSetCurrentReqRespNotificationAction(RRNotification rrNotification) {
         super("@CLIENT_SET_RR","@CLIENT_GROUP");
-        this.rrClientNotification = rrClientNotification;
+        this.rrNotification = rrNotification;
     }
 
-    public RRClientNotification getRrClientNotification() {
-        return rrClientNotification;
+    public RRNotification getRrNotification() {
+        return rrNotification;
     }
 }

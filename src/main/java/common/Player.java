@@ -33,10 +33,9 @@ public class Player implements Serializable {
 
     public void setPlayerToken(PlayerToken playerToken) {
         this.playerToken = playerToken;
-        if (this.playerToken.getPlayerType().equals(PlayerType.HUMAN)){
+        if (this.playerToken.getPlayerType().equals(PlayerType.HUMAN)) {
             this.speed = 1;
-        }
-        else {
+        } else {
             this.speed = 2;
         }
     }
@@ -101,4 +100,18 @@ public class Player implements Serializable {
         this.hasMoved = hasMoved;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "speed=" + speed +
+                ", playerToken=" + playerToken +
+                ", currentSector=" + currentSector +
+                ", playerState=" + playerState +
+                ", privateDeck=" + privateDeck +
+                ", isSedated=" + isSedated +
+                ", isAdrenalined=" + isAdrenalined +
+                ", hasMoved=" + hasMoved +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

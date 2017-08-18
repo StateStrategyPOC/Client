@@ -5,6 +5,9 @@ import common.StoreAction;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a lambda MVC Resolver
+ */
 public abstract class Resolver {
     protected final Map<String, PolicyCouple> policiesMap;
 

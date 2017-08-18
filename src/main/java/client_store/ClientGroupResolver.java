@@ -2,7 +2,9 @@ package client_store;
 
 import client_side_policies.*;
 import client_state_policies.*;
-
+/**
+ * Represents a mapper between {@link common.StoreAction#actionIdentifier} and {@link PolicyCouple}
+ */
 public class ClientGroupResolver extends Resolver {
 
 

@@ -4,7 +4,7 @@ import client.ReqRespHandler;
 import common.ActionOnTheWire;
 import client.EncodedBehaviourIdentifiers;
 import client_store.*;
-import common.RRClientNotification;
+import common.RRNotification;
 import common.StoreAction;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class RequestOnDemandGameStartSidePolicy implements SidePolicy {
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.onDemandGameStart(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
-        RRClientNotification currentClientNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
+        RRNotification currentClientNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
         boolean isActionServerValidated = currentClientNotification.getActionResult();
         //if (isActionServerValidated){
         //    CLIENT_STORE.propagateAction(new ClientStartGameAction(currentClientNotification.getGameMapName()));

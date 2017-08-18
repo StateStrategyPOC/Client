@@ -6,7 +6,7 @@ import common.StoreAction;
 import java.util.Observable;
 
 /**
- * Created by giorgiopea on 24/03/17.
+ * Represents a wrapper to the {@link ClientState} so that its changes can be observed by means of propagated Actions
  */
 public class ObservableClientState extends Observable {
     private ClientState clientState;

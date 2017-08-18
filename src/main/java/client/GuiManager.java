@@ -156,7 +156,7 @@ public class GuiManager implements Observer {
 
     private void setCurrentPSNotificationReaction(StoreAction action) {
         ClientSetCurrentPubSubNotificationAction castedAction = (ClientSetCurrentPubSubNotificationAction) action;
-        PSClientNotification notification = castedAction.getPsNotification();
+        PSNotification notification = castedAction.getPsNotification();
         if (!notification.getMessage().equals("")){
             this.guiGamePane.appendMsg(notification.getMessage());
         }
@@ -164,7 +164,7 @@ public class GuiManager implements Observer {
 
     private void setCurrentReqRespNotificationReaction(StoreAction action) {
         ClientSetCurrentReqRespNotificationAction castedAction = (ClientSetCurrentReqRespNotificationAction) action;
-        this.guiGamePane.setStateMessage(castedAction.getRrClientNotification().getMessage());
+        this.guiGamePane.setStateMessage(castedAction.getRrNotification().getMessage());
     }
 
     /**
@@ -197,14 +197,14 @@ public class GuiManager implements Observer {
      */
     private void setPlayerStateReaction(StoreAction action) {
         ClientSetPlayerState castedAction = (ClientSetPlayerState) action;
-        PSClientNotification psClientNotification = this.CLIENT_STORE.getState().getCurrentPubSubNotification();
+        PSNotification psNotification = this.CLIENT_STORE.getState().getCurrentPubSubNotification();
         if (castedAction.getPlayerState().equals(PlayerState.ESCAPED)) {
             this.guiGamePane.setStateMessage("You've ESCAPED!");
             this.guiGamePane.changeCardMenu(MenuType.EMPTY);
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
             this.guiGamePane.refreshCardPanel(new ArrayList<ObjectCard>());
             this.guiGamePane.showEndTurnButton(false);
-        } else if (castedAction.getPlayerState().equals(PlayerState.DEAD) && !(psClientNotification.getAlienWins() || psClientNotification.getHumanWins())) {
+        } else if (castedAction.getPlayerState().equals(PlayerState.DEAD) && !(psNotification.getAlienWins() || psNotification.getHumanWins())) {
             this.guiGamePane.setStateMessage("You're DEAD!");
             this.guiGamePane.changeCardMenu(MenuType.EMPTY);
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);

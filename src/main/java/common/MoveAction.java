@@ -1,10 +1,8 @@
 package common;
 
 /**
- * Represents a moveToSector action in the game
- * 
- * @author Andrea Sessa
- * @author Giorgio Pea
+ * Represents the in game action of moving to a Sector
+ *
  */
 public class MoveAction extends StoreAction {
 

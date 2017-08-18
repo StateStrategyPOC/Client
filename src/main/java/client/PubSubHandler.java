@@ -2,7 +2,7 @@ package client;
 
 import client_store.ClientStore;
 import client_store_actions.ClientSetCurrentPubSubNotificationAction;
-import common.PSClientNotification;
+import common.PSNotification;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -34,7 +34,7 @@ public class PubSubHandler extends Thread {
     public void run() {
         while (this.CLIENT_STORE.getState().isInRoom()) {
             try {
-                PSClientNotification notification = (PSClientNotification) this.inputStream.readObject();
+                PSNotification notification = (PSNotification) this.inputStream.readObject();
                 this.CLIENT_STORE.propagateAction(new ClientSetCurrentPubSubNotificationAction(notification));
             }
             catch (IOException | ClassNotFoundException e){

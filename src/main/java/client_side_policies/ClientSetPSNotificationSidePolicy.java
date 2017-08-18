@@ -12,21 +12,21 @@ public class ClientSetPSNotificationSidePolicy implements SidePolicy {
         ClientStore CLIENT_STORE = ClientStore
                 .getInstance();
         ClientSetCurrentPubSubNotificationAction castedAction = (ClientSetCurrentPubSubNotificationAction) action;
-        PSClientNotification notification = castedAction.getPsNotification();
+        PSNotification notification = castedAction.getPsNotification();
         if (notification.isGameCanBeStarted()){
             CLIENT_STORE.propagateAction(new ClientStartableGameAction());
         }
-        if (notification.isGameNeedToStart()){
+        if (notification.isGameNeedsToStart()){
             CLIENT_STORE.propagateAction(new ClientStartGameAction(notification.getGameMapName()));
         }
-        if (notification.isTurnNeedToEnd()){
+        if (notification.isTurnNeedsToEnd()){
             CLIENT_STORE.propagateAction(new ClientRequestEndTurnAction());
         }
-        if (notification.isTurnNeedToStart()){
+        if (notification.isTurnNeedsToStart()){
             CLIENT_STORE.propagateAction(new ClientStartTurnAction());
         }
-        if (notification.getAlienWins() || notification.getHumanWins()){
-            CLIENT_STORE.propagateAction(new ClientSetWinnersAction(notification.getAlienWins(),notification.getHumanWins()));
+        if (notification.isAlienWin() || notification.isHumanWin()){
+            CLIENT_STORE.propagateAction(new ClientSetWinnersAction(notification.isAlienWin(),notification.isHumanWin()));
         }
         if (notification.getAttackedPlayers() != null){
             for (PlayerToken playerToken : notification.getAttackedPlayers()){

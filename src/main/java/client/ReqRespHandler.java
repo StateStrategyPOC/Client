@@ -4,7 +4,7 @@ import client_store.ClientStore;
 import client_store_actions.ClientSetConnectionActiveAction;
 import client_store_actions.ClientSetCurrentReqRespNotificationAction;
 import common.ActionOnTheWire;
-import common.RRClientNotification;
+import common.RRNotification;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -48,7 +48,7 @@ public class ReqRespHandler {
     }
 
     private void getResponse(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
-        RRClientNotification response = (RRClientNotification) inputStream.readObject();
+        RRNotification response = (RRNotification) inputStream.readObject();
         this.CLIENT_STORE.propagateAction(new ClientSetCurrentReqRespNotificationAction(response));
     }
 
