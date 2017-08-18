@@ -4,14 +4,14 @@ package client;
  * Created by giorgiopea on 25/04/17.
  *
  */
-public class ServerMethodsNameProvider {
+public class EncodedBehaviourIdentifiers {
 
-    private static ServerMethodsNameProvider instance = new ServerMethodsNameProvider();
-    public static ServerMethodsNameProvider getInstance(){
+    private static EncodedBehaviourIdentifiers instance = new EncodedBehaviourIdentifiers();
+    public static EncodedBehaviourIdentifiers getInstance(){
         return instance;
     }
 
-    private ServerMethodsNameProvider(){
+    private EncodedBehaviourIdentifiers(){
 
     }
 

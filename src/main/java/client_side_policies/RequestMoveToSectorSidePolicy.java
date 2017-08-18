@@ -3,7 +3,7 @@ package client_side_policies;
 
 import client.ReqRespHandler;
 import common.ActionOnTheWire;
-import client.ServerMethodsNameProvider;
+import client.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.*;
 import common.*;
@@ -19,15 +19,14 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
         ClientRequestMoveToSectorAction castedAction = (ClientRequestMoveToSectorAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
-        ServerMethodsNameProvider SERVER_NAMES_PROVIDER = ServerMethodsNameProvider.getInstance();
+        EncodedBehaviourIdentifiers encodedBehaviourIdentifiers = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
-
         Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
         //CLIENT_STORE.propagateAction(new ClientAskAttackAction(false));
         MoveAction action_ = new MoveAction(targetSector);
         parameters.add(action_);
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
-        ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.makeAction(), parameters);
+        ActionOnTheWire request = new ActionOnTheWire(encodedBehaviourIdentifiers.makeAction(), parameters);
         reqRespHandler.initRequestResponse(request);
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
         if (isActionServerValidated) {

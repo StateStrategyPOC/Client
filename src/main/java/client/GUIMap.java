@@ -74,7 +74,14 @@ public class GUIMap extends JLayeredPane {
 			}
 		});
 
-		humanMoveItem.addActionListener(alienMoveItem.getActionListeners()[0]);
+		humanMoveItem.addActionListener(
+				new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						CLIENT_STORE.propagateAction(new ClientRequestMoveToSectorAction(selectedSector.getCoordinate()));
+					}
+				}
+		);
 
 		attackItem.addActionListener(new ActionListener() {
 			@Override

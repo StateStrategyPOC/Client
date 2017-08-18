@@ -2,7 +2,7 @@ package client_side_policies;
 
 import client.ReqRespHandler;
 import common.ActionOnTheWire;
-import client.ServerMethodsNameProvider;
+import client.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.*;
 import common.*;
@@ -17,7 +17,7 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
         ClientRequestUseObjectCard castedAction = (ClientRequestUseObjectCard) action;
         ObjectCard objectCard = castedAction.getObjectCard();
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        ServerMethodsNameProvider SERVER_ACTION_WIRE_PROVIDER = ServerMethodsNameProvider.getInstance();
+        EncodedBehaviourIdentifiers SERVER_ACTION_WIRE_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         Player player = CLIENT_STORE.getState().getPlayer();
         if (player.getPrivateDeck().getContent().contains(objectCard)) {

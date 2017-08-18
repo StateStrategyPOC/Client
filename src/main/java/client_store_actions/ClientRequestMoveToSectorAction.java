@@ -5,10 +5,6 @@ import common.Coordinate;
 
 public class ClientRequestMoveToSectorAction extends StoreAction {
 
-    private static String type = "@CLIENT_REQUEST_MOVE_TO_SECTOR";
-    public static String getType(){
-        return type;
-    }
     private final Coordinate coordinate;
 
     public ClientRequestMoveToSectorAction(Coordinate coordinate) {

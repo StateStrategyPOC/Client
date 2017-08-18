@@ -25,7 +25,7 @@ public class Sector implements Serializable {
 		return hasBeenChecked;
 	}
 
-	public void setHasBeenChecked(boolean hasBeenChecked) {
+	public void setHasBeenChecked(boolean hasBesenChecked) {
 		this.hasBeenChecked = hasBeenChecked;
 	}
 

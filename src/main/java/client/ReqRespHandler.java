@@ -1,10 +1,8 @@
 package client;
 
 import client_store.ClientStore;
-import common.StoreAction;
 import client_store_actions.ClientSetConnectionActiveAction;
 import client_store_actions.ClientSetCurrentReqRespNotificationAction;
-import client_store_actions.ClientSetRequestAction;
 import common.ActionOnTheWire;
 import common.RRClientNotification;
 
@@ -36,7 +34,7 @@ public class ReqRespHandler {
             outputStream.flush();
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             this.sendRequest(actionOnTheWire,outputStream);
-            if(actionOnTheWire.getIdentifierMapper().equals(ServerMethodsNameProvider.getInstance().subscribe())){
+            if(actionOnTheWire.getBehaviourIdentifier().equals(EncodedBehaviourIdentifiers.getInstance().subscribe())){
                 PubSubHandler pubSubHandler = new PubSubHandler(socket,inputStream);
                 pubSubHandler.start();
             }
@@ -62,10 +60,5 @@ public class ReqRespHandler {
         outputStream.close();
         inputStream.close();
         socket.close();
-    }
-
-    private void setRequest(StoreAction action){
-        ClientSetRequestAction castedAction = (ClientSetRequestAction) action;
-        this.initRequestResponse(castedAction.getRequest());
     }
 }

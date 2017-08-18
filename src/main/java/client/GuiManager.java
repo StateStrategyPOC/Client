@@ -343,7 +343,6 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void moveToSectorReaction(StoreAction action) {
-        ClientMoveToSectorAction castedAction = (ClientMoveToSectorAction) action;
         this.updatePosition();
         this.guiGamePane.showEndTurnButton(true);
         this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);

@@ -3,18 +3,23 @@ package common;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Represents a message that the client application sends to the server application
+ * to make a specific behaviour be executed.
+ */
 public class ActionOnTheWire implements Serializable {
-
-    private final String identifierMapper;
+    //Identifier of the behaviour to be executed
+    private final String actionIdentifier;
+    //Data parameters
     private final ArrayList<Object> parameters;
 
-    public ActionOnTheWire(String identifierMapper, ArrayList<Object> parameters) {
-        this.identifierMapper = identifierMapper;
+    public ActionOnTheWire(String actionIdentifier, ArrayList<Object> parameters) {
+        this.actionIdentifier = actionIdentifier;
         this.parameters = parameters;
     }
 
-    public String getIdentifierMapper() {
-        return identifierMapper;
+    public String getActionIdentifier() {
+        return actionIdentifier;
     }
 
     public ArrayList<Object> getParameters() {

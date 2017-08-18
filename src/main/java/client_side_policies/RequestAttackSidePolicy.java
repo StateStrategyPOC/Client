@@ -2,7 +2,7 @@ package client_side_policies;
 
 import client.ReqRespHandler;
 import common.ActionOnTheWire;
-import client.ServerMethodsNameProvider;
+import client.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.ClientRequestAttackAction;
 import client_store_actions.ClientMoveToSectorAction;
@@ -16,7 +16,7 @@ public class RequestAttackSidePolicy implements SidePolicy {
     public void apply(ClientState state, StoreAction action) {
         ClientRequestAttackAction castedAction = (ClientRequestAttackAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        ServerMethodsNameProvider SERVER_ACTION_WIRE_PROVIDER = ServerMethodsNameProvider.getInstance();
+        EncodedBehaviourIdentifiers SERVER_ACTION_WIRE_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         Coordinate coordinate = castedAction.getCoordinate();
         Player player = CLIENT_STORE.getState().getPlayer();

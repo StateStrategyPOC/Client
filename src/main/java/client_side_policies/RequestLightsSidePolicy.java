@@ -2,7 +2,7 @@ package client_side_policies;
 
 import client.ReqRespHandler;
 import common.ActionOnTheWire;
-import client.ServerMethodsNameProvider;
+import client.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.ClientAskSectorToLightAction;
 import client_store_actions.ClientRequestLightsAction;
@@ -17,7 +17,7 @@ public class RequestLightsSidePolicy implements SidePolicy {
     public void apply(ClientState state, StoreAction action) {
         ClientRequestLightsAction castedAction = (ClientRequestLightsAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        ServerMethodsNameProvider SERVER_NAMES_PROVIDER = ServerMethodsNameProvider.getInstance();
+        EncodedBehaviourIdentifiers SERVER_NAMES_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.makeAction(),parameters);

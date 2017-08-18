@@ -1,11 +1,9 @@
 package client_side_policies;
 
 import client.ReqRespHandler;
-import client_store_actions.ClientStartTurnAction;
 import common.ActionOnTheWire;
-import client.ServerMethodsNameProvider;
+import client.EncodedBehaviourIdentifiers;
 import client_store.*;
-import client_store_actions.ClientStartGameAction;
 import common.RRClientNotification;
 import common.StoreAction;
 
@@ -16,7 +14,7 @@ public class RequestOnDemandGameStartSidePolicy implements SidePolicy {
     @Override
     public void apply(ClientState state, StoreAction action) {
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        ServerMethodsNameProvider SERVER_NAMES_PROVIDER = ServerMethodsNameProvider.getInstance();
+        EncodedBehaviourIdentifiers SERVER_NAMES_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(SERVER_NAMES_PROVIDER.onDemandGameStart(),parameters);

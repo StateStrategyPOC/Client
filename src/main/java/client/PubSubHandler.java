@@ -24,6 +24,12 @@ public class PubSubHandler extends Thread {
         this.inputStream = inputStream;
         this.CLIENT_STORE = ClientStore.getInstance();
     }
+
+    /**
+     * Runs the thread defined in this class. The thread listens for incoming notifications
+     * from the connection and makes the them available to the rest of the application
+     * via Action propagation
+     */
     @Override
     public void run() {
         while (this.CLIENT_STORE.getState().isInRoom()) {
