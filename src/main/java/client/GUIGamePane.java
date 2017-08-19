@@ -171,6 +171,7 @@ public class GUIGamePane extends JPanel {
         rightPanel.add(infoMsg);
         this.infoMsg.setFont(new Font("Arial", Font.BOLD, 14));
         this.infoMsg.setForeground(Color.LIGHT_GRAY);
+        rightPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         rightPanel.add(holdingPanel);
         this.infoMsg.setVisible(true);
 
