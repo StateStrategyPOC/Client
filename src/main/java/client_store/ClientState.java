@@ -27,7 +27,6 @@ public class ClientState extends State implements Serializable {
     private PSNotification currentPubSubNotification;
     private long delayReturnToGameList;
     private boolean connectionActive;
-    private SectorCard drawnSectorCard;
     private boolean aliensHaveWon;
     private boolean humansHaveWon;
     private boolean inRoom;
@@ -168,14 +167,6 @@ public class ClientState extends State implements Serializable {
         this.connectionActive = connectionActive;
     }
 
-    public SectorCard getDrawnSectorCard() {
-        return drawnSectorCard;
-    }
-
-    public void setDrawnSectorCard(SectorCard drawnSectorCard) {
-        this.drawnSectorCard = drawnSectorCard;
-    }
-
     public boolean isAliensHaveWon() {
         return aliensHaveWon;
     }
@@ -198,5 +189,30 @@ public class ClientState extends State implements Serializable {
 
     public void setInRoom(boolean inRoom) {
         this.inRoom = inRoom;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientState{" +
+                "tcpPort=" + tcpPort +
+                ", currentPubSubHandler=" + currentPubSubHandler +
+                ", availableGames=" + availableGames +
+                ", player=" + player +
+                ", host='" + host + '\'' +
+                ", gameMap=" + gameMap +
+                ", isGameStarted=" + isGameStarted +
+                ", isMyTurn=" + isMyTurn +
+                ", startableGame=" + startableGame +
+                ", currentReqRespNotification=" + currentReqRespNotification +
+                ", askLights=" + askLights +
+                ", askAttack=" + askAttack +
+                ", lastChatMessage='" + lastChatMessage + '\'' +
+                ", currentPubSubNotification=" + currentPubSubNotification +
+                ", delayReturnToGameList=" + delayReturnToGameList +
+                ", connectionActive=" + connectionActive +
+                ", aliensHaveWon=" + aliensHaveWon +
+                ", humansHaveWon=" + humansHaveWon +
+                ", inRoom=" + inRoom +
+                '}';
     }
 }
