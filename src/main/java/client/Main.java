@@ -3,7 +3,7 @@ package client;
 import javax.swing.*;
 
 /**
- * Created by giorgiopea on 09/04/17.
+ * The application's entry point
  */
 public class Main {
 

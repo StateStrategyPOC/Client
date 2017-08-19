@@ -3,7 +3,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 07/04/17.
+ * An action for signalling that the game is ended
  */
 public class ClientSetWinnersAction extends StoreAction {
 

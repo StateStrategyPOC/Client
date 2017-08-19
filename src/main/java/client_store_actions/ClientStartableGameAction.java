@@ -3,7 +3,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 02/04/17.
+ * An action for signalling that the Player can start the game on demand
  */
 public class ClientStartableGameAction extends StoreAction {
     public ClientStartableGameAction() {

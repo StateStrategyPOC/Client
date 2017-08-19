@@ -1,11 +1,11 @@
 package client_side_policies;
 
 import client.ReqRespHandler;
-import client.EncodedBehaviourIdentifiers;
+import common.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.ClientRequestAttackAction;
 import client_store_actions.ClientMoveToSectorAction;
-import client_store_actions.ClientUseObjectCard;
+import client_store_actions.ClientUseObjectCardAction;
 import common.*;
 
 import java.util.ArrayList;
@@ -15,7 +15,6 @@ public class RequestAttackSidePolicy implements SidePolicy {
     public void apply(ClientState state, StoreAction action) {
         ClientRequestAttackAction castedAction = (ClientRequestAttackAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        EncodedBehaviourIdentifiers SERVER_ACTION_WIRE_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         Coordinate coordinate = castedAction.getCoordinate();
         Player player = CLIENT_STORE.getState().getPlayer();
@@ -31,14 +30,14 @@ public class RequestAttackSidePolicy implements SidePolicy {
             parameters.add(new MoveAttackAction(targetSector));
             parameters.add(player.getPlayerToken());
         }
-        ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
+        ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
         boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
         if (isActionServerValidated){
             CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));
             if (humanAttack){
-                CLIENT_STORE.propagateAction(new ClientUseObjectCard(card));
+                CLIENT_STORE.propagateAction(new ClientUseObjectCardAction(card));
             }
         }
     }

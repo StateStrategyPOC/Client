@@ -3,10 +3,13 @@ package client_store_actions;
 import common.StoreAction;
 import common.ObjectCard;
 
-public class ClientRequestUseObjectCard extends StoreAction {
+/**
+ * An action for signalling the request of the in game action of using an Object Card
+ */
+public class ClientRequestUseObjectCardAction extends StoreAction {
 
     private final ObjectCard objectCard;
-    public ClientRequestUseObjectCard(ObjectCard objectCard) {
+    public ClientRequestUseObjectCardAction(ObjectCard objectCard) {
         super("@CLIENT_REQUEST_USE_OBJECT_CARD","@CLIENT_GROUP");
         this.objectCard = objectCard;
     }

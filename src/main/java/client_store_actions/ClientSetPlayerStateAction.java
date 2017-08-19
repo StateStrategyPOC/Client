@@ -4,13 +4,13 @@ import common.PlayerState;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 07/04/17.
+ * An action for signalling a new state for the Player
  */
-public class ClientSetPlayerState extends StoreAction {
+public class ClientSetPlayerStateAction extends StoreAction {
 
     private final PlayerState playerState;
 
-    public ClientSetPlayerState(PlayerState playerState)
+    public ClientSetPlayerStateAction(PlayerState playerState)
     {
         super("@CLIENT_SET_PLAYER_STATE","@CLIENT_GROUP");
         this.playerState = playerState;

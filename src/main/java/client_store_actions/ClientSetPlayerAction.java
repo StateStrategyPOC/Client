@@ -4,7 +4,7 @@ import common.PlayerToken;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 25/03/17.
+ * An action for signalling the availability of an in game identifier for the Player
  */
 public class ClientSetPlayerAction extends StoreAction {
 

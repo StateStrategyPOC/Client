@@ -2,6 +2,9 @@ package client_store_actions;
 
 import common.StoreAction;
 
+/**
+ * An action for signalling if the Player is in a game room
+ */
 public class ClientSetInRoomAction extends StoreAction {
 
     private final boolean inRoom;

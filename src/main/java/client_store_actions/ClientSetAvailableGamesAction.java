@@ -6,7 +6,7 @@ import common.GamePublicData;
 import java.util.ArrayList;
 
 /**
- * Created by giorgiopea on 25/03/17.
+ * An action for signalling the availibility a series of game rooms to join
  */
 public class ClientSetAvailableGamesAction extends StoreAction {
 

@@ -10,8 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
- * Represents the initial window of the GUI in which the user can choose the type of connection
- * @author Andrea Sessa
+ * Represents the initial window of the GUI in which the user can verify the server connection
  *
  */
 public class GUInitialWindow extends JPanel {

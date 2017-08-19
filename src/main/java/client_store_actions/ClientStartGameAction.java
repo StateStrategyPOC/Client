@@ -4,7 +4,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 25/03/17.
+ * An action for signalling the start of the game
  */
 public class ClientStartGameAction extends StoreAction {
 

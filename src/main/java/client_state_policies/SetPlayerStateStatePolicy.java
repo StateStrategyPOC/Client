@@ -3,13 +3,13 @@ package client_state_policies;
 import client_store.ClientState;
 import client_store.StatePolicy;
 import common.StoreAction;
-import client_store_actions.ClientSetPlayerState;
+import client_store_actions.ClientSetPlayerStateAction;
 import common.PlayerState;
 
 public class SetPlayerStateStatePolicy implements StatePolicy {
     @Override
     public ClientState apply(ClientState state, StoreAction action) {
-        ClientSetPlayerState castedAction = (ClientSetPlayerState) action;
+        ClientSetPlayerStateAction castedAction = (ClientSetPlayerStateAction) action;
         state.getPlayer().setPlayerState(castedAction.getPlayerState());
         if (state.getPlayer().getPlayerState().equals(PlayerState.DEAD) ||  state.getPlayer().getPlayerState().equals(PlayerState.ESCAPED)){
             state.setGameStarted(false);

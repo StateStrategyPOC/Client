@@ -2,6 +2,9 @@ package client_store_actions;
 
 import common.StoreAction;
 
+/**
+ * An action for signalling the request of the action of joining a game room
+ */
 public class ClientRequestJoinGameAction extends StoreAction{
     private final int gameId;
     private final String playerName;

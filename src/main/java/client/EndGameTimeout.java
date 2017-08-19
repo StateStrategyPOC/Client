@@ -3,7 +3,8 @@ package client;
 import java.util.TimerTask;
 
 /**
- * Created by giorgiopea on 03/05/17.
+ * Represents the thread that waits for a certain time then changes the view of the application to the
+ * 'game list view'
  */
 public class EndGameTimeout extends TimerTask {
     @Override

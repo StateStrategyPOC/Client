@@ -151,7 +151,7 @@ public class GuiManager implements Observer {
     }
 
     private void setCurrentPSNotificationReaction(StoreAction action) {
-        ClientSetCurrentPubSubNotificationAction castedAction = (ClientSetCurrentPubSubNotificationAction) action;
+        ClientSetCurrentPSNotificationAction castedAction = (ClientSetCurrentPSNotificationAction) action;
         PSNotification notification = castedAction.getPsNotification();
         if (notification.getMessage() != null){
             this.guiGamePane.appendMsg(notification.getMessage());
@@ -159,7 +159,7 @@ public class GuiManager implements Observer {
     }
 
     private void setCurrentReqRespNotificationReaction(StoreAction action) {
-        ClientSetCurrentReqRespNotificationAction castedAction = (ClientSetCurrentReqRespNotificationAction) action;
+        ClientSetCurrentRRNotificationAction castedAction = (ClientSetCurrentRRNotificationAction) action;
         this.guiGamePane.setStateMessage(castedAction.getRrNotification().getMessage());
     }
 
@@ -192,7 +192,7 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void setPlayerStateReaction(StoreAction action) {
-        ClientSetPlayerState castedAction = (ClientSetPlayerState) action;
+        ClientSetPlayerStateAction castedAction = (ClientSetPlayerStateAction) action;
         PSNotification psNotification = this.CLIENT_STORE.getState().getCurrentPubSubNotification();
         if (castedAction.getPlayerState().equals(PlayerState.ESCAPED)) {
             this.guiGamePane.setStateMessage("You've ESCAPED!");
@@ -216,7 +216,7 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void publishChatMessageReaction(StoreAction action) {
-        ClientSetCurrentChatMessage castedAction = (ClientSetCurrentChatMessage) action;
+        ClientSetCurrentChatMessageAction castedAction = (ClientSetCurrentChatMessageAction) action;
         this.guiGamePane.appendMsg(castedAction.getMessage());
     }
 
@@ -258,7 +258,7 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void discardObjectCardReaction(StoreAction action) {
-        ClientRequestDiscardObjectCardAction castedAction = (ClientRequestDiscardObjectCardAction) action;
+        ClientDiscardObjectCardAction castedAction = (ClientDiscardObjectCardAction) action;
         this.guiGamePane.refreshCardPanel(this.CLIENT_STORE.getState().getPlayer().getPrivateDeck().getContent());
         this.guiGamePane.showEndTurnButton(true);
         this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
@@ -318,7 +318,7 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void useObjectCardReaction(StoreAction action) {
-        ClientUseObjectCard castedAction = (ClientUseObjectCard) action;
+        ClientUseObjectCardAction castedAction = (ClientUseObjectCardAction) action;
         if (castedAction.getObjectCard() instanceof DefenseObjectCard) {
             this.guiGamePane.setStateMessage("You have succesfully defended from an attack");
         }
@@ -352,7 +352,7 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void setDrawnSectorObjectCardReaction(StoreAction action) {
-        ClientSetDrawnSectorObjectCard castedAction = (ClientSetDrawnSectorObjectCard) action;
+        ClientSetDrawnSectorObjectCardAction castedAction = (ClientSetDrawnSectorObjectCardAction) action;
         CardSplashScreen cardSplashScreen = new CardSplashScreen(this.mainFrame);
         cardSplashScreen.showCards(castedAction.getDrawnSectorCard(), castedAction.getDrawnObjectCard());
         PrivateDeck clientPrivateDeck = this.CLIENT_STORE.getState().getPlayer().getPrivateDeck();

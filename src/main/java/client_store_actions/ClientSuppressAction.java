@@ -3,7 +3,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 30/03/17.
+ * An action for signalling the use of a Sedatives Object Card
  */
 public class ClientSuppressAction extends StoreAction {
 

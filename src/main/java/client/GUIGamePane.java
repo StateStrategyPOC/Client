@@ -1,10 +1,10 @@
 package client;
 
 import client_store.ClientStore;
-import client_store_actions.ClientRequestDiscardObjectCard;
-import client_store_actions.ClientPublishChatMessage;
+import client_store_actions.ClientRequestDiscardObjectCardAction;
+import client_store_actions.ClientPublishChatMessageAction;
 import client_store_actions.ClientRequestEndTurnAction;
-import client_store_actions.ClientRequestUseObjectCard;
+import client_store_actions.ClientRequestUseObjectCardAction;
 import common.GameMap;
 import common.ObjectCard;
 
@@ -94,7 +94,7 @@ public class GUIGamePane extends JPanel {
         msgButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                CLIENT_STORE.propagateAction(new ClientPublishChatMessage(chatTextField.getText()));
+                CLIENT_STORE.propagateAction(new ClientPublishChatMessageAction(chatTextField.getText()));
                 chatTextField.setText("");
             }
         });
@@ -103,7 +103,7 @@ public class GUIGamePane extends JPanel {
         useCardItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CLIENT_STORE.propagateAction(new ClientRequestUseObjectCard(selectedObjectCard));
+                CLIENT_STORE.propagateAction(new ClientRequestUseObjectCardAction(selectedObjectCard));
             }
         });
         humanUseOnlyItem.addActionListener(useCardItem.getActionListeners()[0]);
@@ -111,7 +111,7 @@ public class GUIGamePane extends JPanel {
         alienDiscardItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CLIENT_STORE.propagateAction(new ClientRequestDiscardObjectCard(selectedObjectCard));
+                CLIENT_STORE.propagateAction(new ClientRequestDiscardObjectCardAction(selectedObjectCard));
             }
         });
         humanDiscardItem.addActionListener(alienDiscardItem

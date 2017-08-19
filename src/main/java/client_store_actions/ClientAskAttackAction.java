@@ -3,7 +3,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 27/03/17.
+ * An action for signalling if the Player has used an Attack Object Card
  */
 public class ClientAskAttackAction extends StoreAction {
 

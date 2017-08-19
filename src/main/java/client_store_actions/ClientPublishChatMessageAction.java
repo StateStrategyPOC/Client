@@ -2,11 +2,14 @@ package client_store_actions;
 
 import common.StoreAction;
 
-public class ClientPublishChatMessage extends StoreAction {
+/**
+ * An action for signalling the request of the action of sending a chat message
+ */
+public class ClientPublishChatMessageAction extends StoreAction {
 
 
     private final String chatMessage;
-    public ClientPublishChatMessage(String message) {
+    public ClientPublishChatMessageAction(String message) {
         super("@CLIENT_PUBLISH_CHAT_MSG","@CLIENT_GROUP");
         this.chatMessage = message;
     }

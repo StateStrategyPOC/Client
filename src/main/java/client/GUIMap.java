@@ -2,7 +2,7 @@ package client;
 
 import client_store.ClientStore;
 import client_store_actions.ClientRequestAttackAction;
-import client_store_actions.ClientRequestGlobalNoise;
+import client_store_actions.ClientRequestGlobalNoiseAction;
 import client_store_actions.ClientRequestLightsAction;
 import client_store_actions.ClientRequestMoveToSectorAction;
 import common.Coordinate;
@@ -99,7 +99,7 @@ public class GUIMap extends JLayeredPane {
 		noiseItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			    CLIENT_STORE.propagateAction(new ClientRequestGlobalNoise(selectedSector.getCoordinate(),true));
+			    CLIENT_STORE.propagateAction(new ClientRequestGlobalNoiseAction(selectedSector.getCoordinate(),true));
 			}
 		});
 

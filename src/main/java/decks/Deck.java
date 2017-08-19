@@ -6,9 +6,7 @@ import java.util.List;
 
 /**
  * Represents a generic deck in the game
- * 
- * @author Andrea Sessa
- * @author Giorgio Pea
+ *
  */
 public abstract class Deck {
 	// The set of cards contained in the deck

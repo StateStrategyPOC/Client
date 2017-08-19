@@ -8,8 +8,6 @@ import java.io.File;
  * Represents a factory of Galilei game maps
  * 
  * @see GameMapFactory
- * @author Andrea Sessa
- * @author Giorgio Pea
  */
 public class GalileiGameMapFactory extends GameMapFactory {
 	/**

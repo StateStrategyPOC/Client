@@ -3,6 +3,9 @@ package client_store_actions;
 import common.RescueCard;
 import common.StoreAction;
 
+/**
+ * An action for signalling the use of a Rescue Card
+ */
 public class ClientRescuePlayerAction extends StoreAction {
 
     private final RescueCard rescueCard;

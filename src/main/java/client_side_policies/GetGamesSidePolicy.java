@@ -3,7 +3,7 @@ package client_side_policies;
 
 import client.ReqRespHandler;
 import common.ActionOnTheWire;
-import client.EncodedBehaviourIdentifiers;
+import common.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.*;
 import common.RRNotification;
@@ -16,9 +16,8 @@ public  class GetGamesSidePolicy implements SidePolicy {
     @Override
     public void apply(ClientState state, StoreAction action) {
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        EncodedBehaviourIdentifiers SERVER_ACTION_WIRE_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
-        ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.getGames(),parameters);
+        ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.getGames(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
         RRNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();

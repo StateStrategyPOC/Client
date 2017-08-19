@@ -3,7 +3,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 05/04/17.
+ * An action for signalling a new status for the connection with the server
  */
 public class ClientSetConnectionActiveAction extends StoreAction {
 

@@ -8,8 +8,6 @@ import java.io.File;
  * Represents a factory of Fermi game maps
  * 
  * @see GameMapFactory
- * @author Andrea Sessa
- * @author Giorgio Pea
  *
  */
 public class FermiGameMapFactory extends GameMapFactory {

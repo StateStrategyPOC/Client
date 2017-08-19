@@ -56,8 +56,6 @@ public class ClientGroupResolver extends Resolver {
                 new PolicyCouple(new SetWinnersStatePolicy(), null));
         this.policiesMap.put("@CLIENT_STARTABLE_GAME",
                 new PolicyCouple(new StartableGameStatePolicy(), null));
-        this.policiesMap.put("@CLIENT_SET_REQUEST",
-                new PolicyCouple(new SetRequestStatePolicy(), null));
         this.policiesMap.put("@CLIENT_PUBLISH_CHAT_MSG",
                 new PolicyCouple(null, new SendChatMessageSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_USE_OBJ_CARD",

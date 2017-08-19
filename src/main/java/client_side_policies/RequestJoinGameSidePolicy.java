@@ -2,7 +2,7 @@ package client_side_policies;
 
 import client.ReqRespHandler;
 import common.ActionOnTheWire;
-import client.EncodedBehaviourIdentifiers;
+import common.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.ClientRequestJoinGameAction;
 import client_store_actions.ClientSetPlayerAction;
@@ -16,11 +16,10 @@ public class RequestJoinGameSidePolicy implements SidePolicy {
     public void apply(ClientState state, StoreAction action) {
         ClientRequestJoinGameAction castedAction = (ClientRequestJoinGameAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        EncodedBehaviourIdentifiers SERVER_ACTION_WIRE_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         parameters.add(castedAction.getGameId());
         parameters.add(castedAction.getPlayerName());
-        ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.joinGame(),parameters);
+        ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.joinGame(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
         RRNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();

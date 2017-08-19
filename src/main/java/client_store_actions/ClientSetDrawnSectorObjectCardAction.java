@@ -5,14 +5,14 @@ import common.SectorCard;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 06/04/17.
+ * An action for signalling that a Sector Card and possibly an Object Card have been drawn
  */
-public class ClientSetDrawnSectorObjectCard extends StoreAction {
+public class ClientSetDrawnSectorObjectCardAction extends StoreAction {
 
     private final SectorCard drawnSectorCard;
     private final ObjectCard drawnObjectCard;
 
-    public ClientSetDrawnSectorObjectCard(SectorCard drawnSectorCard, ObjectCard drawnObjectCard) {
+    public ClientSetDrawnSectorObjectCardAction(SectorCard drawnSectorCard, ObjectCard drawnObjectCard) {
         super("@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD","@CLIENT_GROUP");
         this.drawnSectorCard = drawnSectorCard;
         this.drawnObjectCard = drawnObjectCard;

@@ -8,9 +8,7 @@ import java.util.List;
 
 /**
  * Represents a deck containing sector cards
- * 
- * @author Andrea Sessa
- * @author Giorgio Pea
+ *
  */
 public class SectorDeck extends Deck {
 	private final DiscardDeck discardDeck;

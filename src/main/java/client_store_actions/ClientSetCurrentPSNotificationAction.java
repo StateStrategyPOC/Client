@@ -4,12 +4,12 @@ import common.PSNotification;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 29/03/17.
+ * An action for signalling the availability of an asynchronous notification from the server
  */
-public class ClientSetCurrentPubSubNotificationAction extends StoreAction {
+public class ClientSetCurrentPSNotificationAction extends StoreAction {
     private final PSNotification psNotification;
 
-    public ClientSetCurrentPubSubNotificationAction(PSNotification psNotification) {
+    public ClientSetCurrentPSNotificationAction(PSNotification psNotification) {
         super("@CLIENT_SET_PS","@CLIENT_GROUP");
         this.psNotification = psNotification;
     }

@@ -4,7 +4,7 @@ import common.StoreAction;
 import common.Sector;
 
 /**
- * Created by giorgiopea on 25/03/17.
+ * An action for signalling the request of the in game action of moving to a Sector
  */
 public class ClientMoveToSectorAction extends StoreAction {
 

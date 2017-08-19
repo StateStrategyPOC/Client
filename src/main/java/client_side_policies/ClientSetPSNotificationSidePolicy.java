@@ -11,7 +11,7 @@ public class ClientSetPSNotificationSidePolicy implements SidePolicy {
     public void apply(ClientState state, StoreAction action) {
         ClientStore CLIENT_STORE = ClientStore
                 .getInstance();
-        ClientSetCurrentPubSubNotificationAction castedAction = (ClientSetCurrentPubSubNotificationAction) action;
+        ClientSetCurrentPSNotificationAction castedAction = (ClientSetCurrentPSNotificationAction) action;
         PSNotification notification = castedAction.getPsNotification();
         if (notification.isGameCanBeStarted()){
             CLIENT_STORE.propagateAction(new ClientStartableGameAction());

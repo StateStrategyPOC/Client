@@ -3,7 +3,8 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 27/03/17.
+ * An action for signalling if the Player has to be asked to indicate a Sector to reveal other Players
+ * within it
  */
 public class ClientAskSectorToLightAction extends StoreAction {
 

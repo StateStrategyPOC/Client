@@ -2,8 +2,9 @@ package client;
 
 import client_store.ClientStore;
 import client_store_actions.ClientSetConnectionActiveAction;
-import client_store_actions.ClientSetCurrentReqRespNotificationAction;
+import client_store_actions.ClientSetCurrentRRNotificationAction;
 import common.ActionOnTheWire;
+import common.EncodedBehaviourIdentifiers;
 import common.RRNotification;
 
 import java.io.IOException;
@@ -11,6 +12,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+/**
+ * Represents a handler of a request communication from the client to the server
+ */
 public class ReqRespHandler {
 
     private final ClientStore CLIENT_STORE;
@@ -34,7 +38,7 @@ public class ReqRespHandler {
             outputStream.flush();
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             this.sendRequest(actionOnTheWire,outputStream);
-            if(actionOnTheWire.getActionIdentifier().equals(EncodedBehaviourIdentifiers.getInstance().subscribe())){
+            if(actionOnTheWire.getActionIdentifier().equals(EncodedBehaviourIdentifiers.subscribe())){
                 PubSubHandler pubSubHandler = new PubSubHandler(socket,inputStream);
                 pubSubHandler.start();
             }
@@ -42,6 +46,7 @@ public class ReqRespHandler {
                 this.getResponse(inputStream);
                 this.closeConnection(socket,outputStream,inputStream);
             }
+            CLIENT_STORE.propagateAction(new ClientSetConnectionActiveAction(true));
         } catch (IOException | ClassNotFoundException e) {
             this.CLIENT_STORE.propagateAction(new ClientSetConnectionActiveAction(false));
         }
@@ -49,7 +54,7 @@ public class ReqRespHandler {
 
     private void getResponse(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
         RRNotification response = (RRNotification) inputStream.readObject();
-        this.CLIENT_STORE.propagateAction(new ClientSetCurrentReqRespNotificationAction(response));
+        this.CLIENT_STORE.propagateAction(new ClientSetCurrentRRNotificationAction(response));
     }
 
     private void sendRequest(ActionOnTheWire actionOnTheWire, ObjectOutputStream outputStream) throws IOException {

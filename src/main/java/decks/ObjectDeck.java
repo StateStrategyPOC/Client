@@ -8,9 +8,7 @@ import java.util.List;
 
 /**
  * Represents a deck containing object cards
- * 
- * @author Andrea Sessa
- * @author Giorgio Pea
+ *
  */
 public class ObjectDeck extends Deck {
 

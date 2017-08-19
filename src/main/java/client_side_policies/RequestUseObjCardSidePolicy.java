@@ -1,7 +1,7 @@
 package client_side_policies;
 
 import client.ReqRespHandler;
-import client.EncodedBehaviourIdentifiers;
+import common.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.*;
 import common.*;
@@ -13,10 +13,9 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
 
     @Override
     public void apply(ClientState state, StoreAction action) {
-        ClientRequestUseObjectCard castedAction = (ClientRequestUseObjectCard) action;
+        ClientRequestUseObjectCardAction castedAction = (ClientRequestUseObjectCardAction) action;
         ObjectCard objectCard = castedAction.getObjectCard();
         ClientStore CLIENT_STORE = ClientStore.getInstance();
-        EncodedBehaviourIdentifiers SERVER_ACTION_WIRE_PROVIDER = EncodedBehaviourIdentifiers.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         Player player = CLIENT_STORE.getState().getPlayer();
         if (player.getPrivateDeck().getContent().contains(objectCard)) {
@@ -28,14 +27,14 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
                 StoreAction action_ = new UseObjAction(objectCard);
                 parameters.add(action_);
                 parameters.add(player.getPlayerToken());
-                ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
+                ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(),parameters);
                 ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
                 reqRespHandler.initRequestResponse(request);
                 boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
                 if (isActionServerValidated) {
-                    CLIENT_STORE.propagateAction(new ClientUseObjectCard(objectCard));
+                    CLIENT_STORE.propagateAction(new ClientUseObjectCardAction(objectCard));
                     if (objectCard instanceof TeleportObjectCard) {
-                        CLIENT_STORE.propagateAction(new ClientTeleportToStartingSectorAction());
+                        CLIENT_STORE.propagateAction(new ClientTeleportAction());
                     } else if (objectCard instanceof SuppressorObjectCard) {
                         CLIENT_STORE.propagateAction(new ClientSuppressAction(true));
                     } else if (objectCard instanceof AdrenalineObjectCard) {

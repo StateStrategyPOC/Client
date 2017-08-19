@@ -3,7 +3,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 28/03/17.
+ * An action for signalling the starting of the game turn
  */
 public class ClientStartTurnAction extends StoreAction {
     public ClientStartTurnAction() {

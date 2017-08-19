@@ -3,12 +3,12 @@ package client_state_policies;
 import client_store.ClientState;
 import client_store.StatePolicy;
 import common.StoreAction;
-import client_store_actions.ClientSetCurrentChatMessage;
+import client_store_actions.ClientSetCurrentChatMessageAction;
 
 public class PublishMsgStatePolicy implements StatePolicy {
     @Override
     public ClientState apply(ClientState state, StoreAction action) {
-        ClientSetCurrentChatMessage castedAction = (ClientSetCurrentChatMessage) action;
+        ClientSetCurrentChatMessageAction castedAction = (ClientSetCurrentChatMessageAction) action;
         state.setLastChatMessage(castedAction.getMessage());
         return state;
     }

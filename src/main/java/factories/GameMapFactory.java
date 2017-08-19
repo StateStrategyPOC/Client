@@ -20,8 +20,6 @@ import java.util.NoSuchElementException;
  * Represents a factory of generic game maps
  * 
  * @see GameMap
- * @author Andrea Sessa
- * @author Giorgio Pea
  */
 public abstract class GameMapFactory {
 	/**

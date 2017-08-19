@@ -3,8 +3,7 @@ package client_store_actions;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 25/03/17.
- *
+ * An action for signalling the ending of the Player's game turn
  */
 public class ClientEndTurnAction extends StoreAction {
     public ClientEndTurnAction() {

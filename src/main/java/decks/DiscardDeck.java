@@ -7,9 +7,7 @@ import java.util.List;
 
 /**
  * Represents a deck containing discarded cards
- * 
- * @author Andrea Sessa
- * @author Giorgio Pea
+ *
  */
 public class DiscardDeck {
 	// The set of cards contained in the discard deck

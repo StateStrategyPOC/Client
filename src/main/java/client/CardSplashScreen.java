@@ -8,7 +8,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
+/**
+ * Represents a pop-up view to shown a drawn Sector Card and possibly a drawn Object Card
+ */
 public class CardSplashScreen extends JWindow {
 
 	public CardSplashScreen(Frame owner)

@@ -4,12 +4,12 @@ import common.RRNotification;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 29/03/17.
+ * An action for signalling the availability of a response to the last request to the server
  */
-public class ClientSetCurrentReqRespNotificationAction extends StoreAction {
+public class ClientSetCurrentRRNotificationAction extends StoreAction {
     private final RRNotification rrNotification;
 
-    public ClientSetCurrentReqRespNotificationAction(RRNotification rrNotification) {
+    public ClientSetCurrentRRNotificationAction(RRNotification rrNotification) {
         super("@CLIENT_SET_RR","@CLIENT_GROUP");
         this.rrNotification = rrNotification;
     }

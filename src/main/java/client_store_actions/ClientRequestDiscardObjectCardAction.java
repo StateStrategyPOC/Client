@@ -1,21 +1,20 @@
 package client_store_actions;
 
-import common.ObjectCard;
 import common.StoreAction;
+import common.ObjectCard;
 
 /**
- * Created by giorgiopea on 07/04/17.
+ * An action for signalling the request of the in game action of discarding an Object Card
  */
 public class ClientRequestDiscardObjectCardAction extends StoreAction {
-
-    private final ObjectCard discardedObjectCard;
+    private final ObjectCard objectCard;
 
     public ClientRequestDiscardObjectCardAction(ObjectCard objectCard) {
-        super("@CLIENT_DISCARD_OBJECT_CARD","@CLIENT_GROUP");
-        this.discardedObjectCard = objectCard;
+        super("@CLIENT_REQUEST_DISCARD_OBJ_CARD","@CLIENT_GROUP");
+        this.objectCard = objectCard;
     }
 
-    public ObjectCard getDiscardedObjectCard() {
-        return discardedObjectCard;
+    public ObjectCard getObjectCard() {
+        return objectCard;
     }
 }

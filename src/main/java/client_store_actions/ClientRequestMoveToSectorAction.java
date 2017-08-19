@@ -3,6 +3,9 @@ package client_store_actions;
 import common.StoreAction;
 import common.Coordinate;
 
+/**
+ * An action for signalling the request of the in game action of moving to a sector
+ */
 public class ClientRequestMoveToSectorAction extends StoreAction {
 
     private final Coordinate coordinate;

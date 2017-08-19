@@ -4,12 +4,12 @@ import common.ObjectCard;
 import common.StoreAction;
 
 /**
- * Created by giorgiopea on 25/03/17.
+ * An action for signalling the use of an Object Card
  */
-public class ClientUseObjectCard extends StoreAction {
+public class ClientUseObjectCardAction extends StoreAction {
     private final ObjectCard objectCard;
 
-    public ClientUseObjectCard(ObjectCard objectCard) {
+    public ClientUseObjectCardAction(ObjectCard objectCard) {
         super("@CLIENT_USE_OBJECT_CARD","@CLIENT_GROUP");
         this.objectCard = objectCard;
     }
