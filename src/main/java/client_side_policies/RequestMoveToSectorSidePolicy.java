@@ -30,7 +30,7 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
         parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(encodedBehaviourIdentifiers.makeAction(), parameters);
         reqRespHandler.initRequestResponse(request);
-        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
+        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
         if (isActionServerValidated) {
             RRNotification notification = CLIENT_STORE.getState().getCurrentReqRespNotification();
             CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));

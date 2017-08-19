@@ -5,10 +5,7 @@ import common.Coordinate;
 
 public class ClientRequestGlobalNoise extends StoreAction {
 
-    private static String type = "@CLIENT_REQUEST_GLOBAL_NOISE";
-    public static String getType(){
-        return type;
-    }
+
     private final Coordinate coordinate;
     private final boolean hasObject;
 

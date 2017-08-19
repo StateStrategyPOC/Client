@@ -8,10 +8,6 @@ import common.Sector;
  */
 public class ClientMoveToSectorAction extends StoreAction {
 
-    private static String type = "@CLIENT_MOVE_TO_SECTOR";
-    public static String getType(){
-        return type;
-    }
     private final Sector targetSector;
 
     public ClientMoveToSectorAction(Sector targetSector) {

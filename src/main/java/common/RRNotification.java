@@ -19,10 +19,9 @@ public class RRNotification implements Serializable {
     private final ArrayList<Sector> lightedSectors;
     private final ArrayList<GamePublicData> availableGames;
     private final PlayerToken playerToken;
-    private final String gameMapName;
 
     public RRNotification(boolean actionResult,
-                          String message, SectorCard drawnSectorCard, ObjectCard drawnObjectCard, RescueCard drawnRescueCard, ArrayList<Sector> lightedSectors, ArrayList<GamePublicData> availableGames, PlayerToken playerToken, String gameMapName) {
+                          String message, SectorCard drawnSectorCard, ObjectCard drawnObjectCard, RescueCard drawnRescueCard, ArrayList<Sector> lightedSectors, ArrayList<GamePublicData> availableGames, PlayerToken playerToken) {
         this.actionResult = actionResult;
         this.message = message;
         this.drawnSectorCard = drawnSectorCard;
@@ -31,14 +30,13 @@ public class RRNotification implements Serializable {
         this.lightedSectors = lightedSectors;
         this.availableGames = availableGames;
         this.playerToken = playerToken;
-        this.gameMapName = gameMapName;
     }
 
     public PlayerToken getPlayerToken() {
         return playerToken;
     }
 
-    public boolean getActionResult() {
+    public boolean isActionResult() {
         return actionResult;
     }
 
@@ -56,14 +54,6 @@ public class RRNotification implements Serializable {
 
     public ArrayList<GamePublicData> getGames() {
         return this.availableGames;
-    }
-
-    public String getGameMapName() {
-        return this.gameMapName;
-    }
-
-    public boolean isActionResult() {
-        return actionResult;
     }
 
     public String getMessage() {
@@ -89,7 +79,6 @@ public class RRNotification implements Serializable {
                 ", lightedSectors=" + lightedSectors +
                 ", availableGames=" + availableGames +
                 ", playerToken=" + playerToken +
-                ", gameMapName='" + gameMapName + '\'' +
                 '}';
     }
 }

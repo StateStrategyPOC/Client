@@ -9,10 +9,7 @@ import java.util.ArrayList;
  * Created by giorgiopea on 25/03/17.
  */
 public class ClientSetAvailableGamesAction extends StoreAction {
-    private static String type = "@CLIENT_SET_AVAILABLE_GAMES";
-    public static String getType(){
-        return type;
-    }
+
     private final ArrayList<GamePublicData> availableGames;
 
     public ClientSetAvailableGamesAction(ArrayList<GamePublicData> availableGames) {

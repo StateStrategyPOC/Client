@@ -34,7 +34,7 @@ public class ReqRespHandler {
             outputStream.flush();
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             this.sendRequest(actionOnTheWire,outputStream);
-            if(actionOnTheWire.getBehaviourIdentifier().equals(EncodedBehaviourIdentifiers.getInstance().subscribe())){
+            if(actionOnTheWire.getActionIdentifier().equals(EncodedBehaviourIdentifiers.getInstance().subscribe())){
                 PubSubHandler pubSubHandler = new PubSubHandler(socket,inputStream);
                 pubSubHandler.start();
             }

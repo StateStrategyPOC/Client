@@ -21,7 +21,7 @@ public class RequestOnDemandGameStartSidePolicy implements SidePolicy {
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
         RRNotification currentClientNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
-        boolean isActionServerValidated = currentClientNotification.getActionResult();
+        boolean isActionServerValidated = currentClientNotification.isActionResult();
         //if (isActionServerValidated){
         //    CLIENT_STORE.propagateAction(new ClientStartGameAction(currentClientNotification.getGameMapName()));
         //    CLIENT_STORE.propagateAction(new ClientStartTurnAction());

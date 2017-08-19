@@ -1,7 +1,6 @@
 package client_side_policies;
 
 import client.ReqRespHandler;
-import common.ActionOnTheWire;
 import client.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.ClientAskSectorToLightAction;
@@ -28,7 +27,7 @@ public class RequestLightsSidePolicy implements SidePolicy {
             parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
             ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
             reqRespHandler.initRequestResponse(request);
-            boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
+            boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
             if (isActionServerValidated) {
                 CLIENT_STORE.propagateAction(new ClientUseObjectCard(lightsCard));
                 CLIENT_STORE.propagateAction(new ClientAskSectorToLightAction(false));

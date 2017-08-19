@@ -3,10 +3,6 @@ package client;
 import client_store.ClientStore;
 import client_store_actions.*;
 import common.*;
-import common.Player;
-import common.PlayerState;
-import common.PlayerType;
-import common.StoreAction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -157,7 +153,7 @@ public class GuiManager implements Observer {
     private void setCurrentPSNotificationReaction(StoreAction action) {
         ClientSetCurrentPubSubNotificationAction castedAction = (ClientSetCurrentPubSubNotificationAction) action;
         PSNotification notification = castedAction.getPsNotification();
-        if (!notification.getMessage().equals("")){
+        if (notification.getMessage() != null){
             this.guiGamePane.appendMsg(notification.getMessage());
         }
     }
@@ -204,7 +200,7 @@ public class GuiManager implements Observer {
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
             this.guiGamePane.refreshCardPanel(new ArrayList<ObjectCard>());
             this.guiGamePane.showEndTurnButton(false);
-        } else if (castedAction.getPlayerState().equals(PlayerState.DEAD) && !(psNotification.getAlienWins() || psNotification.getHumanWins())) {
+        } else if (castedAction.getPlayerState().equals(PlayerState.DEAD) && !(psNotification.isAlienWin() || psNotification.isHumanWin())) {
             this.guiGamePane.setStateMessage("You're DEAD!");
             this.guiGamePane.changeCardMenu(MenuType.EMPTY);
             this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);

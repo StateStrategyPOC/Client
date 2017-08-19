@@ -22,7 +22,7 @@ public class ResourceMapper {
 	 * in the game and its corresponding image(filename)
 	 */
 	public ResourceMapper() {
-		cardMapper = new HashMap<String, String>();
+		cardMapper = new HashMap<>();
 
 		cardMapper.put("AdrenalineObjectCard", "cards" + File.separator
 				+ "Adrenaline.png");

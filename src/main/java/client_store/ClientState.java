@@ -1,6 +1,5 @@
 package client_store;
 
-import common.ActionOnTheWire;
 import client.PubSubHandler;
 import common.*;
 
@@ -31,7 +30,6 @@ public class ClientState extends State implements Serializable {
     private SectorCard drawnSectorCard;
     private boolean aliensHaveWon;
     private boolean humansHaveWon;
-    private ActionOnTheWire request;
     private boolean inRoom;
 
     public ClientState() {
@@ -192,10 +190,6 @@ public class ClientState extends State implements Serializable {
 
     public void setHumansHaveWon(boolean humansHaveWon) {
         this.humansHaveWon = humansHaveWon;
-    }
-
-    public void setRequest(ActionOnTheWire request) {
-        this.request = request;
     }
 
     public boolean isInRoom() {

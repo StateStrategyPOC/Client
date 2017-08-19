@@ -1,7 +1,6 @@
 package client_side_policies;
 
 import client.ReqRespHandler;
-import common.ActionOnTheWire;
 import client.EncodedBehaviourIdentifiers;
 import client_store.*;
 import client_store_actions.*;
@@ -24,7 +23,7 @@ public class RequestDiscardCardSidePolicy implements SidePolicy {
         ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(), parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
-        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
+        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
         if (isActionServerValidated) {
             CLIENT_STORE.propagateAction(new ClientRequestDiscardObjectCardAction(objectCard));
         }

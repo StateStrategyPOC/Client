@@ -16,11 +16,7 @@ public class StartGameStatePolicy implements StatePolicy {
         ClientStartGameAction castedAction = (ClientStartGameAction) action;
         Player player = state.getPlayer();
         GameMap gameMap;
-        try {
-            gameMap = GameMapFactory.provideCorrectFactory(castedAction.getGameMapName().toUpperCase()).makeMap();
-        } catch (NoSuchMethodException e) {
-            gameMap = new GalileiGameMapFactory().makeMap();
-        }
+        gameMap = GameMapFactory.provideCorrectFactory(castedAction.getGameMapName().toUpperCase()).makeMap();
         state.setGameMap( gameMap);
         if (player.getPlayerToken().getPlayerType().equals(PlayerType.ALIEN)) {
             player.setCurrentSector(state.getGameMap().getAlienSector());

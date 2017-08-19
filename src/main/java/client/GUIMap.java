@@ -46,8 +46,8 @@ public class GUIMap extends JLayeredPane {
 
 	public GUIMap() {
 
-		sectorsList = new ArrayList<SectorLabel>();
-		lightedSectors = new ArrayList<SectorLabel>();
+		sectorsList = new ArrayList<>();
+		lightedSectors = new ArrayList<>();
 
 		JMenuItem alienMoveItem = new JMenuItem("Move");
 		JMenuItem attackItem = new JMenuItem("Attack");
@@ -277,7 +277,7 @@ public class GUIMap extends JLayeredPane {
 	 * Delight all sectors lighted in the map
 	 */
 	public void delightAllSectors() {
-		List<SectorLabel> tmp = new ArrayList<SectorLabel>(lightedSectors);
+		List<SectorLabel> tmp = new ArrayList<>(lightedSectors);
 		for (SectorLabel s : tmp) {
 			lightedSectors.remove(lightedSectors.indexOf(s));
 			remove(s);

@@ -24,7 +24,7 @@ public class RequestJoinGameSidePolicy implements SidePolicy {
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
         RRNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
-        boolean isActionServerValidated = currentNotification.getActionResult();
+        boolean isActionServerValidated = currentNotification.isActionResult();
         if (isActionServerValidated){
             CLIENT_STORE.propagateAction(new ClientSetPlayerAction(castedAction.getPlayerName(), currentNotification.getPlayerToken()));
         }

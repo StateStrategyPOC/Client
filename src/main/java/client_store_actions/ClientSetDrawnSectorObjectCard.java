@@ -8,10 +8,7 @@ import common.StoreAction;
  * Created by giorgiopea on 06/04/17.
  */
 public class ClientSetDrawnSectorObjectCard extends StoreAction {
-    private static String type = "@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD";
-    public static String getType(){
-        return type;
-    }
+
     private final SectorCard drawnSectorCard;
     private final ObjectCard drawnObjectCard;
 

@@ -26,7 +26,7 @@ public class SectorDeckFactory extends DeckFactory {
 	@Override
 	public Deck makeDeck() {
 		// Deck creation
-		List<Card> deck = new ArrayList<Card>();
+		List<Card> deck = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
 			deck.add(new SilenceSectorCard());
 		}

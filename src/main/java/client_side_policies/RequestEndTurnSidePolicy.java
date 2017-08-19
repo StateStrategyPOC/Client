@@ -23,7 +23,7 @@ public class RequestEndTurnSidePolicy implements SidePolicy {
         ActionOnTheWire request = new ActionOnTheWire(SERVER_ACTION_WIRE_PROVIDER.makeAction(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
-        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().getActionResult();
+        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
         if (isActionServerValidated){
             CLIENT_STORE.propagateAction(new ClientEndTurnAction());
         }
