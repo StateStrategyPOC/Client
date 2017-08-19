@@ -221,6 +221,10 @@ public class GUIGamePane extends JPanel {
         }
     }
 
+    public void resetMsgs(){
+        this.logModel.clear();
+    }
+
     /**
      * Changes the state message to be shown to the player
      *

@@ -20,7 +20,7 @@ public class ClientSetPSNotificationSidePolicy implements SidePolicy {
             CLIENT_STORE.propagateAction(new ClientStartGameAction(notification.getGameMapName()));
         }
         if (notification.isTurnNeedsToEnd()){
-            CLIENT_STORE.propagateAction(new ClientRequestEndTurnAction());
+            CLIENT_STORE.propagateAction(new ClientEndTurnAction());
         }
         if (notification.isTurnNeedsToStart()){
             CLIENT_STORE.propagateAction(new ClientStartTurnAction());

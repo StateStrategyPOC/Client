@@ -252,6 +252,7 @@ public class GuiManager implements Observer {
      * @param action The action that has triggered this reaction.
      */
     private void endTurnReaction(StoreAction action) {
+        this.guiGamePane.setStateMessage("You have ended your turn");
         this.guiGamePane.getMapPane().changeMapMenu(MenuType.EMPTY);
         this.guiGamePane.changeCardMenu(MenuType.EMPTY);
         this.guiGamePane.showEndTurnButton(false);
@@ -463,6 +464,9 @@ public class GuiManager implements Observer {
 
     }
     public void returnToGameList() {
+        this.guiGamePane.getMapPane().delightAllSectors();
+        this.guiGamePane.resetMsgs();
+        this.guiGamePane.repaint();
         this.mainFrame.remove(this.guiGamePane);
         this.mainFrame.add(this.guiGameList);
         this.guiGameList.setVisible(true);

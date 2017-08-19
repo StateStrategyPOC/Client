@@ -34,7 +34,7 @@ public class ClientState extends State implements Serializable {
     public ClientState() {
         this.tcpPort = 29999;
         this.host = "localhost";
-        this.delayReturnToGameList = 10000;
+        this.delayReturnToGameList = 5000;
         this.connectionActive = true;
         this.inRoom = false;
         this.currentReqRespNotification = new RRNotification(false,null,null,null,null,null,null,null);
