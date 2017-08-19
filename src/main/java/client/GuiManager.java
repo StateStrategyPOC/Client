@@ -147,9 +147,15 @@ public class GuiManager implements Observer {
             case "@CLIENT_SET_PS":
                 this.setCurrentPSNotificationReaction(action);
                 break;
+            case "@CLIENT_DISABLE_RESCUE_SECTOR":
+                this.disableRescueSectorReaction(action);
+                break;
         }
     }
-
+    private void disableRescueSectorReaction(StoreAction action){
+        ClientDisableRescueSector castedAction = (ClientDisableRescueSector) action;
+        this.guiGamePane.getMapPane().lightSector(castedAction.getSectorToDisable().getCoordinate(),"C","Closed rescue");
+    }
     private void setCurrentPSNotificationReaction(StoreAction action) {
         ClientSetCurrentPSNotificationAction castedAction = (ClientSetCurrentPSNotificationAction) action;
         PSNotification notification = castedAction.getPsNotification();

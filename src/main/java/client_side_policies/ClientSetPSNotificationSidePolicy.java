@@ -37,5 +37,14 @@ public class ClientSetPSNotificationSidePolicy implements SidePolicy {
                 }
             }
         }
+        if (notification.getEscapedPlayer() != null){
+            if (notification.getEscapedPlayer().equals(CLIENT_STORE.getState().getPlayer().getPlayerToken())){
+                CLIENT_STORE.propagateAction(new EndTurnAction());
+            }
+            else {
+                CLIENT_STORE.propagateAction(new ClientDisableRescueSector(notification.getEscapingSector()));
+            }
+        }
+
     }
 }
