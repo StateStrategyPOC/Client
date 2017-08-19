@@ -14,7 +14,7 @@ import java.util.Map;
  * @version 1.0
  */
 public class ResourceMapper {
-	private Map<String, String> cardMapper;
+	private final Map<String, String> cardMapper;
 
 	/**
 	 * Constructs a mapper that maps a card with its image(filename). This

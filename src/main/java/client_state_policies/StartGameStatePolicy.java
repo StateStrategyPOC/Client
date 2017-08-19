@@ -7,7 +7,6 @@ import client_store_actions.ClientStartGameAction;
 import common.GameMap;
 import common.Player;
 import common.PlayerType;
-import factories.GalileiGameMapFactory;
 import factories.GameMapFactory;
 
 public class StartGameStatePolicy implements StatePolicy {

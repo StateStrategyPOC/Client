@@ -41,7 +41,7 @@ public class SectorDeck extends Deck {
 	/**
 	 * Refills the sector deck with all the cards of its associated discard deck
 	 */
-	public void refill() {
+	private void refill() {
 		/*
 		 * The refill is performed if and only if there are no cards in the
 		 * object deck and there's at least one card in its discard deck

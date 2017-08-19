@@ -39,6 +39,6 @@ public class EncodedBehaviourIdentifiers {
     }
 
     public String getGames() {
-        return "$getGames";
+        return "$getAvailableGames";
     }
 }

@@ -13,8 +13,8 @@ import javax.swing.*;
  */
 public class SectorLabel extends JLabel {
 
-	private Coordinate coordinate;
-	private String image;
+	private final Coordinate coordinate;
+	private final String image;
 
 	/**
 	 * Constructs a generic sector ready to be painted on the game's graphical

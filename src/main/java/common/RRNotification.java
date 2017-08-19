@@ -52,16 +52,12 @@ public class RRNotification implements Serializable {
         return this.lightedSectors;
     }
 
-    public ArrayList<GamePublicData> getGames() {
+    public ArrayList<GamePublicData> getAvailableGames() {
         return this.availableGames;
     }
 
     public String getMessage() {
         return message;
-    }
-
-    public ArrayList<GamePublicData> getAvailableGames() {
-        return availableGames;
     }
 
     public RescueCard getDrawnRescueCard() {

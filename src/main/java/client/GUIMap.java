@@ -26,8 +26,8 @@ import java.util.List;
 public class GUIMap extends JLayeredPane {
 	static final long serialVersionUID = 1L;
 	private final ClientStore CLIENT_STORE = ClientStore.getInstance();
-	private transient List<SectorLabel> sectorsList;
-	private transient List<SectorLabel> lightedSectors;
+	private final transient List<SectorLabel> sectorsList;
+	private final transient List<SectorLabel> lightedSectors;
 
 	private static final int LAYER_BACKGROUND = 1;
 	private static final int SELECT_LAYER = 5;
@@ -37,12 +37,12 @@ public class GUIMap extends JLayeredPane {
 
 	private JPopupMenu currentMapMenu;
 
-	private JPopupMenu noiseMenu = new JPopupMenu();
-	private JPopupMenu lightMenu = new JPopupMenu();
-	private JPopupMenu humanNormalMenu = new JPopupMenu();
-	private JPopupMenu alienNormalMenu = new JPopupMenu();
-	private JPopupMenu emptyMenu = new JPopupMenu();
-	private JPopupMenu humanAttackMenu = new JPopupMenu();
+	private final JPopupMenu noiseMenu = new JPopupMenu();
+	private final JPopupMenu lightMenu = new JPopupMenu();
+	private final JPopupMenu humanNormalMenu = new JPopupMenu();
+	private final JPopupMenu alienNormalMenu = new JPopupMenu();
+	private final JPopupMenu emptyMenu = new JPopupMenu();
+	private final JPopupMenu humanAttackMenu = new JPopupMenu();
 
 	public GUIMap() {
 

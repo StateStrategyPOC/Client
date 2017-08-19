@@ -10,7 +10,7 @@ import javax.swing.*;
  */
 public class ObjectCardLabel extends JLabel {
 	private static final long serialVersionUID = 1L;
-	private ObjectCard objectCard;
+	private final ObjectCard objectCard;
 
 	/**
 	 * Constructs an object card label displayed in the gui. This label is

@@ -28,27 +28,27 @@ public class GUIGamePane extends JPanel {
     private final JLabel infoMsg = new JLabel();
 
 
-    private DefaultListModel<String> logModel;
-    private JScrollPane logScrollPane;
+    private final DefaultListModel<String> logModel;
+    private final JScrollPane logScrollPane;
 
-    private JLabel stateLabel;
+    private final JLabel stateLabel;
 
-    private JPanel inputPane;
-    private JPanel rightPanel;
-    private JPanel cardsPane;
+    private final JPanel inputPane;
+    private final JPanel rightPanel;
+    private final JPanel cardsPane;
 
-    private JPanel holdingPanel;
-    private GUIMap mapPanel;
+    private final JPanel holdingPanel;
+    private final GUIMap mapPanel;
 
-    private JButton endTurnButton;
-    private JButton msgButton;
+    private final JButton endTurnButton;
+    private final JButton msgButton;
 
     private JTextField chatTextField;
 
-    private JPopupMenu humanUseCardMenu = new JPopupMenu();
-    private JPopupMenu humanUseDiscCardMenu = new JPopupMenu();
-    private JPopupMenu alienCardMenu = new JPopupMenu();
-    private JPopupMenu emptyMenu = new JPopupMenu();
+    private final JPopupMenu humanUseCardMenu = new JPopupMenu();
+    private final JPopupMenu humanUseDiscCardMenu = new JPopupMenu();
+    private final JPopupMenu alienCardMenu = new JPopupMenu();
+    private final JPopupMenu emptyMenu = new JPopupMenu();
     private JPopupMenu currentCardMenu = new JPopupMenu();
 
     private ObjectCard selectedObjectCard;

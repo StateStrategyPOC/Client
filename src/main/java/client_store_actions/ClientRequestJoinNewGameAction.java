@@ -4,8 +4,8 @@ import common.StoreAction;
 
 public class ClientRequestJoinNewGameAction extends StoreAction {
 
-    private String playerName;
-    private String mapName;
+    private final String playerName;
+    private final String mapName;
     public ClientRequestJoinNewGameAction(String mapName, String playerName) {
         super("@CLIENT_REQUEST_JOIN_NEW_GAME","@CLIENT_GROUP");
         this.mapName = mapName;

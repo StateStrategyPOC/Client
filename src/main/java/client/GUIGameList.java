@@ -23,8 +23,8 @@ public class GUIGameList extends JPanel {
     private final ClientStore CLIENT_STORE = ClientStore.getInstance();
     private final JLabel connectionAlert = new JLabel("The connection with the server is not active");
     private final GuiManager guiManager = GuiManager.getInstance();
-    private JLabel stateMessage = new JLabel("");
-    private JButton startButton = new JButton("Start Game");
+    private final JLabel stateMessage = new JLabel("");
+    private final JButton startButton = new JButton("Start Game");
     private final JButton joinButton = new JButton("Join");
     private JPanel buttonPanel;
     private DefaultTableModel gameList;

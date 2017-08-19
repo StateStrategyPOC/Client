@@ -180,7 +180,7 @@ public class GameMap {
      *                   to return
      * @return the first map's sector that matches the given sector type
      */
-    public Sector getSectorByType(SectorType sectorType) {
+    private Sector getSectorByType(SectorType sectorType) {
 		/*
 		 * Get list of sectors in the graph and scans this list in order to find
 		 * the correct sector if the sector doesn't exist returns null

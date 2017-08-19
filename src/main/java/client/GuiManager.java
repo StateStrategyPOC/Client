@@ -17,7 +17,7 @@ import java.util.Timer;
  */
 public class GuiManager implements Observer {
 
-    private static GuiManager instance = new GuiManager();
+    private static final GuiManager instance = new GuiManager();
     private final ClientStore CLIENT_STORE = ClientStore.getInstance();
     private GUInitialWindow guiInitialWindow;
     private GUIGameList guiGameList;

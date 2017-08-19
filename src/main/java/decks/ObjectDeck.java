@@ -50,7 +50,7 @@ public class ObjectDeck extends Deck {
 	 * @author Andrea Sessa
 	 * @author Giorgio Pea
 	 */
-	public void refill() {
+	private void refill() {
 		/*
 		 * The refill is performed if and only if there are no cards in the
 		 * object deck and there's at least one card in its discard deck

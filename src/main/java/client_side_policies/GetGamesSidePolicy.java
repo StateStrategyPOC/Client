@@ -24,7 +24,7 @@ public  class GetGamesSidePolicy implements SidePolicy {
         RRNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
         boolean isActionServerValidated = currentNotification.isActionResult();
         if (isActionServerValidated && CLIENT_STORE.getState().isConnectionActive()){
-            CLIENT_STORE.propagateAction(new ClientSetAvailableGamesAction(currentNotification.getGames()));
+            CLIENT_STORE.propagateAction(new ClientSetAvailableGamesAction(currentNotification.getAvailableGames()));
         }
     }
 }

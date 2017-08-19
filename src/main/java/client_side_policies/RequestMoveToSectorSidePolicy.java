@@ -8,6 +8,7 @@ import client_store.ClientStore;
 import client_store.SidePolicy;
 import client_store_actions.ClientMoveToSectorAction;
 import client_store_actions.ClientRequestMoveToSectorAction;
+import client_store_actions.ClientRescuePlayerAction;
 import client_store_actions.ClientSetDrawnSectorObjectCard;
 import common.*;
 
@@ -38,6 +39,9 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
                 CLIENT_STORE.propagateAction(
                         new ClientSetDrawnSectorObjectCard(
                                 notification.getDrawnSectorCard(), notification.getDrawnObjectCard()));
+            }
+            if (notification.getDrawnRescueCard() != null){
+                CLIENT_STORE.propagateAction(new ClientRescuePlayerAction(rescueCard));
             }
         }
     }

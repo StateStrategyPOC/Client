@@ -67,8 +67,6 @@ public class PrivateDeck implements Serializable {
 	 * 
 	 * @param card
 	 *            the card to be added to the private deck's set of cards
-	 * @return true if the card will not increase the size of the private deck's
-	 *         set of cards to 5, false otherwise
 	 */
 	public void addCard(ObjectCard card) {
 		/*
