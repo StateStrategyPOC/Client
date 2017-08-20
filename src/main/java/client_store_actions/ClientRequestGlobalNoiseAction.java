@@ -25,4 +25,14 @@ public class ClientRequestGlobalNoiseAction extends StoreAction {
     public Coordinate getCoordinate() {
         return coordinate;
     }
+
+    @Override
+    public String toString() {
+        return "ClientRequestGlobalNoiseAction{" +
+                "coordinate=" + coordinate +
+                ", hasObject=" + hasObject +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

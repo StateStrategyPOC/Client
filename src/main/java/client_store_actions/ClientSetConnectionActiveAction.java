@@ -17,4 +17,13 @@ public class ClientSetConnectionActiveAction extends StoreAction {
     public boolean isConnectionActive() {
         return isConnectionActive;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetConnectionActiveAction{" +
+                "isConnectionActive=" + isConnectionActive +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

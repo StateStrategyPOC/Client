@@ -17,4 +17,5 @@ public class ClientSetCurrentPSNotificationAction extends StoreAction {
     public PSNotification getPsNotification() {
         return psNotification;
     }
+
 }

@@ -25,4 +25,14 @@ public class ClientSetPlayerAction extends StoreAction {
     public PlayerToken getPlayerToken() {
         return playerToken;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetPlayerAction{" +
+                "playerName='" + playerName + '\'' +
+                ", playerToken=" + playerToken +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

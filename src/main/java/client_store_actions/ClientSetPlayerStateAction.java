@@ -19,4 +19,13 @@ public class ClientSetPlayerStateAction extends StoreAction {
     public PlayerState getPlayerState() {
         return playerState;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetPlayerStateAction{" +
+                "playerState=" + playerState +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

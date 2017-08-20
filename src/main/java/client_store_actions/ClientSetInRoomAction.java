@@ -17,4 +17,13 @@ public class ClientSetInRoomAction extends StoreAction {
     public boolean isInRoom() {
         return inRoom;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetInRoomAction{" +
+                "inRoom=" + inRoom +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

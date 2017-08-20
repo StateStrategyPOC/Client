@@ -10,4 +10,12 @@ public class ClientTeleportAction extends StoreAction {
     public ClientTeleportAction() {
         super("@CLIENT_TELEPORT_TO_STARTING_SECTOR","@CLIENT_GROUP");
     }
+
+    @Override
+    public String toString() {
+        return "ClientTeleportAction{" +
+                "actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

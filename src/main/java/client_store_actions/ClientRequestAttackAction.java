@@ -17,4 +17,13 @@ public class ClientRequestAttackAction extends StoreAction {
     public Coordinate getCoordinate() {
         return coordinate;
     }
+
+    @Override
+    public String toString() {
+        return "ClientRequestAttackAction{" +
+                "coordinate=" + coordinate +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

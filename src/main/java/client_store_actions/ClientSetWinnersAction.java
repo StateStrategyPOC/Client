@@ -23,4 +23,14 @@ public class ClientSetWinnersAction extends StoreAction {
     public boolean isHumansHaveWon() {
         return humansHaveWon;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetWinnersAction{" +
+                "aliensHaveWon=" + aliensHaveWon +
+                ", humansHaveWon=" + humansHaveWon +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

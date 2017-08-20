@@ -17,4 +17,5 @@ public class ClientSetCurrentRRNotificationAction extends StoreAction {
     public RRNotification getRrNotification() {
         return rrNotification;
     }
+
 }

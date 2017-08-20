@@ -18,4 +18,13 @@ public class ClientDiscardObjectCardAction extends StoreAction {
     public ObjectCard getDiscardedObjectCard() {
         return discardedObjectCard;
     }
+
+    @Override
+    public String toString() {
+        return "ClientDiscardObjectCardAction{" +
+                "discardedObjectCard=" + discardedObjectCard +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

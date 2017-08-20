@@ -17,4 +17,13 @@ public class ClientAskAttackAction extends StoreAction {
     public boolean isToBeAsked() {
         return toBeAsked;
     }
+
+    @Override
+    public String toString() {
+        return "ClientAskAttackAction{" +
+                "toBeAsked=" + toBeAsked +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

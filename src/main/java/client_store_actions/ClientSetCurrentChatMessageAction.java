@@ -16,4 +16,13 @@ public class ClientSetCurrentChatMessageAction extends StoreAction {
     public String getMessage() {
         return message;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetCurrentChatMessageAction{" +
+                "message='" + message + '\'' +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

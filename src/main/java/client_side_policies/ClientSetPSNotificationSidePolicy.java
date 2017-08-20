@@ -30,15 +30,15 @@ public class ClientSetPSNotificationSidePolicy implements SidePolicy {
         }
         if (notification.getAttackedPlayers() != null){
             for (PlayerToken playerToken : notification.getAttackedPlayers()){
-                if (playerToken.equals(CLIENT_STORE.getState().getPlayer().getPlayerToken())){
-                    if (CLIENT_STORE.getState().getPlayer().getPrivateDeck().getContent().contains(new DefenseObjectCard())){
+                if (playerToken.equals(state.getPlayer().getPlayerToken())){
+                    if (state.getPlayer().getPrivateDeck().getContent().contains(new DefenseObjectCard())){
                         CLIENT_STORE.propagateAction(new UseObjAction(new DefenseObjectCard()));
                     }
                 }
             }
         }
         if (notification.getEscapedPlayer() != null){
-            if (notification.getEscapedPlayer().equals(CLIENT_STORE.getState().getPlayer().getPlayerToken())){
+            if (notification.getEscapedPlayer().equals(state.getPlayer().getPlayerToken())){
                 CLIENT_STORE.propagateAction(new ClientSetPlayerStateAction(PlayerState.ESCAPED));
             }
             else {

@@ -9,4 +9,12 @@ public class ClientOnDemandGameStartAction extends StoreAction {
     public ClientOnDemandGameStartAction() {
         super("@CLIENT_ON_DEMAND_GAME_START","@CLIENT_GROUP");
     }
+
+    @Override
+    public String toString() {
+        return "ClientOnDemandGameStartAction{" +
+                "actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

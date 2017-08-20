@@ -9,4 +9,12 @@ public class ClientRequestEndTurnAction extends StoreAction {
     public ClientRequestEndTurnAction() {
         super("@CLIENT_REQUEST_END_TURN","@CLIENT_GROUP");
     }
+
+    @Override
+    public String toString() {
+        return "ClientRequestEndTurnAction{" +
+                "actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

@@ -17,4 +17,13 @@ public class ClientUseObjectCardAction extends StoreAction {
     public ObjectCard getObjectCard() {
         return objectCard;
     }
+
+    @Override
+    public String toString() {
+        return "ClientUseObjectCardAction{" +
+                "objectCard=" + objectCard +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

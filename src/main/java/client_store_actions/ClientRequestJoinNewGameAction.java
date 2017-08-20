@@ -22,4 +22,14 @@ public class ClientRequestJoinNewGameAction extends StoreAction {
     public String getMapName() {
         return mapName;
     }
+
+    @Override
+    public String toString() {
+        return "ClientRequestJoinNewGameAction{" +
+                "playerName='" + playerName + '\'' +
+                ", mapName='" + mapName + '\'' +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

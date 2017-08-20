@@ -19,4 +19,5 @@ public class ClientGetGamesAction extends StoreAction {
                 ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
                 '}';
     }
+
 }

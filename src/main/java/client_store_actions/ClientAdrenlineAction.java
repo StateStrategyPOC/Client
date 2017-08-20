@@ -10,4 +10,12 @@ public class ClientAdrenlineAction extends StoreAction {
     public ClientAdrenlineAction() {
         super("@CLIENT_ADRENALINE","@CLIENT_GROUP");
     }
+
+    @Override
+    public String toString() {
+        return "ClientAdrenlineAction{" +
+                "actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

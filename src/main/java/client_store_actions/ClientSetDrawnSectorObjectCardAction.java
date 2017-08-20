@@ -25,4 +25,14 @@ public class ClientSetDrawnSectorObjectCardAction extends StoreAction {
     public ObjectCard getDrawnObjectCard() {
         return drawnObjectCard;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetDrawnSectorObjectCardAction{" +
+                "drawnSectorCard=" + drawnSectorCard +
+                ", drawnObjectCard=" + drawnObjectCard +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

@@ -15,4 +15,13 @@ public class ClientDisableRescueSector extends StoreAction {
     public Sector getSectorToDisable() {
         return sectorToDisable;
     }
+
+    @Override
+    public String toString() {
+        return "ClientDisableRescueSector{" +
+                "sectorToDisable=" + sectorToDisable +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

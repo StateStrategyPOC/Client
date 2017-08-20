@@ -17,4 +17,13 @@ public class ClientRescuePlayerAction extends StoreAction {
     public RescueCard getRescueCard() {
         return rescueCard;
     }
+
+    @Override
+    public String toString() {
+        return "ClientRescuePlayerAction{" +
+                "rescueCard=" + rescueCard +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

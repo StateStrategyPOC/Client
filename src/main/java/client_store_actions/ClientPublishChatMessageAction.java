@@ -17,4 +17,13 @@ public class ClientPublishChatMessageAction extends StoreAction {
     public String getChatMessage() {
         return chatMessage;
     }
+
+    @Override
+    public String toString() {
+        return "ClientPublishChatMessageAction{" +
+                "chatMessage='" + chatMessage + '\'' +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

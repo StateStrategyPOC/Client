@@ -20,4 +20,13 @@ public class ClientSetAvailableGamesAction extends StoreAction {
     public ArrayList<GamePublicData> getAvailableGames() {
         return availableGames;
     }
+
+    @Override
+    public String toString() {
+        return "ClientSetAvailableGamesAction{" +
+                "availableGames=" + availableGames +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

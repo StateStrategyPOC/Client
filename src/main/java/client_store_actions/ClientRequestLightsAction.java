@@ -20,4 +20,13 @@ public class ClientRequestLightsAction extends StoreAction {
     public Coordinate getCoordinate() {
         return coordinate;
     }
+
+    @Override
+    public String toString() {
+        return "ClientRequestLightsAction{" +
+                "coordinate=" + coordinate +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

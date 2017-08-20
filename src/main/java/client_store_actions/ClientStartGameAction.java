@@ -19,4 +19,13 @@ public class ClientStartGameAction extends StoreAction {
     public String getGameMapName() {
         return gameMapName;
     }
+
+    @Override
+    public String toString() {
+        return "ClientStartGameAction{" +
+                "gameMapName='" + gameMapName + '\'' +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

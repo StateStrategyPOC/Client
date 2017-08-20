@@ -17,4 +17,5 @@ public class ClientSuppressAction extends StoreAction {
     public boolean isSedated() {
         return isSedated;
     }
+
 }

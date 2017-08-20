@@ -18,4 +18,13 @@ public class ClientRequestMoveToSectorAction extends StoreAction {
     public Coordinate getCoordinate() {
         return coordinate;
     }
+
+    @Override
+    public String toString() {
+        return "ClientRequestMoveToSectorAction{" +
+                "coordinate=" + coordinate +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

@@ -18,4 +18,13 @@ public class ClientAskSectorToLightAction extends StoreAction {
     public boolean isToBeAsked() {
         return toBeAsked;
     }
+
+    @Override
+    public String toString() {
+        return "ClientAskSectorToLightAction{" +
+                "toBeAsked=" + toBeAsked +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }

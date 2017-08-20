@@ -18,4 +18,13 @@ public class ClientMoveToSectorAction extends StoreAction {
     public Sector getTargetSector() {
         return targetSector;
     }
+
+    @Override
+    public String toString() {
+        return "ClientMoveToSectorAction{" +
+                "targetSector=" + targetSector +
+                ", actionIdentifier='" + actionIdentifier + '\'' +
+                ", actionGroupIdentifier='" + actionGroupIdentifier + '\'' +
+                '}';
+    }
 }
