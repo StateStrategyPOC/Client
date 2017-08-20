@@ -1,5 +1,6 @@
 package client;
 
+import common.Card;
 import common.ObjectCard;
 import common.SectorCard;
 
@@ -29,7 +30,7 @@ public class CardSplashScreen extends JWindow {
             });
     }
 
-    public void showCards(SectorCard sectorCard, ObjectCard objectCard){
+    public void showCards(Card sectorCard, Card objectCard){
         if (sectorCard != null){
             ResourceMapper mapper = new ResourceMapper();
             JLabel cardLbl1 = new JLabel();

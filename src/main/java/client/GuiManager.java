@@ -147,11 +147,21 @@ public class GuiManager implements Observer {
             case "@CLIENT_SET_PS":
                 this.setCurrentPSNotificationReaction(action);
                 break;
+            case "@CLIENT_RESCUE_PLAYER":
+                this.rescuePlayerReaction(action);
+                break;
             case "@CLIENT_DISABLE_RESCUE_SECTOR":
                 this.disableRescueSectorReaction(action);
                 break;
         }
     }
+
+    private void rescuePlayerReaction(StoreAction action) {
+        ClientRescuePlayerAction castedAction = (ClientRescuePlayerAction) action;
+        CardSplashScreen cardSplashScreen = new CardSplashScreen(this.mainFrame);
+        cardSplashScreen.showCards(castedAction.getRescueCard(),null);
+    }
+
     private void disableRescueSectorReaction(StoreAction action){
         ClientDisableRescueSector castedAction = (ClientDisableRescueSector) action;
         this.guiGamePane.getMapPane().lightSector(castedAction.getSectorToDisable().getCoordinate(),"C","Closed rescue");
