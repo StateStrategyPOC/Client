@@ -11,9 +11,6 @@ public class SetPlayerStateStatePolicy implements StatePolicy {
     public ClientState apply(ClientState state, StoreAction action) {
         ClientSetPlayerStateAction castedAction = (ClientSetPlayerStateAction) action;
         state.getPlayer().setPlayerState(castedAction.getPlayerState());
-        if (state.getPlayer().getPlayerState().equals(PlayerState.DEAD) ||  state.getPlayer().getPlayerState().equals(PlayerState.ESCAPED)){
-            state.setGameStarted(false);
-        }
         return state;
     }
 }

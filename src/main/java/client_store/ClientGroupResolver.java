@@ -51,7 +51,7 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_SET_DRAWN_SECTOR_OBJECT_CARD",
                 new PolicyCouple(new SetDrawnSectorObjectCardStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_PLAYER_STATE",
-                new PolicyCouple(new SetPlayerStatePolicy(), null));
+                new PolicyCouple(new SetPlayerStateStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_WINNERS",
                 new PolicyCouple(new SetWinnersStatePolicy(), null));
         this.policiesMap.put("@CLIENT_STARTABLE_GAME",
