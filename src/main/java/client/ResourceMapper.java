@@ -29,7 +29,7 @@ public class ResourceMapper {
 		cardMapper.put("SuppressorObjectCard", "cards" + File.separator
 				+ "Sedatives.png");
 		cardMapper.put("LightObjectCard", "cards" + File.separator
-				+ "Spotilight.png");
+				+ "Spotlight.png");
 		cardMapper.put("AttackObjectCard", "cards" + File.separator
 				+ "Attack.png");
 		cardMapper.put("TeleportObjectCard", "cards" + File.separator
