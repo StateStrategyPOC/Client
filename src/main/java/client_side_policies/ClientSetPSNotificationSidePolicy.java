@@ -13,35 +13,39 @@ public class ClientSetPSNotificationSidePolicy implements SidePolicy {
                 .getInstance();
         ClientSetCurrentPSNotificationAction castedAction = (ClientSetCurrentPSNotificationAction) action;
         PSNotification notification = castedAction.getPsNotification();
-        if (notification.isGameCanBeStarted()){
+        if (notification.isGameCanBeStarted()) {
             CLIENT_STORE.propagateAction(new ClientStartableGameAction());
         }
-        if (notification.isGameNeedsToStart()){
+        if (notification.isGameNeedsToStart()) {
             CLIENT_STORE.propagateAction(new ClientStartGameAction(notification.getGameMapName()));
         }
-        if (notification.isTurnNeedsToEnd()){
+        if (notification.isTurnNeedsToEnd()) {
             CLIENT_STORE.propagateAction(new ClientEndTurnAction());
         }
-        if (notification.isTurnNeedsToStart()){
+        if (notification.isTurnNeedsToStart()) {
             CLIENT_STORE.propagateAction(new ClientStartTurnAction());
         }
-        if (notification.isAlienWin() || notification.isHumanWin()){
-            CLIENT_STORE.propagateAction(new ClientSetWinnersAction(notification.isAlienWin(),notification.isHumanWin()));
+        if (notification.isAlienWin() || notification.isHumanWin()) {
+            CLIENT_STORE.propagateAction(new ClientSetWinnersAction(notification.isAlienWin(), notification.isHumanWin()));
         }
-        if (notification.getAttackedPlayers() != null){
-            for (PlayerToken playerToken : notification.getAttackedPlayers()){
-                if (playerToken.equals(state.getPlayer().getPlayerToken())){
-                    if (state.getPlayer().getPrivateDeck().getContent().contains(new DefenseObjectCard())){
-                        CLIENT_STORE.propagateAction(new UseObjAction(new DefenseObjectCard()));
-                    }
+        if (notification.getAttackedPlayers() != null) {
+            for (PlayerToken playerToken : notification.getAttackedPlayers()) {
+                if (playerToken.equals(state.getPlayer().getPlayerToken())) {
+                    CLIENT_STORE.propagateAction(new UseObjAction(new DefenseObjectCard()));
                 }
             }
         }
-        if (notification.getEscapedPlayer() != null){
-            if (notification.getEscapedPlayer().equals(state.getPlayer().getPlayerToken())){
-                CLIENT_STORE.propagateAction(new ClientSetPlayerStateAction(PlayerState.ESCAPED));
+        if (notification.getDeadPlayers() != null) {
+            for (PlayerToken playerToken : notification.getDeadPlayers()) {
+                if (playerToken.equals(state.getPlayer().getPlayerToken())) {
+                    CLIENT_STORE.propagateAction(new ClientSetPlayerStateAction(PlayerState.DEAD));
+                }
             }
-            else {
+        }
+        if (notification.getEscapedPlayer() != null) {
+            if (notification.getEscapedPlayer().equals(state.getPlayer().getPlayerToken())) {
+                CLIENT_STORE.propagateAction(new ClientSetPlayerStateAction(PlayerState.ESCAPED));
+            } else {
                 CLIENT_STORE.propagateAction(new ClientDisableRescueSector(notification.getEscapingSector()));
             }
         }
