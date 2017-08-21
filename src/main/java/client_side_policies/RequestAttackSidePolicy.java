@@ -17,9 +17,9 @@ public class RequestAttackSidePolicy implements SidePolicy {
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
         Coordinate coordinate = castedAction.getCoordinate();
-        Player player = CLIENT_STORE.getState().getPlayer();
+        Player player = state.getPlayer();
         boolean humanAttack = player.getPlayerToken().getPlayerType().equals(PlayerType.HUMAN);
-        Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(coordinate);
+        Sector targetSector = state.getGameMap().getSectorByCoords(coordinate);
         AttackObjectCard card = null;
         if (humanAttack) {
             card = new AttackObjectCard(targetSector);
@@ -33,8 +33,8 @@ public class RequestAttackSidePolicy implements SidePolicy {
         ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
-        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
-        if (isActionServerValidated){
+        boolean isActionServerValidated = state.getCurrentReqRespNotification().isActionResult();
+        if (isActionServerValidated && state.isConnectionActive()){
             CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));
             if (humanAttack){
                 CLIENT_STORE.propagateAction(new ClientUseObjectCardAction(card));

@@ -15,18 +15,18 @@ public class RequestGlobalNoiseSidePolicy implements SidePolicy {
         ClientRequestGlobalNoiseAction castedAction = (ClientRequestGlobalNoiseAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
-        Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
+        Sector targetSector = state.getGameMap().getSectorByCoords(castedAction.getCoordinate());
         if (targetSector != null) {
             SectorCard globalNoiseCard = new GlobalNoiseSectorCard(castedAction.isHasObject(),
                     targetSector);
             StoreAction action_ = new UseSectorCardAction(globalNoiseCard);
             parameters.add(action_);
-            parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
+            parameters.add(state.getPlayer().getPlayerToken());
             ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(), parameters);
             ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
             reqRespHandler.initRequestResponse(request);
-            boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
-            if (isActionServerValidated){
+            boolean isActionServerValidated = state.getCurrentReqRespNotification().isActionResult();
+            if (isActionServerValidated && state.isConnectionActive()){
                 CLIENT_STORE.propagateAction(new ClientSetDrawnSectorObjectCardAction(null, null));
             }
 

@@ -22,9 +22,9 @@ public class RequestJoinGameSidePolicy implements SidePolicy {
         ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.joinGame(),parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
-        RRNotification currentNotification = CLIENT_STORE.getState().getCurrentReqRespNotification();
+        RRNotification currentNotification = state.getCurrentReqRespNotification();
         boolean isActionServerValidated = currentNotification.isActionResult();
-        if (isActionServerValidated){
+        if (isActionServerValidated && state.isConnectionActive()){
             CLIENT_STORE.propagateAction(new ClientSetPlayerAction(castedAction.getPlayerName(), currentNotification.getPlayerToken()));
         }
     }

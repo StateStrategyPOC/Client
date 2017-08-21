@@ -14,7 +14,7 @@ public class RequestDiscardCardSidePolicy implements SidePolicy {
         ClientRequestDiscardObjectCardAction castedAction = (ClientRequestDiscardObjectCardAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
-        Player player = CLIENT_STORE.getState().getPlayer();
+        Player player = state.getPlayer();
         ObjectCard objectCard = castedAction.getObjectCard();
         StoreAction action_ = new DiscardAction(objectCard);
         parameters.add(action_);
@@ -22,8 +22,8 @@ public class RequestDiscardCardSidePolicy implements SidePolicy {
         ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(), parameters);
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
         reqRespHandler.initRequestResponse(request);
-        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
-        if (isActionServerValidated) {
+        boolean isActionServerValidated = state.getCurrentReqRespNotification().isActionResult();
+        if (isActionServerValidated && state.isConnectionActive()) {
             CLIENT_STORE.propagateAction(new ClientDiscardObjectCardAction(objectCard));
         }
 

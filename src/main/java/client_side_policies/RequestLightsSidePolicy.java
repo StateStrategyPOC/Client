@@ -17,17 +17,17 @@ public class RequestLightsSidePolicy implements SidePolicy {
         ClientRequestLightsAction castedAction = (ClientRequestLightsAction) action;
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
-        Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
+        Sector targetSector = state.getGameMap().getSectorByCoords(castedAction.getCoordinate());
         ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(),parameters);
         if (targetSector != null) {
             ObjectCard lightsCard = new LightsObjectCard(targetSector);
             StoreAction action_ = new UseObjAction(lightsCard);
             parameters.add(action_);
-            parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
+            parameters.add(state.getPlayer().getPlayerToken());
             ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
             reqRespHandler.initRequestResponse(request);
-            boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
-            if (isActionServerValidated) {
+            boolean isActionServerValidated = state.getCurrentReqRespNotification().isActionResult();
+            if (isActionServerValidated && state.isConnectionActive()) {
                 CLIENT_STORE.propagateAction(new ClientUseObjectCardAction(lightsCard));
                 CLIENT_STORE.propagateAction(new ClientAskSectorToLightAction(false));
             }

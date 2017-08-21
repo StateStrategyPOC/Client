@@ -17,7 +17,7 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
         ObjectCard objectCard = castedAction.getObjectCard();
         ClientStore CLIENT_STORE = ClientStore.getInstance();
         ArrayList<Object> parameters = new ArrayList<>();
-        Player player = CLIENT_STORE.getState().getPlayer();
+        Player player = state.getPlayer();
         if (player.getPrivateDeck().getContent().contains(objectCard)) {
             if (objectCard instanceof LightsObjectCard) {
                 CLIENT_STORE.propagateAction(new ClientAskSectorToLightAction(true));
@@ -30,8 +30,8 @@ public class RequestUseObjCardSidePolicy implements SidePolicy {
                 ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(),parameters);
                 ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
                 reqRespHandler.initRequestResponse(request);
-                boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
-                if (isActionServerValidated) {
+                boolean isActionServerValidated = state.getCurrentReqRespNotification().isActionResult();
+                if (isActionServerValidated && state.isConnectionActive()) {
                     CLIENT_STORE.propagateAction(new ClientUseObjectCardAction(objectCard));
                     if (objectCard instanceof TeleportObjectCard) {
                         CLIENT_STORE.propagateAction(new ClientTeleportAction());

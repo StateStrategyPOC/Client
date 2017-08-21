@@ -24,16 +24,16 @@ public class RequestMoveToSectorSidePolicy implements SidePolicy {
         ReqRespHandler reqRespHandler = ReqRespHandler.getInstance();
 
         ArrayList<Object> parameters = new ArrayList<>();
-        Sector targetSector = CLIENT_STORE.getState().getGameMap().getSectorByCoords(castedAction.getCoordinate());
+        Sector targetSector = state.getGameMap().getSectorByCoords(castedAction.getCoordinate());
         //CLIENT_STORE.propagateAction(new ClientAskAttackAction(false));
         MoveAction action_ = new MoveAction(targetSector);
         parameters.add(action_);
-        parameters.add(CLIENT_STORE.getState().getPlayer().getPlayerToken());
+        parameters.add(state.getPlayer().getPlayerToken());
         ActionOnTheWire request = new ActionOnTheWire(EncodedBehaviourIdentifiers.makeAction(), parameters);
         reqRespHandler.initRequestResponse(request);
-        boolean isActionServerValidated = CLIENT_STORE.getState().getCurrentReqRespNotification().isActionResult();
-        if (isActionServerValidated) {
-            RRNotification notification = CLIENT_STORE.getState().getCurrentReqRespNotification();
+        boolean isActionServerValidated = state.getCurrentReqRespNotification().isActionResult();
+        if (isActionServerValidated && state.isConnectionActive()) {
+            RRNotification notification = state.getCurrentReqRespNotification();
             CLIENT_STORE.propagateAction(new ClientMoveToSectorAction(targetSector));
             if (notification.getDrawnSectorCard() != null){
                 CLIENT_STORE.propagateAction(
