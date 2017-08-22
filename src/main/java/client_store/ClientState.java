@@ -4,6 +4,7 @@ import client.PubSubHandler;
 import common.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,32 +13,25 @@ import java.util.List;
 public class ClientState extends State implements Serializable {
 
     private int tcpPort;
-    private PubSubHandler currentPubSubHandler;
     private List<GamePublicData> availableGames;
     private Player player;
     private String host;
     private GameMap gameMap;
-    private boolean isGameStarted;
-    private boolean isMyTurn;
-    private boolean startableGame;
     private RRNotification currentReqRespNotification;
-    private boolean askLights;
-    private boolean askAttack;
-    private String lastChatMessage;
     private PSNotification currentPubSubNotification;
     private long delayReturnToGameList;
     private boolean connectionActive;
-    private boolean aliensHaveWon;
-    private boolean humansHaveWon;
     private boolean inRoom;
 
     public ClientState() {
+        this.availableGames = new ArrayList<>();
         this.tcpPort = 29999;
         this.host = "localhost";
         this.delayReturnToGameList = 5000;
         this.connectionActive = true;
         this.inRoom = false;
         this.currentReqRespNotification = new RRNotification(false,null,null,null,null,null,null,null);
+        this.currentPubSubNotification = new PSNotification(null,null,null,false,false,null,null,false,false,false,false,null);
     }
 
     public int getTcpPort() {
@@ -46,14 +40,6 @@ public class ClientState extends State implements Serializable {
 
     public void setTcpPort(int tcpPort) {
         this.tcpPort = tcpPort;
-    }
-
-    public PubSubHandler getCurrentPubSubHandler() {
-        return currentPubSubHandler;
-    }
-
-    public void setCurrentPubSubHandler(PubSubHandler currentPubSubHandler) {
-        this.currentPubSubHandler = currentPubSubHandler;
     }
 
     public List<GamePublicData> getAvailableGames() {
@@ -88,60 +74,12 @@ public class ClientState extends State implements Serializable {
         this.gameMap = gameMap;
     }
 
-    public boolean isGameStarted() {
-        return isGameStarted;
-    }
-
-    public void setGameStarted(boolean gameStarted) {
-        isGameStarted = gameStarted;
-    }
-
-    public boolean isMyTurn() {
-        return isMyTurn;
-    }
-
-    public void setMyTurn(boolean myTurn) {
-        isMyTurn = myTurn;
-    }
-
-    public boolean isStartableGame() {
-        return startableGame;
-    }
-
-    public void setStartableGame(boolean startableGame) {
-        this.startableGame = startableGame;
-    }
-
     public RRNotification getCurrentReqRespNotification() {
         return currentReqRespNotification;
     }
 
     public void setCurrentReqRespNotification(RRNotification currentReqRespNotification) {
         this.currentReqRespNotification = currentReqRespNotification;
-    }
-
-    public boolean isAskLights() {
-        return askLights;
-    }
-
-    public void setAskLights(boolean askLights) {
-        this.askLights = askLights;
-    }
-
-    public boolean isAskAttack() {
-        return askAttack;
-    }
-
-    public void setAskAttack(boolean askAttack) {
-        this.askAttack = askAttack;
-    }
-
-    public String getLastChatMessage() {
-        return lastChatMessage;
-    }
-
-    public void setLastChatMessage(String lastChatMessage) {
-        this.lastChatMessage = lastChatMessage;
     }
 
     public PSNotification getCurrentPubSubNotification() {
@@ -168,22 +106,6 @@ public class ClientState extends State implements Serializable {
         this.connectionActive = connectionActive;
     }
 
-    public boolean isAliensHaveWon() {
-        return aliensHaveWon;
-    }
-
-    public void setAliensHaveWon(boolean aliensHaveWon) {
-        this.aliensHaveWon = aliensHaveWon;
-    }
-
-    public boolean isHumansHaveWon() {
-        return humansHaveWon;
-    }
-
-    public void setHumansHaveWon(boolean humansHaveWon) {
-        this.humansHaveWon = humansHaveWon;
-    }
-
     public boolean isInRoom() {
         return inRoom;
     }
@@ -192,28 +114,5 @@ public class ClientState extends State implements Serializable {
         this.inRoom = inRoom;
     }
 
-    @Override
-    public String toString() {
-        return "ClientState{" +
-                "tcpPort=" + tcpPort +
-                ", currentPubSubHandler=" + currentPubSubHandler +
-                ", availableGames=" + availableGames +
-                ", player=" + player +
-                ", host='" + host + '\'' +
-                ", gameMap=" + gameMap +
-                ", isGameStarted=" + isGameStarted +
-                ", isMyTurn=" + isMyTurn +
-                ", startableGame=" + startableGame +
-                ", currentReqRespNotification=" + currentReqRespNotification +
-                ", askLights=" + askLights +
-                ", askAttack=" + askAttack +
-                ", lastChatMessage='" + lastChatMessage + '\'' +
-                ", currentPubSubNotification=" + currentPubSubNotification +
-                ", delayReturnToGameList=" + delayReturnToGameList +
-                ", connectionActive=" + connectionActive +
-                ", aliensHaveWon=" + aliensHaveWon +
-                ", humansHaveWon=" + humansHaveWon +
-                ", inRoom=" + inRoom +
-                '}';
-    }
+
 }

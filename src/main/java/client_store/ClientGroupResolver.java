@@ -18,7 +18,7 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_START_GAME",
                 new PolicyCouple(new StartGameStatePolicy(), null));
         this.policiesMap.put("@CLIENT_START_TURN",
-                new PolicyCouple(new StartTurnStatePolicy(), null));
+                new PolicyCouple(new BlankPolicy(), null));
         this.policiesMap.put("@CLIENT_MOVE_TO_SECTOR",
                 new PolicyCouple(new MoveToSectorStatePolicy(), null));
         this.policiesMap.put("@CLIENT_TELEPORT_TO_STARTING_SECTOR",
@@ -36,14 +36,14 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_SET_AVAILABLE_GAMES",
                 new PolicyCouple(new SetAvailableGamesStatePolicy(), null));
         this.policiesMap.put("@CLIENT_PUBLISH_MSG",
-                new PolicyCouple(new PublishMsgStatePolicy(), null));
+                new PolicyCouple(new BlankPolicy(), null));
         this.policiesMap.put("@CLIENT_SET_RR",
                 new PolicyCouple(new SetRRStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_PS",
                 new PolicyCouple(new SetPSStatePolicy(), new ClientSetPSNotificationSidePolicy()));
-        this.policiesMap.put("@CLIENT_ASK_FOR_SECTOR_TO_ATTACK",new PolicyCouple(new AskAttackStatePolicy(),null));
+        this.policiesMap.put("@CLIENT_ASK_FOR_SECTOR_TO_ATTACK",new PolicyCouple(new BlankPolicy(),null));
         this.policiesMap.put("@CLIENT_ASK_SECTOR_TO_LIGHT",
-                new PolicyCouple(new AskSectorToLightStatePolicy(), null));
+                new PolicyCouple(new BlankPolicy(), null));
         this.policiesMap.put("@CLIENT_SUPPRESS",
                 new PolicyCouple(new SuppressStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_CONNECTION_ACTIVE",
@@ -53,9 +53,9 @@ public class ClientGroupResolver extends Resolver {
         this.policiesMap.put("@CLIENT_SET_PLAYER_STATE",
                 new PolicyCouple(new SetPlayerStateStatePolicy(), null));
         this.policiesMap.put("@CLIENT_SET_WINNERS",
-                new PolicyCouple(new SetWinnersStatePolicy(), null));
+                new PolicyCouple(new BlankPolicy(), null));
         this.policiesMap.put("@CLIENT_STARTABLE_GAME",
-                new PolicyCouple(new StartableGameStatePolicy(), null));
+                new PolicyCouple(new BlankPolicy(), null));
         this.policiesMap.put("@CLIENT_PUBLISH_CHAT_MSG",
                 new PolicyCouple(null, new SendChatMessageSidePolicy()));
         this.policiesMap.put("@CLIENT_REQUEST_USE_OBJ_CARD",

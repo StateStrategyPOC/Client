@@ -22,7 +22,6 @@ public class StartGameStatePolicy implements StatePolicy {
         } else {
             player.setCurrentSector(state.getGameMap().getHumanSector());
         }
-        state.setGameStarted(true);
         return state;
     }
 }
