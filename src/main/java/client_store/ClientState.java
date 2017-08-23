@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by giorgiopea on 24/03/17.
  */
-public class ClientState extends State implements Serializable {
+public class ClientState implements Serializable {
 
     private int tcpPort;
     private List<GamePublicData> availableGames;
